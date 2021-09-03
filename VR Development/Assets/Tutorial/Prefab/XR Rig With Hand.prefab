@@ -1402,6 +1402,8 @@ MonoBehaviour:
   followObject: {fileID: 0}
   followSpeed: 30
   rotateSpeed: 100
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!95 &157808063385650350
 Animator:
   serializedVersion: 3
@@ -1437,6 +1439,8 @@ MonoBehaviour:
   followObject: {fileID: 0}
   followSpeed: 30
   rotateSpeed: 100
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &157808061713017360
 PrefabInstance:
   m_ObjectHideFlags: 0
