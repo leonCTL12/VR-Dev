@@ -14,10 +14,12 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         if (SystemInfo.deviceType.ToString() == "Desktop")
         {
             spawnedPlayerPrefab = PhotonNetwork.Instantiate("Network Player Sphere", transform.position, transform.rotation);
+            spawnedPlayerPrefab.GetComponent<CameraController>().CameraOn();
         }
         if (SystemInfo.deviceType.ToString() == "Handheld")
         {
-            spawnedPlayerPrefab = PhotonNetwork.Instantiate("Network Player Cube", transform.position, transform.rotation);
+            spawnedPlayerPrefab = PhotonNetwork.Instantiate("XR Rig", transform.position, transform.rotation);
+            spawnedPlayerPrefab.GetComponent<CameraController>().CameraOn();
         }
     }
 
