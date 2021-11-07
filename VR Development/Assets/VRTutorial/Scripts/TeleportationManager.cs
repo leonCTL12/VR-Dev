@@ -42,7 +42,7 @@ public class TeleportationManager : MonoBehaviour
         if (_thumbstick.triggered) //the stick is still pushing forward, that means the player do not want to teleport yet.
             return;
 
-        if(!rayInteractor.GetCurrentRaycastHit(out RaycastHit hit)) //the ray is hitting something non existed
+        if(!rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit)) //the ray is hitting something non existed
         {
             rayInteractor.enabled = false;
             _isActive = false;
