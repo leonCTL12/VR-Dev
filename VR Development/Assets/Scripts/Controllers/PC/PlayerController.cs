@@ -8,12 +8,26 @@ public class PlayerController: MonoBehaviour
     //General
     [SerializeField]
     private CharacterController characterController;
+    [SerializeField]
+    private Animator playerAnimator;
     private InputDevice currentInputDevice;
+    [SerializeField]
+    private bool showPlayerModel;
+    [SerializeField]
+    private GameObject playerModel;
 
     //Walk
     [SerializeField]
     private float speed;
     private Vector2 walkInput;
+
+    //Walk Animator
+    [SerializeField]
+    private float animator_moveSpeed;
+    [SerializeField]
+    private float animator_speedChangeRate;
+    private float animator_speed;
+    private float _animationBlend;
 
     //Jump and Gravity
     [SerializeField]
@@ -46,6 +60,7 @@ public class PlayerController: MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        playerModel.SetActive(showPlayerModel);
     }
 
     private void Update()
@@ -82,11 +97,42 @@ public class PlayerController: MonoBehaviour
     {
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
         characterController.Move(move * speed * Time.deltaTime);
+
+        //animation
+        float targetSpeed = animator_moveSpeed;
+
+        if (move == Vector3.zero)
+        {
+            targetSpeed = 0f;
+        }
+
+        // a reference to the players current horizontal velocity
+        float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;
+        float speedOffset = 0.1f;
+        float inputMagnitude = 1f;
+
+        if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
+        {
+            // creates curved result rather than a linear one giving a more organic speed change
+            // note T in Lerp is clamped, so we don't need to clamp our speed
+            animator_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * animator_speedChangeRate);
+
+            // round speed to 3 decimal places
+            animator_speed = Mathf.Round(animator_speed * 1000f) / 1000f;
+        }
+        else
+        {
+            animator_speed = targetSpeed;
+        }
+        _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * animator_speedChangeRate);
+        playerAnimator.SetFloat("Speed", _animationBlend);
+        playerAnimator.SetFloat("MotionSpeed", inputMagnitude);
     }
 
     private void JumpingAndGravityHandler ()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        playerAnimator.SetBool("Grounded", isGrounded);
 
         if (isGrounded && velocity.y < 0) //velocity.y < 0 = still falling
         {
@@ -102,7 +148,9 @@ public class PlayerController: MonoBehaviour
         //Gravity
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime); //multiply Time.deltaTime once more because d = 1/2*g*t^2
+        
     }
+
 
     public void Shoot(InputAction.CallbackContext context)
     {
@@ -110,7 +158,8 @@ public class PlayerController: MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.started)
+        playerAnimator.SetBool("Jump", jumping);
+        if (context.started)
         {
             Debug.Log("Jump started");
             jumping = true;
@@ -126,14 +175,14 @@ public class PlayerController: MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Move");
-
             walkInput = context.ReadValue<Vector2>();
         }
         else if (context.canceled)
         {
             walkInput = Vector2.zero;
         }
+
+
     }
 
     public void LookRotationX(InputAction.CallbackContext context)
