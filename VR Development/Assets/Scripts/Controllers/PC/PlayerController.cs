@@ -15,6 +15,8 @@ public class PlayerController: MonoBehaviour
     private bool showPlayerModel;
     [SerializeField]
     private GameObject playerModel;
+    [SerializeField]
+    private TeleportGun gun;
 
     //Walk
     [SerializeField]
@@ -154,6 +156,10 @@ public class PlayerController: MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
+        if(context.performed)
+        {
+            gun.Fire();
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
