@@ -187,8 +187,6 @@ public class PlayerController: MonoBehaviour
         {
             walkInput = Vector2.zero;
         }
-
-
     }
 
     public void LookRotationX(InputAction.CallbackContext context)

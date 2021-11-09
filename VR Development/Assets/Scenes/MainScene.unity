@@ -5161,5 +5161,9 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 5576828413604137734, guid: 038d41ab8447ed74bb303e7ac6512050, type: 3}
+      propertyPath: teleportToken
+      value: 
+      objectReference: {fileID: 5303016610592602413, guid: 16e71135a1647de41b5093fd4b02d13e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 038d41ab8447ed74bb303e7ac6512050, type: 3}

@@ -314,9 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 0}
   attackPoint: {fileID: 0}
-  teleportToken: {fileID: 0}
+  teleportToken: {fileID: 6250057612746054877, guid: 0430b507994074e4ebd85c1a0610db12, type: 3}
   shootForce: 0
-  upwardForce: 0
 --- !u!1 &872493518196672781
 GameObject:
   m_ObjectHideFlags: 0

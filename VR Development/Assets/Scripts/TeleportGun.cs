@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class TeleportGun : MonoBehaviour
 {
-    //refer to https://www.youtube.com/watch?v=wZ2UUOC17AY for projectile gun
     [SerializeField]
     private Camera fpsCam;
     [SerializeField]
     private Transform attackPoint;
     [SerializeField]
-    private GameObject teleportToken;
+    private GameObject teleportTokenPrefab;
 
     [SerializeField]
     private float shootForce;
 
+    [System.NonSerialized]
+    public GameObject currentTeleportToken;
 
     public void Fire()
     {
-        //RaycastHit hit;
-        //if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit)) //return true if we hit something.
-        //{
-        //    Debug.Log(hit.transform.name);
-        //    Instantiate(teleportToken, hit.transform);
-        //}
-
+     
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -44,11 +39,13 @@ public class TeleportGun : MonoBehaviour
         Vector3 direction = targetPoint - attackPoint.position;
 
         //Instantiate bullet/projectile
-        GameObject currentBullet = Instantiate(teleportToken, attackPoint.position, Quaternion.identity);
+        currentTeleportToken = Instantiate(teleportTokenPrefab, attackPoint.position, Quaternion.identity);
+
         //Rotate bullet to shoot direction
-        currentBullet.transform.forward = direction.normalized;
+        currentTeleportToken.transform.forward = direction.normalized;
 
         //Add forces to bullet 
-        currentBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
+        currentTeleportToken.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
     }
+    
 }
