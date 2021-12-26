@@ -98,7 +98,10 @@ public class PlayerController: MonoBehaviour
     private void MovementHandler()
     {
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
-        characterController.Move(move * speed * Time.deltaTime);
+        if (move != Vector3.zero)
+        {
+            characterController.Move(move * speed * Time.deltaTime);
+        }
 
         //animation
         float targetSpeed = animator_moveSpeed;
@@ -143,6 +146,7 @@ public class PlayerController: MonoBehaviour
 
         if (jumping && isGrounded)
         {
+            Debug.Log("Jumping");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumping = false;
         }
@@ -213,5 +217,16 @@ public class PlayerController: MonoBehaviour
         {
             rotationInputY = 0f;
         }
+    }
+
+    public void Teleport()
+    {
+        if (gun.currentTeleportToken == null) { return; }
+
+        characterController.enabled = false;
+        transform.position = gun.currentTeleportToken.transform.position;
+        characterController.enabled = true;
+
+        Destroy(gun.currentTeleportToken);
     }
 }

@@ -44,6 +44,14 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Teleport",
+                    "type": "Button",
+                    "id": "8ae920a3-50b5-4cb3-8c5a-0a68ced8df0d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -198,6 +206,28 @@
                     "processors": "",
                     "groups": "GamePad",
                     "action": "Rotation Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "657fa4c9-2247-4622-8578-a6b52d18571a",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "Teleport",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bd0fd04-ad37-4fad-bca2-2d8c2cec70e3",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Teleport",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

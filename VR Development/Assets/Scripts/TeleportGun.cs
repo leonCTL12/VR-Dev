@@ -19,7 +19,10 @@ public class TeleportGun : MonoBehaviour
 
     public void Fire()
     {
-     
+        if(currentTeleportToken != null)
+        {
+            return;
+        }
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;

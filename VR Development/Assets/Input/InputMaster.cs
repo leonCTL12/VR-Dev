@@ -57,6 +57,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Teleport"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ae920a3-50b5-4cb3-8c5a-0a68ced8df0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -213,6 +221,28 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Rotation Y"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""657fa4c9-2247-4622-8578-a6b52d18571a"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Teleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4bd0fd04-ad37-4fad-bca2-2d8c2cec70e3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Teleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -254,6 +284,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_RotationX = m_Player.FindAction("Rotation X", throwIfNotFound: true);
         m_Player_RotationY = m_Player.FindAction("Rotation Y", throwIfNotFound: true);
+        m_Player_Teleport = m_Player.FindAction("Teleport", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -308,6 +339,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_RotationX;
     private readonly InputAction m_Player_RotationY;
+    private readonly InputAction m_Player_Teleport;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -317,6 +349,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @RotationX => m_Wrapper.m_Player_RotationX;
         public InputAction @RotationY => m_Wrapper.m_Player_RotationY;
+        public InputAction @Teleport => m_Wrapper.m_Player_Teleport;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +374,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @RotationY.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotationY;
                 @RotationY.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotationY;
                 @RotationY.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotationY;
+                @Teleport.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeleport;
+                @Teleport.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeleport;
+                @Teleport.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeleport;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +396,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @RotationY.started += instance.OnRotationY;
                 @RotationY.performed += instance.OnRotationY;
                 @RotationY.canceled += instance.OnRotationY;
+                @Teleport.started += instance.OnTeleport;
+                @Teleport.performed += instance.OnTeleport;
+                @Teleport.canceled += instance.OnTeleport;
             }
         }
     }
@@ -389,5 +428,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnRotationX(InputAction.CallbackContext context);
         void OnRotationY(InputAction.CallbackContext context);
+        void OnTeleport(InputAction.CallbackContext context);
     }
 }
