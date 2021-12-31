@@ -294,8 +294,10 @@ public class PlayerController_Base: MonoBehaviour
         currentTriggerCollisionGO = null;
     }
 
-    public void CheckInputDevice()
+    public void DeathHandler(Transform spawnPoint)
     {
-        //TODO: figure out how to check device type
+        characterController.enabled = false;
+        transform.position = spawnPoint.position;
+        characterController.enabled = true;
     }
 }
