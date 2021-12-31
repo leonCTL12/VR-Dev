@@ -15,7 +15,8 @@ public class PlayerController_Base: MonoBehaviour
     private bool showPlayerModel;
     [SerializeField]
     private GameObject playerModel;
-    
+    [SerializeField]
+    private Camera fpsCam;
 
     //Walk
     [SerializeField]
@@ -153,11 +154,7 @@ public class PlayerController_Base: MonoBehaviour
         //Gravity
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime); //multiply Time.deltaTime once more because d = 1/2*g*t^2
-        
     }
-
-
-   
 
     public void Jump(InputAction.CallbackContext context)
     {
@@ -212,5 +209,24 @@ public class PlayerController_Base: MonoBehaviour
         }
     }
 
-    
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Player Interact");
+            //Find the exact hit position using a raycast
+            Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
+                if (interactableObject != null)
+                {
+                    interactableObject.VoidInteract();
+                }
+            }
+        }
+    }
+
 }

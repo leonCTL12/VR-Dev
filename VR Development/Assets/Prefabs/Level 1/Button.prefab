@@ -128,6 +128,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &219454764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806409810932369719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b124974eec018f348b69cac7dd8477d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &10842999344981219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795568237524970967, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0000007590279
+      value: -0.0000006868504
       objectReference: {fileID: 0}
     - target: {fileID: 8795568237524970967, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -205,12 +217,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795568237524970967, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.0000015180558
+      value: -0.0000016787089
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
 --- !u!4 &8806409810923417036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8795568237516097839, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
+  m_PrefabInstance: {fileID: 10842999344981219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8806409810932369719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8795568237524970964, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
   m_PrefabInstance: {fileID: 10842999344981219}
   m_PrefabAsset: {fileID: 0}

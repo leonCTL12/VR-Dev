@@ -81,58 +81,34 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Shoot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 57c32524-3a31-4619-a8cd-fcd170d4b0aa
-    m_ActionName: Player/Shoot[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: deef3bbb-8692-421a-bc5f-fa1fd90f87a1
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 942898d8-571d-4bcd-b2c0-8236b370d84a
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2dda1765-230a-4d4b-b9f0-ecd382d80985
+    m_ActionName: Player/Rotation X
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1158eaae-b5a8-4e0e-a25c-27f37aea9541
+    m_ActionName: Player/Rotation Y[/Mouse/delta/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9805eeca-65cc-4109-a7a6-329bcfbf9d95
+    m_ActionName: Player_TPGun/Teleport[/Keyboard/shift,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9aa0ae81-1aa0-4bc9-8b41-5a1a3e43a7bb
+    m_ActionName: Player_TPGun/Shoot[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: LookRotationX
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: Interact
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -142,12 +118,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 2dda1765-230a-4d4b-b9f0-ecd382d80985
-    m_ActionName: Player/Rotation X
+    m_ActionId: e6a25307-564b-47f0-bd85-966973299e73
+    m_ActionName: Player_Base/Interact[/Mouse/leftButton,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationY
         m_Mode: 0
         m_Arguments:
@@ -158,14 +134,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 1158eaae-b5a8-4e0e-a25c-27f37aea9541
-    m_ActionName: Player/Rotation Y[/Mouse/delta/y]
+    m_ActionId: 74ca4239-1faa-455d-ba6b-fd8bbdda8047
+    m_ActionName: Player_Base/Rotation Y[/Mouse/delta/y,/XInputControllerWindows/rightStick/y]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Teleport
-        m_Mode: 1
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: LookRotationX
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -174,11 +150,43 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 8ae920a3-50b5-4cb3-8c5a-0a68ced8df0d
-    m_ActionName: Player/Teleport[/Keyboard/shift]
+    m_ActionId: 5eb873e8-a663-4a5b-9434-0e2b7a22f316
+    m_ActionName: Player_Base/Rotation X[/Mouse/delta/x,/XInputControllerWindows/rightStick/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1370324148990463763}
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 247a9bcf-817d-42cd-8e23-2c6d9eb2d710
+    m_ActionName: Player_Base/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1370324148990463763}
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a91fc698-0951-4f0d-8b07-341efe017c73
+    m_ActionName: Player_Base/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Player_Base
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1370324148990463763
@@ -197,7 +205,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 5841956749639824882}
   showPlayerModel: 0
   playerModel: {fileID: 916817661151130930}
-  gun: {fileID: 0}
+  fpsCam: {fileID: 1593585684729707950}
   speed: 12
   animator_moveSpeed: 6
   animator_speedChangeRate: 10
