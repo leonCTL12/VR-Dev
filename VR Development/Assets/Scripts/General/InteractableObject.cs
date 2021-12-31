@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    public virtual void VoidInteract() {}
+    [SerializeField]
+    protected RangeChecker rangeChecker;
 
+    public virtual void VoidInteract() 
+    {
+    }
+
+    
     //TODO: add interact that return different type
 }

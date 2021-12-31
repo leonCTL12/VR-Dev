@@ -146,7 +146,6 @@ public class PlayerController_Base: MonoBehaviour
 
         if (jumping && isGrounded)
         {
-            Debug.Log("Jumping");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumping = false;
         }
@@ -161,12 +160,10 @@ public class PlayerController_Base: MonoBehaviour
         playerAnimator.SetBool("Jump", jumping);
         if (context.started)
         {
-            Debug.Log("Jump started");
             jumping = true;
         }
         else if (context.canceled)
         {
-            Debug.Log("Jump ended");
             jumping = false;
         }
     }
@@ -213,7 +210,6 @@ public class PlayerController_Base: MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Player Interact");
             //Find the exact hit position using a raycast
             Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
@@ -229,4 +225,8 @@ public class PlayerController_Base: MonoBehaviour
         }
     }
 
+    public void CheckInputDevice()
+    {
+        //TODO: figure out how to check device type
+    }
 }

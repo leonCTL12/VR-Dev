@@ -26,5 +26,6 @@ public class PlayerController_TPGun : PlayerController_Base
         characterController.enabled = true;
 
         Destroy(gun.currentTeleportToken);
+
     }
 }
