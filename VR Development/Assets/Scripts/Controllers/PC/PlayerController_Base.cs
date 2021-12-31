@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController: MonoBehaviour
+public class PlayerController_Base: MonoBehaviour
 {
     //General
     [SerializeField]
-    private CharacterController characterController;
+    protected CharacterController characterController;
     [SerializeField]
     private Animator playerAnimator;
     private InputDevice currentInputDevice;
@@ -15,8 +15,7 @@ public class PlayerController: MonoBehaviour
     private bool showPlayerModel;
     [SerializeField]
     private GameObject playerModel;
-    [SerializeField]
-    private TeleportGun gun;
+    
 
     //Walk
     [SerializeField]
@@ -158,13 +157,7 @@ public class PlayerController: MonoBehaviour
     }
 
 
-    public void Shoot(InputAction.CallbackContext context)
-    {
-        if(context.performed)
-        {
-            gun.Fire();
-        }
-    }
+   
 
     public void Jump(InputAction.CallbackContext context)
     {
@@ -219,14 +212,5 @@ public class PlayerController: MonoBehaviour
         }
     }
 
-    public void Teleport()
-    {
-        if (gun.currentTeleportToken == null) { return; }
-
-        characterController.enabled = false;
-        transform.position = gun.currentTeleportToken.transform.position;
-        characterController.enabled = true;
-
-        Destroy(gun.currentTeleportToken);
-    }
+    
 }

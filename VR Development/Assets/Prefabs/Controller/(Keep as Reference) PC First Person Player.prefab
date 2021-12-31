@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 4719605138270608463}
   - component: {fileID: 8186820921466998582}
   m_Layer: 0
-  m_Name: PC First Person Player
+  m_Name: (Keep as Reference) PC First Person Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
