@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController_Base: MonoBehaviour
 {
     //General
@@ -17,6 +18,8 @@ public class PlayerController_Base: MonoBehaviour
     private GameObject playerModel;
     [SerializeField]
     private Camera fpsCam;
+    [SerializeField]
+    private GameObject sightUI;
 
     //Walk
     [SerializeField]
@@ -59,11 +62,44 @@ public class PlayerController_Base: MonoBehaviour
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
 
+    //TODO: hook up with setting
+    [SerializeField]
+    private bool gamePadMode = false;
+
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         playerModel.SetActive(showPlayerModel);
+
+        PCInputDeviceChange(!gamePadMode);
+        InputSystem.onDeviceChange += (device, change) =>
+        {
+            switch (change)
+            {
+                case InputDeviceChange.Added:
+                    if (device is Gamepad)
+                    {
+                        gamePadMode = true;
+                        PCInputDeviceChange(!gamePadMode);
+                    }
+                    break;
+                case InputDeviceChange.Removed:
+                    if (device is Gamepad)
+                    {
+                        Debug.Log("A Gamepad is removed");
+                        gamePadMode = false;
+                        PCInputDeviceChange(!gamePadMode);
+                    }
+                    break;
+            }
+
+        };
     }
+
+    private void PCInputDeviceChange(bool keyboardUI)
+    {
+        sightUI.SetActive(keyboardUI);
+    }
+
 
     private void Update()
     {

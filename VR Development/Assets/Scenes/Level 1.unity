@@ -794,6 +794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PC First Person Player (Base)
       objectReference: {fileID: 0}
+    - target: {fileID: 1370324148990463763, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
+      propertyPath: gamePadMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3897173698075321612, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: m_RootOrder
       value: 2
