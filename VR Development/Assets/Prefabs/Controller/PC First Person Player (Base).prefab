@@ -207,6 +207,7 @@ MonoBehaviour:
   playerModel: {fileID: 916817661151130930}
   fpsCam: {fileID: 1593585684729707950}
   sightUI: {fileID: 5080311329749372774}
+  gamePadMode: 1
   speed: 12
   animator_moveSpeed: 6
   animator_speedChangeRate: 10

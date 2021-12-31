@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    [SerializeField]
-    protected RangeChecker rangeChecker;
+    public bool playerInRange = false;
 
     public virtual void VoidInteract() 
     {

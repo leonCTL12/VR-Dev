@@ -23,7 +23,7 @@ public class TogglePlaneButton : InteractableObject
     public override void VoidInteract()
     {
         base.VoidInteract();
-        if(!rangeChecker.playerInRange) { return; }
+        if(!playerInRange) { return; }
 
         clicker.GetComponent<MeshRenderer>().material = redState ? blueMaterial : redMaterial;
         redState = !redState;

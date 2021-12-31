@@ -20,6 +20,10 @@ public class PlayerController_Base: MonoBehaviour
     private Camera fpsCam;
     [SerializeField]
     private GameObject sightUI;
+    //TODO: hook up with setting
+    [SerializeField]
+    private bool gamePadMode = false;
+    private GameObject currentTriggerCollisionGO;
 
     //Walk
     [SerializeField]
@@ -33,6 +37,7 @@ public class PlayerController_Base: MonoBehaviour
     private float animator_speedChangeRate;
     private float animator_speed;
     private float _animationBlend;
+
 
     //Jump and Gravity
     [SerializeField]
@@ -62,9 +67,9 @@ public class PlayerController_Base: MonoBehaviour
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
 
-    //TODO: hook up with setting
-    [SerializeField]
-    private bool gamePadMode = false;
+   
+
+
 
     private void Start()
     {
@@ -244,21 +249,49 @@ public class PlayerController_Base: MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
+        
         if (context.performed)
         {
             //Find the exact hit position using a raycast
-            Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (currentInputDevice is Mouse)
             {
-                InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
-                if (interactableObject != null)
+                Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    interactableObject.VoidInteract();
+                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
+                    if (interactableObject != null)
+                    {
+                        interactableObject.VoidInteract();
+                    }
+                }
+            }
+             
+            if (currentInputDevice is Gamepad)
+            {
+                Debug.Log("GamePad interact");
+                if (currentTriggerCollisionGO == null) {
+                    return; 
+                }
+
+                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+                if (checker != null)
+                {
+                    checker.interactable.VoidInteract();
                 }
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        currentTriggerCollisionGO = other.gameObject;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        currentTriggerCollisionGO = null;
     }
 
     public void CheckInputDevice()

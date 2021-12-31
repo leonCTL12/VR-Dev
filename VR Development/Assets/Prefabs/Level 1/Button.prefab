@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0522a499fc93594f8d08f838adf7535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInRange: 0
+  interactable: {fileID: 219454764}
 --- !u!114 &219454764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b124974eec018f348b69cac7dd8477d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeChecker: {fileID: 2042500456}
+  playerInRange: 0
   redMaterial: {fileID: 2100000, guid: 87e20066a4dfd1d4d8086657f0d95873, type: 2}
   blueMaterial: {fileID: 2100000, guid: b63344f568940bf4fad063549c175de3, type: 2}
   TogglePlanes: {fileID: 0}
