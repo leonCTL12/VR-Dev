@@ -1,24 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private GameObject SpawnPoint;
-    [SerializeField]
-    private GameObject playerPrefab;
+    private GameObject spawnPoint;
+    private GameObject playersContainer;
 
     private PlayerController_Base currentPlayer;
-
-    private void Start()
-    {
-        currentPlayer = Instantiate(playerPrefab).GetComponent<PlayerController_Base>();
-    }
+    private GameObject spawnedPlayerPrefab;
 
     public void DeathHandling()
     {
-        currentPlayer.DeathHandler(SpawnPoint.transform);
+        currentPlayer.DeathHandler(spawnPoint.transform);
     }
-   
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+
+        //playersContainer = GameObject.Find("PlayersContainer(Clone)");
+
+        //if (playersContainer == null)
+        //{
+        //    playersContainer = PhotonNetwork.Instantiate("PlayersContainer",new Vector3(0,0,0), Quaternion.identity);
+        //}
+
+        //DisableOtherPlayerControll();
+
+        if (SystemInfo.deviceType.ToString() == "Desktop")
+        {
+            spawnedPlayerPrefab = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position, spawnPoint.transform.rotation);
+            //spawnedPlayerPrefab.transform.parent = playersContainer.transform;
+            currentPlayer = spawnedPlayerPrefab.GetComponent<PlayerController_Base>();
+        }
+        if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
+        {
+            //Reference
+            //spawnedPlayerPrefab = PhotonNetwork.Instantiate("XR Rig", transform.position, transform.rotation);
+            //spawnedPlayerPrefab.GetComponent<CameraController>().CameraOn();
+
+            //TODO: Spawn VR Player Controller
+        }
+    }
+
+    private void DisableOtherPlayerControll()
+    {
+        foreach (Transform child in playersContainer.transform)
+        {
+            //if (!child.gameObject.GetComponent<PlayerController_Base>().self)
+            //{
+            //    child.gameObject.SetActive(false);
+            //}
+        }
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+        PhotonNetwork.Destroy(spawnedPlayerPrefab);
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        Debug.Log("A new player joined the room");
+        base.OnPlayerEnteredRoom(newPlayer);
+        //DisableOtherPlayerControll();
+    }
 }

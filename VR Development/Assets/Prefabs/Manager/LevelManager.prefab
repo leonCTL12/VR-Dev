@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9328174317939e743a725fb3293ca654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 7900733924190665668}
-  playerPrefab: {fileID: 423348268188405572, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
+  spawnPoint: {fileID: 7900733924190665668}
 --- !u!1 &7900733923545456129
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +90,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
+  m_Size: {x: 100, y: 10, z: 10}
   m_Center: {x: 0, y: 1.77, z: 0}
 --- !u!114 &514221072
 MonoBehaviour:
@@ -129,7 +128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7900733924190665668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: -86.2}
+  m_LocalPosition: {x: -6, y: 5.7, z: -86.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7900733923377907839}

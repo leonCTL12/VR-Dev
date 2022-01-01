@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 
 public class PlayerController_Base: MonoBehaviour
@@ -24,6 +25,7 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     private bool gamePadMode = false;
     private GameObject currentTriggerCollisionGO;
+    private bool isMine;
 
     //Walk
     [SerializeField]
@@ -67,13 +69,16 @@ public class PlayerController_Base: MonoBehaviour
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
 
-   
-
-
+    private void PlayerControlSetting()
+    {
+        isMine = GetComponent<PhotonView>().IsMine;
+        playerModel.SetActive(!isMine);
+        fpsCam.gameObject.SetActive(isMine);
+    }
 
     private void Start()
     {
-        playerModel.SetActive(showPlayerModel);
+        PlayerControlSetting();
 
         PCInputDeviceChange(!gamePadMode);
         InputSystem.onDeviceChange += (device, change) =>
