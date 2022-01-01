@@ -14,8 +14,6 @@ public class PlayerController_Base: MonoBehaviour
     private Animator playerAnimator;
     private InputDevice currentInputDevice;
     [SerializeField]
-    private bool showPlayerModel;
-    [SerializeField]
     private GameObject playerModel;
     [SerializeField]
     private Camera fpsCam;

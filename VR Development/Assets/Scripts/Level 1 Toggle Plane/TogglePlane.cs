@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TogglePlane : MonoBehaviour
 {
+    private Animator animator;
     public enum colorGroup
     {
         red, blue
@@ -12,14 +13,20 @@ public class TogglePlane : MonoBehaviour
     [SerializeField]
     private colorGroup color;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Toggle(bool redState)
     {
-        if(redState)
+        if (redState)
         {
-            gameObject.SetActive(color == colorGroup.red);
-        } else
+            animator.SetBool("show", color == colorGroup.red);
+        }
+        else
         {
-            gameObject.SetActive(color == colorGroup.blue);
+            animator.SetBool("show", color == colorGroup.blue);
         }
     }
 }

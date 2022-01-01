@@ -187,7 +187,7 @@ MonoBehaviour:
     m_ActionId: a91fc698-0951-4f0d-8b07-341efe017c73
     m_ActionName: Player_Base/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard and mouse
+  m_DefaultControlScheme: GamePad
   m_DefaultActionMap: Player_Base
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -205,12 +205,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 642851140783680578}
   playerAnimator: {fileID: 5841956749639824882}
-  showPlayerModel: 1
   playerModel: {fileID: 916817661151130930}
   fpsCam: {fileID: 1593585684729707950}
   sightUI: {fileID: 5080311329749372774}
-  gamePadMode: 1
-  speed: 12
+  gamePadMode: 0
+  speed: 30
   animator_moveSpeed: 6
   animator_speedChangeRate: 10
   gravity: -15
