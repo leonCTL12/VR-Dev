@@ -13,11 +13,18 @@ public class TogglePlaneButton : InteractableObject
 
     private GameObject clicker;
 
+    private LevelManager levelManager;
+
     private bool redState = true;
 
     private void Awake()
     {
         clicker = transform.GetChild(0).gameObject;
+    }
+
+    private void Start()
+    {
+        levelManager = LevelManager.Instance;
     }
 
     public override void VoidInteract()
@@ -27,15 +34,9 @@ public class TogglePlaneButton : InteractableObject
 
         clicker.GetComponent<MeshRenderer>().material = redState ? blueMaterial : redMaterial;
         redState = !redState;
-        TogglePlane();
+        levelManager.TogglePlane(redState);
     }
 
-    private void TogglePlane()
-    {
-        foreach (Transform child in TogglePlanes)
-        {
-            child.GetComponent<TogglePlane>().Toggle(redState);
-        }
-    }
+    
 
 }
