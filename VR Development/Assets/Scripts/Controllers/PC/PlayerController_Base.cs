@@ -12,18 +12,23 @@ public class PlayerController_Base: MonoBehaviour
     protected CharacterController characterController;
     [SerializeField]
     private Animator playerAnimator;
-    private InputDevice currentInputDevice;
     [SerializeField]
     private GameObject player3rdPersonModel;
     [SerializeField]
     private Camera fpsCam;
     [SerializeField]
     private GameObject sightUI;
+    [SerializeField]
+    private InputActionAsset gamePadAction; //Remove Later
+    [SerializeField]
+    private InputActionAsset keyboardAction; //Remove Later
     //TODO: hook up with setting
     [SerializeField]
     private bool gamePadMode = false;
     private GameObject currentTriggerCollisionGO;
     private bool isMine;
+    private InputDevice currentInputDevice;
+
 
     //Walk
     [SerializeField]
@@ -71,8 +76,9 @@ public class PlayerController_Base: MonoBehaviour
     {
         isMine = GetComponent<PhotonView>().IsMine;
         player3rdPersonModel.SetActive(!isMine);
+        //player3rdPersonModel.SetActive(true); //for animation testing
         fpsCam.gameObject.SetActive(isMine);
-        this.enabled = isMine;
+        PlayerInput input = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -121,6 +127,10 @@ public class PlayerController_Base: MonoBehaviour
 
     private void LookHandler()
     {
+        if(!isMine)
+        {
+            return;
+        }
         float sensitivity = defaultSensitivity;
         if(currentInputDevice is Mouse)
         {
@@ -142,6 +152,10 @@ public class PlayerController_Base: MonoBehaviour
 
     private void MovementHandler()
     {
+        if(!isMine)
+        {
+            return;
+        }
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
         if (move != Vector3.zero)
         {
@@ -181,6 +195,11 @@ public class PlayerController_Base: MonoBehaviour
 
     private void JumpingAndGravityHandler ()
     {
+        if(!isMine)
+        {
+            return;
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         playerAnimator.SetBool("Grounded", isGrounded);
 
@@ -202,8 +221,8 @@ public class PlayerController_Base: MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        playerAnimator.SetBool("Jump", jumping);
-        if (context.started)
+        
+        if (context.started && isGrounded)
         {
             jumping = true;
         }
@@ -211,6 +230,8 @@ public class PlayerController_Base: MonoBehaviour
         {
             jumping = false;
         }
+        playerAnimator.SetBool("Jump", jumping);
+
     }
 
     public void Move(InputAction.CallbackContext context)
