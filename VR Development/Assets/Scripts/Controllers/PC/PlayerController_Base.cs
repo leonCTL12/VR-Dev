@@ -78,7 +78,8 @@ public class PlayerController_Base: MonoBehaviour
         player3rdPersonModel.SetActive(!isMine);
         //player3rdPersonModel.SetActive(true); //for animation testing
         fpsCam.gameObject.SetActive(isMine);
-        PlayerInput input = GetComponent<PlayerInput>();
+        GetComponent<PlayerInput>().enabled = isMine;
+        this.enabled = isMine;
     }
 
     private void Start()
@@ -127,10 +128,8 @@ public class PlayerController_Base: MonoBehaviour
 
     private void LookHandler()
     {
-        if(!isMine)
-        {
-            return;
-        }
+        if (!isMine) { return; }  //add to prevent it to improve efficiency
+
         float sensitivity = defaultSensitivity;
         if(currentInputDevice is Mouse)
         {
@@ -152,10 +151,7 @@ public class PlayerController_Base: MonoBehaviour
 
     private void MovementHandler()
     {
-        if(!isMine)
-        {
-            return;
-        }
+        if(!isMine) { return; }  //add to prevent it to improve efficiency
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
         if (move != Vector3.zero)
         {
@@ -195,10 +191,7 @@ public class PlayerController_Base: MonoBehaviour
 
     private void JumpingAndGravityHandler ()
     {
-        if(!isMine)
-        {
-            return;
-        }
+        if (!isMine) { return; }  //add to prevent it to improve efficiency
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         playerAnimator.SetBool("Grounded", isGrounded);
@@ -274,7 +267,6 @@ public class PlayerController_Base: MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        
         if (context.performed)
         {
             //Find the exact hit position using a raycast
@@ -283,12 +275,16 @@ public class PlayerController_Base: MonoBehaviour
                 Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 RaycastHit hit;
 
+
                 if (Physics.Raycast(ray, out hit))
                 {
                     InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
                     if (interactableObject != null)
                     {
                         interactableObject.VoidInteract();
+                    }else
+                    {
+                        Debug.LogError("No interactables. What it hit is: " + hit.collider.gameObject.name);
                     }
                 }
             }

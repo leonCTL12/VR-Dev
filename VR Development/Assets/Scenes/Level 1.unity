@@ -235,6 +235,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1185371627}
     m_Modifications:
+    - target: {fileID: 4163421807439823547, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5841802245722292326, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: m_Name
       value: Toggle Plane (3)
@@ -308,6 +312,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1185371627}
     m_Modifications:
+    - target: {fileID: 4163421807439823547, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5841802245722292326, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: m_Name
       value: Toggle Plane (1)
@@ -370,6 +378,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b63344f568940bf4fad063549c175de3, type: 2}
     - target: {fileID: 8474859028536429366, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856833883019320854, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -648,6 +660,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1185371627}
     m_Modifications:
+    - target: {fileID: 4163421807439823547, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163421807439823547, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: observableSearch
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5841802245722292326, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: m_Name
       value: Toggle Plane (2)
@@ -698,6 +718,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5841802245722580006, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856833883019320854, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -993,6 +1017,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1185371627}
     m_Modifications:
+    - target: {fileID: 3161072052017111206, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163421807439823547, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5841802245722292326, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: m_Name
       value: Toggle Plane
@@ -1040,6 +1072,10 @@ PrefabInstance:
     - target: {fileID: 5841802245722580006, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856833883019320854, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bf58b20286e17441aabbe62d0c71d45, type: 3}
