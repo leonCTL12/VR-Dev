@@ -33,7 +33,9 @@ public class LevelManager : MonoBehaviourPunCallbacks
 
         if (SystemInfo.deviceType.ToString() == "Desktop")
         {
-            spawnedPlayerPrefab = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position, spawnPoint.transform.rotation);
+            Vector3 randomOffset = new Vector3(Random.Range(0,5), 0, Random.Range(0, 5));
+            //add a random offset to prevent two player's collider clash and stick together
+            spawnedPlayerPrefab = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position+randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayerPrefab.transform.parent = playersContainer.transform;
             currentPlayer = spawnedPlayerPrefab.GetComponent<PlayerController_Base>();
         }
