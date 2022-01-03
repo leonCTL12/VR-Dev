@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 7668534628947044664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.5, y: 0, z: -37.6}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7668534628879853413}
   - {fileID: 8806409810923417036}
@@ -171,7 +171,6 @@ MonoBehaviour:
   playerInRange: 0
   redMaterial: {fileID: 2100000, guid: 87e20066a4dfd1d4d8086657f0d95873, type: 2}
   blueMaterial: {fileID: 2100000, guid: b63344f568940bf4fad063549c175de3, type: 2}
-  TogglePlanes: {fileID: 0}
 --- !u!1001 &10842999344981219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795568237524970967, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0000006868504
+      value: -0.000007362105
       objectReference: {fileID: 0}
     - target: {fileID: 8795568237524970967, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -249,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795568237524970967, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.0000016787089
+      value: 0.000004043104
       objectReference: {fileID: 0}
     - target: {fileID: 8795568238855600817, guid: 4c52f8c805d73c9419f1bb5e06827d06, type: 3}
       propertyPath: m_Materials.Array.data[0]

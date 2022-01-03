@@ -8,12 +8,10 @@ public class TogglePlaneButton : InteractableObject
     private Material redMaterial;
     [SerializeField]
     private Material blueMaterial;
-    [SerializeField]
-    private Transform TogglePlanes;
 
     private GameObject clicker;
 
-    private LevelManager levelManager;
+    private TogglePlanesManager manager;
 
     private bool redState = true;
 
@@ -24,7 +22,7 @@ public class TogglePlaneButton : InteractableObject
 
     private void Start()
     {
-        levelManager = LevelManager.Instance;
+        manager = TogglePlanesManager.Instance;
     }
 
     public override void VoidInteract()
@@ -32,11 +30,14 @@ public class TogglePlaneButton : InteractableObject
         base.VoidInteract();
         if(!playerInRange) { return; }
 
-        clicker.GetComponent<MeshRenderer>().material = redState ? blueMaterial : redMaterial;
-        redState = !redState;
-        levelManager.TogglePlane(redState);
+        manager.TogglePlane();
     }
 
-    
+    public void ChangeButtonColor(bool redState)
+    {
+        clicker.GetComponent<MeshRenderer>().material = redState ?  redMaterial : blueMaterial;
+    }
+
+
 
 }

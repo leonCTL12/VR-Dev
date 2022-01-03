@@ -8,10 +8,10 @@ public class LevelManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject spawnPoint;
+    private TogglePlanesManager togglePlanesManager;
 
     private PlayerController_Base currentPlayer;
     private GameObject spawnedPlayer;
-    private GameObject togglePlanes;
 
     private static LevelManager _instance;
 
@@ -37,6 +37,11 @@ public class LevelManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void Start()
+    {
+        togglePlanesManager = TogglePlanesManager.Instance;
+    }
+
     public void DeathHandling()
     {
         currentPlayer.DeathHandler(spawnPoint.transform);
@@ -56,26 +61,11 @@ public class LevelManager : MonoBehaviourPunCallbacks
 
     public void InitialiseLevel()
     {
-        togglePlanes = PhotonNetwork.Instantiate("Toggle Planes", Vector3.zero, Quaternion.identity);
-        togglePlanes.transform.localScale = new Vector3(5, 5, 5); //Hardcode value to suit the size of VR player
-        TogglePlane(true); 
+        togglePlanesManager.Initialse(); 
     }
 
     public void DisconnectionHandling()
     {
         PhotonNetwork.Destroy(spawnedPlayer);
-    }
-
-    
-
-    [PunRPC]
-    public void TogglePlane(bool redState)
-    {
-        Debug.Log("In Level Manager Toggle Plane");
-        Debug.Log("Cant find it: " + (GameObject.Find("Toggle Planes(Clone)") == null));
-        foreach (Transform child in GameObject.Find("Toggle Planes(Clone)").transform)
-        {
-            child.GetComponent<TogglePlane>().Toggle(redState);
-        }
     }
 }
