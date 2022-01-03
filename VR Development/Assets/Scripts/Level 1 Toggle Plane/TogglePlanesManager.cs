@@ -13,8 +13,8 @@ public class TogglePlanesManager : MonoBehaviour
         set { _instance = value; }
     }
 
-    private bool redState;
-    public bool redState_Getonly
+    private bool redState = true; 
+    public bool redState_GetOnly
     {
         get { return redState; }
     }
@@ -31,9 +31,9 @@ public class TogglePlanesManager : MonoBehaviour
         }
     }
 
-    public void TogglePlane()
+    public void ChangePlaneState(bool toggle = true)
     {
-        redState = !redState;
+        redState = toggle ? !redState : redState;
         foreach (Transform child in transform)
         {
             child.GetComponent<TogglePlane>().Toggle(redState);
@@ -46,7 +46,12 @@ public class TogglePlanesManager : MonoBehaviour
     }
     public void Initialse()
     {
-        redState = false;
-        TogglePlane();
+        ChangePlaneState(false);
+    }
+
+    public void ReceiveSync(bool state)
+    {
+        redState = state;
+        ChangePlaneState(false);
     }
 }

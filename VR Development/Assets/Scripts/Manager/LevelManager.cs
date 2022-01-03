@@ -63,6 +63,19 @@ public class LevelManager : MonoBehaviourPunCallbacks
     {
         togglePlanesManager.Initialse(); 
     }
+    public void Sender_SyncLevel()
+    {
+        photonView.RPC("Receiver_SyncLevel", RpcTarget.Others, togglePlanesManager.redState_GetOnly);
+    }
+
+    [PunRPC]
+    public void Receiver_SyncLevel(bool state)
+    {
+        Debug.Log("Received Syn Level, state = " + state);
+        togglePlanesManager.ReceiveSync(state);
+    }
+
+
 
     public void DisconnectionHandling()
     {

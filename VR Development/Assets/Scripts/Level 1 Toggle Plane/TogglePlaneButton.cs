@@ -30,7 +30,7 @@ public class TogglePlaneButton : InteractableObject
         base.VoidInteract();
         if(!playerInRange) { return; }
 
-        manager.TogglePlane();
+        manager.ChangePlaneState();
     }
 
     public void ChangeButtonColor(bool redState)

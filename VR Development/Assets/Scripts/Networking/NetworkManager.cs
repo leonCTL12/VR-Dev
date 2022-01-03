@@ -81,6 +81,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     {
         Debug.Log("A new player joined the room");
         base.OnPlayerEnteredRoom(newPlayer);
+        levelManager.Sender_SyncLevel();
     }
 
 }
