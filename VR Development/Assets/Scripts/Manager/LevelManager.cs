@@ -21,6 +21,11 @@ public class LevelManager : MonoBehaviourPunCallbacks
         set { _instance = value; }
     }
 
+    public enum InputDeviceType
+    {
+        PC, VR, mobile
+    }
+
     private void Awake()
     {
         if (Instance != null)
@@ -37,55 +42,37 @@ public class LevelManager : MonoBehaviourPunCallbacks
         currentPlayer.DeathHandler(spawnPoint.transform);
     }
 
-    public override void OnCreatedRoom()
+    public void SpawnPlayer(InputDeviceType InputDeviceType)
     {
-        base.OnCreatedRoom();
-        Debug.Log("Created Room");
-        InitialiseLevel();
-    }
-
-    public override void OnJoinedRoom()
-    {
-        base.OnJoinedRoom();
-
-        if (SystemInfo.deviceType.ToString() == "Desktop")
+        if (InputDeviceType == InputDeviceType.PC)
         {
-            Vector3 randomOffset = new Vector3(Random.Range(0,5), 0, Random.Range(0, 5));
+            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
-            spawnedPlayer = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position+randomOffset, spawnPoint.transform.rotation);
+            spawnedPlayer = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
             currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
-        }
-        if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
-        {
-            //Reference
-            //spawnedPlayer = PhotonNetwork.Instantiate("XR Rig", transform.position, transform.rotation);
-            //spawnedPlayer.GetComponent<CameraController>().CameraOn();
-
-            //TODO: Spawn VR Player Controller
-        }
+        } 
     }
 
-    private void InitialiseLevel()
+    public void InitialiseLevel()
     {
         togglePlanes = PhotonNetwork.Instantiate("Toggle Planes", Vector3.zero, Quaternion.identity);
         togglePlanes.transform.localScale = new Vector3(5, 5, 5); //Hardcode value to suit the size of VR player
+        TogglePlane(true); 
     }
 
-    public override void OnLeftRoom()
+    public void DisconnectionHandling()
     {
-        base.OnLeftRoom();
         PhotonNetwork.Destroy(spawnedPlayer);
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        Debug.Log("A new player joined the room");
-        base.OnPlayerEnteredRoom(newPlayer);
-    }
+    
 
+    [PunRPC]
     public void TogglePlane(bool redState)
     {
+        Debug.Log("In Level Manager Toggle Plane");
+        Debug.Log("Cant find it: " + (GameObject.Find("Toggle Planes(Clone)") == null));
         foreach (Transform child in GameObject.Find("Toggle Planes(Clone)").transform)
         {
             child.GetComponent<TogglePlane>().Toggle(redState);

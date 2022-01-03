@@ -18,10 +18,6 @@ public class TogglePlane : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        Toggle(true);
-    }
     public void Toggle(bool redState)
     {
         Debug.Log("In Toggle");
