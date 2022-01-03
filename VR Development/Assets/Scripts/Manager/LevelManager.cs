@@ -74,8 +74,6 @@ public class LevelManager : MonoBehaviourPunCallbacks
         togglePlanesManager.ReceiveSync(state);
     }
 
-
-
     public void DisconnectionHandling()
     {
         PhotonNetwork.Destroy(spawnedPlayer);
