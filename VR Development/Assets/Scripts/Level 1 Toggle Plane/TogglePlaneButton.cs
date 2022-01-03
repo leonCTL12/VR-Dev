@@ -13,8 +13,6 @@ public class TogglePlaneButton : InteractableObject
 
     private TogglePlanesManager manager;
 
-    private bool redState = true;
-
     private void Awake()
     {
         clicker = transform.GetChild(0).gameObject;
@@ -30,7 +28,7 @@ public class TogglePlaneButton : InteractableObject
         base.VoidInteract();
         if(!playerInRange) { return; }
 
-        manager.ChangePlaneState();
+        manager.Trigger_ChangePlaneState();
     }
 
     public void ChangeButtonColor(bool redState)

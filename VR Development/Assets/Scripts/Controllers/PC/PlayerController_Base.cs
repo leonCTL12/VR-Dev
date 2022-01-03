@@ -284,7 +284,7 @@ public class PlayerController_Base: MonoBehaviour
                         interactableObject.VoidInteract();
                     }else
                     {
-                        Debug.LogError("No interactables. What it hit is: " + hit.collider.gameObject.name);
+                        Debug.Log("No interactables. What it hit is: " + hit.collider.gameObject.name);
                     }
                 }
             }

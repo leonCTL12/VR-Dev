@@ -20,7 +20,6 @@ public class TogglePlane : MonoBehaviour
 
     public void Toggle(bool redState)
     {
-        Debug.Log("In Toggle");
         if (redState)
         {
             animator.SetBool("show", color == colorGroup.red);

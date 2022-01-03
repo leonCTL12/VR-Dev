@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class TogglePlanesManager : MonoBehaviour
+public class TogglePlanesManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private TogglePlaneButton[] buttons;
@@ -31,8 +32,15 @@ public class TogglePlanesManager : MonoBehaviour
         }
     }
 
+    public void Trigger_ChangePlaneState()
+    {
+        photonView.RPC("ChangePlaneState", RpcTarget.All, true);
+    }
+
+    [PunRPC]
     public void ChangePlaneState(bool toggle = true)
     {
+        Debug.Log("In Change Plane State");
         redState = toggle ? !redState : redState;
         foreach (Transform child in transform)
         {

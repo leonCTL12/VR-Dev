@@ -71,7 +71,6 @@ public class LevelManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Receiver_SyncLevel(bool state)
     {
-        Debug.Log("Received Syn Level, state = " + state);
         togglePlanesManager.ReceiveSync(state);
     }
 
