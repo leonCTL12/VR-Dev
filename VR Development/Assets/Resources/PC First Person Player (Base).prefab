@@ -211,7 +211,7 @@ MonoBehaviour:
   gamePadAction: {fileID: -944628639613478452, guid: 77285d517a93c7841845c20946fe6cc7, type: 3}
   keyboardAction: {fileID: -944628639613478452, guid: d1228f8b5f7bafc4a9245a7a4cdc6a05, type: 3}
   gamePadMode: 0
-  speed: 15
+  speed: 25
   animator_moveSpeed: 6
   animator_speedChangeRate: 10
   gravity: -50
