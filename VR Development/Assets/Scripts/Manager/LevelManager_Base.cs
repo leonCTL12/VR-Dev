@@ -4,18 +4,17 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class LevelManager : MonoBehaviourPunCallbacks
+public class LevelManager_Base : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject spawnPoint;
-    private TogglePlanesManager togglePlanesManager;
 
     private PlayerController_Base currentPlayer;
     private GameObject spawnedPlayer;
 
-    private static LevelManager _instance;
+    private static LevelManager_Base _instance;
 
-    public static LevelManager Instance
+    public static LevelManager_Base Instance
     {
         get { return _instance; }
         set { _instance = value; }
@@ -37,9 +36,8 @@ public class LevelManager : MonoBehaviourPunCallbacks
         }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        togglePlanesManager = TogglePlanesManager.Instance;
     }
 
     public void DeathHandling()
@@ -59,19 +57,17 @@ public class LevelManager : MonoBehaviourPunCallbacks
         } 
     }
 
-    public void InitialiseLevel()
+    public virtual void InitialiseLevel() //inherit
     {
-        togglePlanesManager.Initialse(); 
     }
-    public void Sender_SyncLevel()
+
+    public virtual void Sender_SyncLevel()
     {
-        photonView.RPC("Receiver_SyncLevel", RpcTarget.Others, togglePlanesManager.redState_GetOnly);
     }
 
     [PunRPC]
-    public void Receiver_SyncLevel(bool state)
+    public virtual void Receiver_SyncLevel(bool state)
     {
-        togglePlanesManager.ReceiveSync(state);
     }
 
     public void DisconnectionHandling()

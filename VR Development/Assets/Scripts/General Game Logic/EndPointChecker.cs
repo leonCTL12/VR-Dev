@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EndPointChecker : MonoBehaviour
 {
-    private LevelManager manager;
+    private LevelManager_Base manager;
     private void Start()
     {
-        manager = GetComponentInParent<LevelManager>();
+        manager = GetComponentInParent<LevelManager_Base>();
     }
 
     private void OnTriggerEnter(Collider other)

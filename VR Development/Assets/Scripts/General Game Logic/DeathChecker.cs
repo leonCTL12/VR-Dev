@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DeathChecker : MonoBehaviour
 {
-    private LevelManager manager;
+    private LevelManager_Base manager;
 
     private void Start()
     {
-        manager = GetComponentInParent<LevelManager>();
+        manager = GetComponentInParent<LevelManager_Base>();
     }
 
     private void OnTriggerEnter(Collider other)

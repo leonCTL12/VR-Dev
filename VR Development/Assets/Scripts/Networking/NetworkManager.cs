@@ -6,12 +6,12 @@ using Photon.Realtime;
 using UnityEngine.UI; //Testing purpose
 public class NetworkManager: MonoBehaviourPunCallbacks
 {
-    private LevelManager levelManager;
+    private LevelManager_Base levelManager;
 
     void Start()
     {
         ConnectToServer();
-        levelManager = LevelManager.Instance;
+        levelManager = LevelManager_Base.Instance;
     }
 
     private void ConnectToServer()
@@ -43,18 +43,18 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
 
-        LevelManager.InputDeviceType device;
+        LevelManager_Base.InputDeviceType device;
 
         switch(SystemInfo.deviceType.ToString())
         {
             case "Desktop":
-                device = LevelManager.InputDeviceType.PC;
+                device = LevelManager_Base.InputDeviceType.PC;
                 break;
             case "Handheld":
-                device = LevelManager.InputDeviceType.VR;
+                device = LevelManager_Base.InputDeviceType.VR;
                 break;
             default:
-                device = LevelManager.InputDeviceType.PC;
+                device = LevelManager_Base.InputDeviceType.PC;
                 break;
 
         }
