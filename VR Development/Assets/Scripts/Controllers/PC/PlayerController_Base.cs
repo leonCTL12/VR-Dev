@@ -15,6 +15,8 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     private GameObject player3rdPersonModel;
     [SerializeField]
+    private GameObject player1stPersonHand;
+    [SerializeField]
     private Camera fpsCam;
     [SerializeField]
     private GameObject sightUI;
@@ -76,6 +78,7 @@ public class PlayerController_Base: MonoBehaviour
     {
         isMine = GetComponent<PhotonView>().IsMine;
         player3rdPersonModel.SetActive(!isMine);
+        player1stPersonHand.SetActive(isMine);
         //player3rdPersonModel.SetActive(true); //for animation testing
         fpsCam.gameObject.SetActive(isMine);
         GetComponent<PlayerInput>().enabled = isMine;

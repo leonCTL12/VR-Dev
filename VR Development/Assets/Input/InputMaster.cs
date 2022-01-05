@@ -447,6 +447,183 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Player_SeperateHand"",
+            ""id"": ""9d8b3892-7bb0-4bad-8697-3fa6c4c7a2cf"",
+            ""actions"": [
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8183042-c192-471f-b94d-b37a963d78f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotation X"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""10dd3fee-7011-414b-ba83-46289fb42e9b"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotation Y"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3e0d6c7d-7e9a-4754-8fe2-ab7dff43fe26"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact_L"",
+                    ""type"": ""Button"",
+                    ""id"": ""34bc6658-9f26-4167-b4c1-1ca831923584"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact_R"",
+                    ""type"": ""Button"",
+                    ""id"": ""084c157b-8b72-48de-914c-d19f5e7e4fd7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""85d91582-eaf3-47af-a947-5012f37bebb6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""0a304e4a-2049-4112-bb36-2d6210efff3c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9ee809ef-544f-4779-8211-5375a0fd6658"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fc593358-a194-4c3a-8f54-430e40c35281"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""09120294-b5c3-423a-9586-04fb3623eb14"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b30dec67-7681-4b7d-b738-fae0cfc42e53"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18c51f1c-9bb9-4fee-a0fe-24ca21018672"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49713e45-d173-4cf4-939d-a6b199fe3d16"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Interact_L"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fab9b3a-8674-422b-96f9-e3a427083dc0"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Rotation Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07d498d2-b7f7-401e-952b-3700766f91dd"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Rotation X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f927f4d6-067e-4f03-888a-a91a3a4085ad"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34bb840a-169e-4813-b060-cc701e662a43"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Interact_R"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -494,6 +671,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Base_RotationX = m_Player_Base.FindAction("Rotation X", throwIfNotFound: true);
         m_Player_Base_Jump = m_Player_Base.FindAction("Jump", throwIfNotFound: true);
         m_Player_Base_Movement = m_Player_Base.FindAction("Movement", throwIfNotFound: true);
+        // Player_SeperateHand
+        m_Player_SeperateHand = asset.FindActionMap("Player_SeperateHand", throwIfNotFound: true);
+        m_Player_SeperateHand_Jump = m_Player_SeperateHand.FindAction("Jump", throwIfNotFound: true);
+        m_Player_SeperateHand_RotationX = m_Player_SeperateHand.FindAction("Rotation X", throwIfNotFound: true);
+        m_Player_SeperateHand_RotationY = m_Player_SeperateHand.FindAction("Rotation Y", throwIfNotFound: true);
+        m_Player_SeperateHand_Interact_L = m_Player_SeperateHand.FindAction("Interact_L", throwIfNotFound: true);
+        m_Player_SeperateHand_Interact_R = m_Player_SeperateHand.FindAction("Interact_R", throwIfNotFound: true);
+        m_Player_SeperateHand_Movement = m_Player_SeperateHand.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -677,6 +862,79 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public Player_BaseActions @Player_Base => new Player_BaseActions(this);
+
+    // Player_SeperateHand
+    private readonly InputActionMap m_Player_SeperateHand;
+    private IPlayer_SeperateHandActions m_Player_SeperateHandActionsCallbackInterface;
+    private readonly InputAction m_Player_SeperateHand_Jump;
+    private readonly InputAction m_Player_SeperateHand_RotationX;
+    private readonly InputAction m_Player_SeperateHand_RotationY;
+    private readonly InputAction m_Player_SeperateHand_Interact_L;
+    private readonly InputAction m_Player_SeperateHand_Interact_R;
+    private readonly InputAction m_Player_SeperateHand_Movement;
+    public struct Player_SeperateHandActions
+    {
+        private @InputMaster m_Wrapper;
+        public Player_SeperateHandActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_Player_SeperateHand_Jump;
+        public InputAction @RotationX => m_Wrapper.m_Player_SeperateHand_RotationX;
+        public InputAction @RotationY => m_Wrapper.m_Player_SeperateHand_RotationY;
+        public InputAction @Interact_L => m_Wrapper.m_Player_SeperateHand_Interact_L;
+        public InputAction @Interact_R => m_Wrapper.m_Player_SeperateHand_Interact_R;
+        public InputAction @Movement => m_Wrapper.m_Player_SeperateHand_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Player_SeperateHand; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Player_SeperateHandActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer_SeperateHandActions instance)
+        {
+            if (m_Wrapper.m_Player_SeperateHandActionsCallbackInterface != null)
+            {
+                @Jump.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnJump;
+                @RotationX.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationX;
+                @RotationX.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationX;
+                @RotationX.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationX;
+                @RotationY.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationY;
+                @RotationY.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationY;
+                @RotationY.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationY;
+                @Interact_L.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_L;
+                @Interact_L.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_L;
+                @Interact_L.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_L;
+                @Interact_R.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_R;
+                @Interact_R.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_R;
+                @Interact_R.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_R;
+                @Movement.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnMovement;
+            }
+            m_Wrapper.m_Player_SeperateHandActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @RotationX.started += instance.OnRotationX;
+                @RotationX.performed += instance.OnRotationX;
+                @RotationX.canceled += instance.OnRotationX;
+                @RotationY.started += instance.OnRotationY;
+                @RotationY.performed += instance.OnRotationY;
+                @RotationY.canceled += instance.OnRotationY;
+                @Interact_L.started += instance.OnInteract_L;
+                @Interact_L.performed += instance.OnInteract_L;
+                @Interact_L.canceled += instance.OnInteract_L;
+                @Interact_R.started += instance.OnInteract_R;
+                @Interact_R.performed += instance.OnInteract_R;
+                @Interact_R.canceled += instance.OnInteract_R;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+            }
+        }
+    }
+    public Player_SeperateHandActions @Player_SeperateHand => new Player_SeperateHandActions(this);
     private int m_KeyboardandmouseSchemeIndex = -1;
     public InputControlScheme KeyboardandmouseScheme
     {
@@ -710,6 +968,15 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnRotationY(InputAction.CallbackContext context);
         void OnRotationX(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IPlayer_SeperateHandActions
+    {
+        void OnJump(InputAction.CallbackContext context);
+        void OnRotationX(InputAction.CallbackContext context);
+        void OnRotationY(InputAction.CallbackContext context);
+        void OnInteract_L(InputAction.CallbackContext context);
+        void OnInteract_R(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
     }
 }
