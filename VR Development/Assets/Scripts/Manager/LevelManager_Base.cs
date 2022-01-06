@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.InputSystem;
 
 public class LevelManager_Base : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject spawnPoint;
+
+    [SerializeField]
+    private int level;
+    [SerializeField]
+    private string[] actionMapNameList;
 
     private PlayerController_Base currentPlayer;
     private GameObject spawnedPlayer;
@@ -54,6 +60,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             spawnedPlayer = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
             currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
         } 
     }
 

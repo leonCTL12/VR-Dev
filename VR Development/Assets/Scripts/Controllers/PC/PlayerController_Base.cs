@@ -15,21 +15,16 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     private GameObject player3rdPersonModel;
     [SerializeField]
-    private GameObject player1stPersonHand;
+    private GameObject player1stPersonModel;
     [SerializeField]
-    private Camera fpsCam;
+    protected Camera fpsCam;
     [SerializeField]
     private GameObject sightUI;
-    [SerializeField]
-    private InputActionAsset gamePadAction; //Remove Later
-    [SerializeField]
-    private InputActionAsset keyboardAction; //Remove Later
     //TODO: hook up with setting
     [SerializeField]
     private bool gamePadMode = false;
-    private GameObject currentTriggerCollisionGO;
     private bool isMine;
-    private InputDevice currentInputDevice;
+    protected InputDevice currentInputDevice;
 
 
     //Walk
@@ -78,7 +73,7 @@ public class PlayerController_Base: MonoBehaviour
     {
         isMine = GetComponent<PhotonView>().IsMine;
         player3rdPersonModel.SetActive(!isMine);
-        player1stPersonHand.SetActive(isMine);
+        player1stPersonModel.SetActive(isMine);
         //player3rdPersonModel.SetActive(true); //for animation testing
         fpsCam.gameObject.SetActive(isMine);
         GetComponent<PlayerInput>().enabled = isMine;
@@ -267,57 +262,7 @@ public class PlayerController_Base: MonoBehaviour
             rotationInputY = 0f;
         }
     }
-
-    public void Interact(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            //Find the exact hit position using a raycast
-            if (currentInputDevice is Mouse)
-            {
-                Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-                RaycastHit hit;
-
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
-                    if (interactableObject != null)
-                    {
-                        interactableObject.VoidInteract();
-                    }else
-                    {
-                        Debug.Log("No interactables. What it hit is: " + hit.collider.gameObject.name);
-                    }
-                }
-            }
-             
-            if (currentInputDevice is Gamepad)
-            {
-                Debug.Log("GamePad interact");
-                if (currentTriggerCollisionGO == null) {
-                    return; 
-                }
-
-                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
-                if (checker != null)
-                {
-                    checker.interactable.VoidInteract();
-                }
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        currentTriggerCollisionGO = other.gameObject;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        currentTriggerCollisionGO = null;
-    }
-
+    
     public void DeathHandler(Transform spawnPoint)
     {
         characterController.enabled = false;

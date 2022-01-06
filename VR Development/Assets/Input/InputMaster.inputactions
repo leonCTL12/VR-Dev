@@ -234,7 +234,7 @@
             ]
         },
         {
-            "name": "Player_Base",
+            "name": "Player_Interact",
             "id": "e1133063-adf6-4039-861b-de61a3da3e3b",
             "actions": [
                 {
@@ -436,7 +436,7 @@
             ]
         },
         {
-            "name": "Player_SeperateHand",
+            "name": "Player_SeperateHandInteract",
             "id": "9d8b3892-7bb0-4bad-8697-3fa6c4c7a2cf",
             "actions": [
                 {

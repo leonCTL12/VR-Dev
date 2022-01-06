@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 7900733924190665668}
+  level: 0
+  actionMapNameList:
+  - 
+  - 
 --- !u!1 &7900733923545456129
 GameObject:
   m_ObjectHideFlags: 0

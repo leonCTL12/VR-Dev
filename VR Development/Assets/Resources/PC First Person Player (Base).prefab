@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3897173698075321612}
   - component: {fileID: 642851140783680578}
   - component: {fileID: 8864449143726423534}
-  - component: {fileID: 1370324148990463763}
   - component: {fileID: 7024047714428237165}
   - component: {fileID: 99908739416458321}
+  - component: {fileID: 2572785337429341430}
   m_Layer: 0
   m_Name: PC First Person Player (Base)
   m_TagString: Player
@@ -108,8 +108,8 @@ MonoBehaviour:
     m_ActionName: Player_TPGun/Shoot[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
-        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Puzzle, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
         m_Arguments:
@@ -124,7 +124,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Interact[/Mouse/leftButton,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
+      - m_Target: {fileID: 2572785337429341430}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationY
         m_Mode: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Rotation Y[/Mouse/delta/y,/XInputControllerWindows/rightStick/y]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
+      - m_Target: {fileID: 2572785337429341430}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationX
         m_Mode: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Rotation X[/Mouse/delta/x,/XInputControllerWindows/rightStick/x]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
+      - m_Target: {fileID: 2572785337429341430}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1370324148990463763}
+      - m_Target: {fileID: 2572785337429341430}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -187,23 +187,83 @@ MonoBehaviour:
     m_ActionId: a91fc698-0951-4f0d-8b07-341efe017c73
     m_ActionName: Player_Base/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a8183042-c192-471f-b94d-b37a963d78f1
     m_ActionName: Player_SeperateHand/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: LookRotationX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 10dd3fee-7011-414b-ba83-46289fb42e9b
     m_ActionName: Player_SeperateHand/Rotation X[/Mouse/delta/x]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: LookRotationY
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3e0d6c7d-7e9a-4754-8fe2-ab7dff43fe26
     m_ActionName: Player_SeperateHand/Rotation Y[/Mouse/delta/y]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Puzzle, Assembly-CSharp
+        m_MethodName: Interact_L
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 34bc6658-9f26-4167-b4c1-1ca831923584
     m_ActionName: Player_SeperateHand/Interact_L[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Puzzle, Assembly-CSharp
+        m_MethodName: Interact_R
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 084c157b-8b72-48de-914c-d19f5e7e4fd7
     m_ActionName: Player_SeperateHand/Interact_R[/Mouse/rightButton]
   - m_PersistentCalls:
@@ -212,44 +272,9 @@ MonoBehaviour:
     m_ActionName: Player_SeperateHand/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player_Base
+  m_DefaultActionMap: Player_Interact
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1370324148990463763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423348268188405572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9e44603b725054e9b19208ac905b2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 642851140783680578}
-  playerAnimator: {fileID: 5841956749639824882}
-  player3rdPersonModel: {fileID: 339806727919055114}
-  player1stPersonHand: {fileID: 7654587927720974089}
-  fpsCam: {fileID: 1593585684729707950}
-  sightUI: {fileID: 5080311329749372774}
-  gamePadAction: {fileID: -944628639613478452, guid: 77285d517a93c7841845c20946fe6cc7, type: 3}
-  keyboardAction: {fileID: -944628639613478452, guid: d1228f8b5f7bafc4a9245a7a4cdc6a05, type: 3}
-  gamePadMode: 0
-  speed: 25
-  animator_moveSpeed: 6
-  animator_speedChangeRate: 10
-  gravity: -50
-  groundCheck: {fileID: 757425840834740722}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
-  jumpHeight: 3
-  defaultSensitivity: 30
-  mouseSensitivity: 30
-  gamepadSensitivity: 200
-  cameraTransform: {fileID: 8264216507431341333}
 --- !u!114 &7024047714428237165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +314,39 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2572785337429341430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423348268188405572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a49dc405880b124ea9daee650c89f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 642851140783680578}
+  playerAnimator: {fileID: 5841956749639824882}
+  player3rdPersonModel: {fileID: 339806727919055114}
+  player1stPersonModel: {fileID: 7136435847043561257}
+  fpsCam: {fileID: 1593585684729707950}
+  sightUI: {fileID: 5080311329749372774}
+  gamePadMode: 0
+  speed: 25
+  animator_moveSpeed: 6
+  animator_speedChangeRate: 10
+  gravity: -50
+  groundCheck: {fileID: 757425840834740722}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  jumpHeight: 3
+  defaultSensitivity: 30
+  mouseSensitivity: 30
+  gamepadSensitivity: 200
+  cameraTransform: {fileID: 8264216507431341333}
 --- !u!114 &1422353382096773994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +432,7 @@ Transform:
   m_LocalPosition: {x: -0, y: 3.77, z: 1.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5226437448310724565}
+  - {fileID: 6657621301620609080}
   m_Father: {fileID: 3897173698075321612}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -457,7 +515,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 572766817127755656}
-  - {fileID: 6657621301620609080}
   m_Father: {fileID: 3897173698075321612}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -559,12 +616,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7136435847043561257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.77, z: -1.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1710322223687291699}
-  m_RootOrder: 1
+  m_Children:
+  - {fileID: 5226437448310724565}
+  m_Father: {fileID: 8264216507431341333}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7526377717766867781
 GameObject:
@@ -690,12 +748,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654587927720974089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3499999, z: 1.7399969}
+  m_LocalPosition: {x: 0, y: 3.42, z: 3}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 5160474612009733970}
   - {fileID: 6196770210271569609}
-  m_Father: {fileID: 8264216507431341333}
+  m_Father: {fileID: 6657621301620609080}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8230390050356237621

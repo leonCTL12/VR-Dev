@@ -247,7 +247,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Player_Base"",
+            ""name"": ""Player_Interact"",
             ""id"": ""e1133063-adf6-4039-861b-de61a3da3e3b"",
             ""actions"": [
                 {
@@ -449,7 +449,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Player_SeperateHand"",
+            ""name"": ""Player_SeperateHandInteract"",
             ""id"": ""9d8b3892-7bb0-4bad-8697-3fa6c4c7a2cf"",
             ""actions"": [
                 {
@@ -664,21 +664,21 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_TPGun_RotationX = m_Player_TPGun.FindAction("Rotation X", throwIfNotFound: true);
         m_Player_TPGun_RotationY = m_Player_TPGun.FindAction("Rotation Y", throwIfNotFound: true);
         m_Player_TPGun_Shoot = m_Player_TPGun.FindAction("Shoot", throwIfNotFound: true);
-        // Player_Base
-        m_Player_Base = asset.FindActionMap("Player_Base", throwIfNotFound: true);
-        m_Player_Base_Interact = m_Player_Base.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Base_RotationY = m_Player_Base.FindAction("Rotation Y", throwIfNotFound: true);
-        m_Player_Base_RotationX = m_Player_Base.FindAction("Rotation X", throwIfNotFound: true);
-        m_Player_Base_Jump = m_Player_Base.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Base_Movement = m_Player_Base.FindAction("Movement", throwIfNotFound: true);
-        // Player_SeperateHand
-        m_Player_SeperateHand = asset.FindActionMap("Player_SeperateHand", throwIfNotFound: true);
-        m_Player_SeperateHand_Jump = m_Player_SeperateHand.FindAction("Jump", throwIfNotFound: true);
-        m_Player_SeperateHand_RotationX = m_Player_SeperateHand.FindAction("Rotation X", throwIfNotFound: true);
-        m_Player_SeperateHand_RotationY = m_Player_SeperateHand.FindAction("Rotation Y", throwIfNotFound: true);
-        m_Player_SeperateHand_Interact_L = m_Player_SeperateHand.FindAction("Interact_L", throwIfNotFound: true);
-        m_Player_SeperateHand_Interact_R = m_Player_SeperateHand.FindAction("Interact_R", throwIfNotFound: true);
-        m_Player_SeperateHand_Movement = m_Player_SeperateHand.FindAction("Movement", throwIfNotFound: true);
+        // Player_Interact
+        m_Player_Interact = asset.FindActionMap("Player_Interact", throwIfNotFound: true);
+        m_Player_Interact_Interact = m_Player_Interact.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Interact_RotationY = m_Player_Interact.FindAction("Rotation Y", throwIfNotFound: true);
+        m_Player_Interact_RotationX = m_Player_Interact.FindAction("Rotation X", throwIfNotFound: true);
+        m_Player_Interact_Jump = m_Player_Interact.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Interact_Movement = m_Player_Interact.FindAction("Movement", throwIfNotFound: true);
+        // Player_SeperateHandInteract
+        m_Player_SeperateHandInteract = asset.FindActionMap("Player_SeperateHandInteract", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_Jump = m_Player_SeperateHandInteract.FindAction("Jump", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_RotationX = m_Player_SeperateHandInteract.FindAction("Rotation X", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_RotationY = m_Player_SeperateHandInteract.FindAction("Rotation Y", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_Interact_L = m_Player_SeperateHandInteract.FindAction("Interact_L", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_Interact_R = m_Player_SeperateHandInteract.FindAction("Interact_R", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_Movement = m_Player_SeperateHandInteract.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -798,49 +798,49 @@ public class @InputMaster : IInputActionCollection, IDisposable
     }
     public Player_TPGunActions @Player_TPGun => new Player_TPGunActions(this);
 
-    // Player_Base
-    private readonly InputActionMap m_Player_Base;
-    private IPlayer_BaseActions m_Player_BaseActionsCallbackInterface;
-    private readonly InputAction m_Player_Base_Interact;
-    private readonly InputAction m_Player_Base_RotationY;
-    private readonly InputAction m_Player_Base_RotationX;
-    private readonly InputAction m_Player_Base_Jump;
-    private readonly InputAction m_Player_Base_Movement;
-    public struct Player_BaseActions
+    // Player_Interact
+    private readonly InputActionMap m_Player_Interact;
+    private IPlayer_InteractActions m_Player_InteractActionsCallbackInterface;
+    private readonly InputAction m_Player_Interact_Interact;
+    private readonly InputAction m_Player_Interact_RotationY;
+    private readonly InputAction m_Player_Interact_RotationX;
+    private readonly InputAction m_Player_Interact_Jump;
+    private readonly InputAction m_Player_Interact_Movement;
+    public struct Player_InteractActions
     {
         private @InputMaster m_Wrapper;
-        public Player_BaseActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Interact => m_Wrapper.m_Player_Base_Interact;
-        public InputAction @RotationY => m_Wrapper.m_Player_Base_RotationY;
-        public InputAction @RotationX => m_Wrapper.m_Player_Base_RotationX;
-        public InputAction @Jump => m_Wrapper.m_Player_Base_Jump;
-        public InputAction @Movement => m_Wrapper.m_Player_Base_Movement;
-        public InputActionMap Get() { return m_Wrapper.m_Player_Base; }
+        public Player_InteractActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Player_Interact_Interact;
+        public InputAction @RotationY => m_Wrapper.m_Player_Interact_RotationY;
+        public InputAction @RotationX => m_Wrapper.m_Player_Interact_RotationX;
+        public InputAction @Jump => m_Wrapper.m_Player_Interact_Jump;
+        public InputAction @Movement => m_Wrapper.m_Player_Interact_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Player_Interact; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player_BaseActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayer_BaseActions instance)
+        public static implicit operator InputActionMap(Player_InteractActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer_InteractActions instance)
         {
-            if (m_Wrapper.m_Player_BaseActionsCallbackInterface != null)
+            if (m_Wrapper.m_Player_InteractActionsCallbackInterface != null)
             {
-                @Interact.started -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnInteract;
-                @RotationY.started -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnRotationY;
-                @RotationY.performed -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnRotationY;
-                @RotationY.canceled -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnRotationY;
-                @RotationX.started -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnRotationX;
-                @RotationX.performed -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnRotationX;
-                @RotationX.canceled -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnRotationX;
-                @Jump.started -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnJump;
-                @Movement.started -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_Player_BaseActionsCallbackInterface.OnMovement;
+                @Interact.started -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnInteract;
+                @RotationY.started -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnRotationY;
+                @RotationY.performed -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnRotationY;
+                @RotationY.canceled -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnRotationY;
+                @RotationX.started -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnRotationX;
+                @RotationX.performed -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnRotationX;
+                @RotationX.canceled -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnRotationX;
+                @Jump.started -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnJump;
+                @Movement.started -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_Player_InteractActionsCallbackInterface.OnMovement;
             }
-            m_Wrapper.m_Player_BaseActionsCallbackInterface = instance;
+            m_Wrapper.m_Player_InteractActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Interact.started += instance.OnInteract;
@@ -861,56 +861,56 @@ public class @InputMaster : IInputActionCollection, IDisposable
             }
         }
     }
-    public Player_BaseActions @Player_Base => new Player_BaseActions(this);
+    public Player_InteractActions @Player_Interact => new Player_InteractActions(this);
 
-    // Player_SeperateHand
-    private readonly InputActionMap m_Player_SeperateHand;
-    private IPlayer_SeperateHandActions m_Player_SeperateHandActionsCallbackInterface;
-    private readonly InputAction m_Player_SeperateHand_Jump;
-    private readonly InputAction m_Player_SeperateHand_RotationX;
-    private readonly InputAction m_Player_SeperateHand_RotationY;
-    private readonly InputAction m_Player_SeperateHand_Interact_L;
-    private readonly InputAction m_Player_SeperateHand_Interact_R;
-    private readonly InputAction m_Player_SeperateHand_Movement;
-    public struct Player_SeperateHandActions
+    // Player_SeperateHandInteract
+    private readonly InputActionMap m_Player_SeperateHandInteract;
+    private IPlayer_SeperateHandInteractActions m_Player_SeperateHandInteractActionsCallbackInterface;
+    private readonly InputAction m_Player_SeperateHandInteract_Jump;
+    private readonly InputAction m_Player_SeperateHandInteract_RotationX;
+    private readonly InputAction m_Player_SeperateHandInteract_RotationY;
+    private readonly InputAction m_Player_SeperateHandInteract_Interact_L;
+    private readonly InputAction m_Player_SeperateHandInteract_Interact_R;
+    private readonly InputAction m_Player_SeperateHandInteract_Movement;
+    public struct Player_SeperateHandInteractActions
     {
         private @InputMaster m_Wrapper;
-        public Player_SeperateHandActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jump => m_Wrapper.m_Player_SeperateHand_Jump;
-        public InputAction @RotationX => m_Wrapper.m_Player_SeperateHand_RotationX;
-        public InputAction @RotationY => m_Wrapper.m_Player_SeperateHand_RotationY;
-        public InputAction @Interact_L => m_Wrapper.m_Player_SeperateHand_Interact_L;
-        public InputAction @Interact_R => m_Wrapper.m_Player_SeperateHand_Interact_R;
-        public InputAction @Movement => m_Wrapper.m_Player_SeperateHand_Movement;
-        public InputActionMap Get() { return m_Wrapper.m_Player_SeperateHand; }
+        public Player_SeperateHandInteractActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_Player_SeperateHandInteract_Jump;
+        public InputAction @RotationX => m_Wrapper.m_Player_SeperateHandInteract_RotationX;
+        public InputAction @RotationY => m_Wrapper.m_Player_SeperateHandInteract_RotationY;
+        public InputAction @Interact_L => m_Wrapper.m_Player_SeperateHandInteract_Interact_L;
+        public InputAction @Interact_R => m_Wrapper.m_Player_SeperateHandInteract_Interact_R;
+        public InputAction @Movement => m_Wrapper.m_Player_SeperateHandInteract_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Player_SeperateHandInteract; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player_SeperateHandActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayer_SeperateHandActions instance)
+        public static implicit operator InputActionMap(Player_SeperateHandInteractActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer_SeperateHandInteractActions instance)
         {
-            if (m_Wrapper.m_Player_SeperateHandActionsCallbackInterface != null)
+            if (m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface != null)
             {
-                @Jump.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnJump;
-                @RotationX.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationX;
-                @RotationX.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationX;
-                @RotationX.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationX;
-                @RotationY.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationY;
-                @RotationY.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationY;
-                @RotationY.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnRotationY;
-                @Interact_L.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_L;
-                @Interact_L.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_L;
-                @Interact_L.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_L;
-                @Interact_R.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_R;
-                @Interact_R.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_R;
-                @Interact_R.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnInteract_R;
-                @Movement.started -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_Player_SeperateHandActionsCallbackInterface.OnMovement;
+                @Jump.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnJump;
+                @RotationX.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationX;
+                @RotationX.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationX;
+                @RotationX.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationX;
+                @RotationY.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationY;
+                @RotationY.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationY;
+                @RotationY.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationY;
+                @Interact_L.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_L;
+                @Interact_L.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_L;
+                @Interact_L.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_L;
+                @Interact_R.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_R;
+                @Interact_R.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_R;
+                @Interact_R.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_R;
+                @Movement.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnMovement;
             }
-            m_Wrapper.m_Player_SeperateHandActionsCallbackInterface = instance;
+            m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Jump.started += instance.OnJump;
@@ -934,7 +934,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
             }
         }
     }
-    public Player_SeperateHandActions @Player_SeperateHand => new Player_SeperateHandActions(this);
+    public Player_SeperateHandInteractActions @Player_SeperateHandInteract => new Player_SeperateHandInteractActions(this);
     private int m_KeyboardandmouseSchemeIndex = -1;
     public InputControlScheme KeyboardandmouseScheme
     {
@@ -962,7 +962,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnRotationY(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
     }
-    public interface IPlayer_BaseActions
+    public interface IPlayer_InteractActions
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnRotationY(InputAction.CallbackContext context);
@@ -970,7 +970,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
     }
-    public interface IPlayer_SeperateHandActions
+    public interface IPlayer_SeperateHandInteractActions
     {
         void OnJump(InputAction.CallbackContext context);
         void OnRotationX(InputAction.CallbackContext context);
