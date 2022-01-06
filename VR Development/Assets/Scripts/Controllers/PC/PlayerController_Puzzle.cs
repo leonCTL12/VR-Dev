@@ -12,9 +12,12 @@ public class PlayerController_Puzzle : PlayerController_Base
 
     private GameObject currentTriggerCollisionGO;
 
+    private InteractableObject currentInteractableObject;
     public void Interact(InputAction.CallbackContext context)
     {
-        Debug.Log("In Interact");
+        if (currentTriggerCollisionGO == null) { return; } //it does not collide with anything
+        RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+
         if (context.performed)
         {
             //Find the exact hit position using a raycast
@@ -23,13 +26,12 @@ public class PlayerController_Puzzle : PlayerController_Base
                 Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 RaycastHit hit;
 
-
                 if (Physics.Raycast(ray, out hit))
                 {
-                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
-                    if (interactableObject != null)
+                    currentInteractableObject = hit.collider.GetComponent<InteractableObject>();
+                    if (currentInteractableObject != null && checker != null)
                     {
-                        interactableObject.VoidInteract();
+                        currentInteractableObject.VoidInteract();
                     }
                     else
                     {
@@ -37,16 +39,10 @@ public class PlayerController_Puzzle : PlayerController_Base
                     }
                 }
             }
-
             if (currentInputDevice is Gamepad)
             {
                 Debug.Log("GamePad interact");
-                if (currentTriggerCollisionGO == null)
-                {
-                    return;
-                }
 
-                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
                 if (checker != null)
                 {
                     checker.interactable.VoidInteract();
@@ -63,13 +59,15 @@ public class PlayerController_Puzzle : PlayerController_Base
     private void OnTriggerExit(Collider other)
     {
         currentTriggerCollisionGO = null;
+        CancelAction();
     }
     public void Interact_R(InputAction.CallbackContext context)
     {
-        Debug.Log("In Player Interact R");
+        if (currentTriggerCollisionGO == null) { return;} //it does not collide with anything
+        RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+
         if (context.performed)
         {
-            rightHand.SetActive(false);
             //Find the exact hit position using a raycast
             if (currentInputDevice is Mouse)
             {
@@ -78,10 +76,11 @@ public class PlayerController_Puzzle : PlayerController_Base
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
-                    if (interactableObject != null)
+                    currentInteractableObject = hit.collider.GetComponent<InteractableObject>();
+                    if (currentInteractableObject != null && checker != null)
                     {
-                        interactableObject.Interact_R();
+                        rightHand.SetActive(false);
+                        currentInteractableObject.Interact_R();
                     }
                     else
                     {
@@ -93,26 +92,39 @@ public class PlayerController_Puzzle : PlayerController_Base
             if (currentInputDevice is Gamepad)
             {
                 Debug.Log("GamePad interact");
-                if (currentTriggerCollisionGO == null)
-                {
-                    return;
-                }
 
-                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
                 if (checker != null)
                 {
                     checker.interactable.Interact_R();
                 }
             }
+        } else if (context.canceled)
+        {
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null)
+            {
+                currentInteractableObject.Cancel_R();
+                rightHand.SetActive(true);
+            }
         }
     }
 
-    public void Interact_L(InputAction.CallbackContext context)
+    private void CancelAction()
     {
-        Debug.Log("In Player Interact L");
+        currentInteractableObject.Cancel_R();
+        currentInteractableObject.Cancel_L();
+        currentInteractableObject = null;
+
+        leftHand.SetActive(true);
+        rightHand.SetActive(true);
+    }
+
+    public void Interact_L(InputAction.CallbackContext context) //I have to separate L and R interact into two functions even if they are similar, because input system cannot take parameters to distinguish left and right 
+    {
+        if (currentTriggerCollisionGO == null) { return; } //it does not collide with anything
+        RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+
         if (context.performed)
         {
-            leftHand.SetActive(false);
             //Find the exact hit position using a raycast
             if (currentInputDevice is Mouse)
             {
@@ -121,10 +133,11 @@ public class PlayerController_Puzzle : PlayerController_Base
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
-                    if (interactableObject != null)
+                    currentInteractableObject = hit.collider.GetComponent<InteractableObject>();
+                    if (currentInteractableObject != null && checker != null)
                     {
-                        interactableObject.Interact_L();
+                        leftHand.SetActive(false);
+                        currentInteractableObject.Interact_L();
                     }
                     else
                     {
@@ -136,16 +149,19 @@ public class PlayerController_Puzzle : PlayerController_Base
             if (currentInputDevice is Gamepad)
             {
                 Debug.Log("GamePad interact");
-                if (currentTriggerCollisionGO == null)
-                {
-                    return;
-                }
 
-                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
                 if (checker != null)
                 {
                     checker.interactable.Interact_L();
                 }
+            }
+        }
+        else if (context.canceled)
+        {
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null)
+            {
+                currentInteractableObject.Cancel_L();
+                leftHand.SetActive(true);
             }
         }
     }

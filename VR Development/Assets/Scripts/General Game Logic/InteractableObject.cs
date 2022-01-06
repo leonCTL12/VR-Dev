@@ -27,4 +27,13 @@ public class InteractableObject : MonoBehaviour
 
     }
     
+    public virtual void Cancel_R()
+    {
+
+    }
+
+    public  virtual void Cancel_L()
+    {
+
+    }
 }
