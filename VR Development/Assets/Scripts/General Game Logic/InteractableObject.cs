@@ -9,17 +9,22 @@ public class InteractableObject : MonoBehaviour
     public enum Hand
     {
         leftHand,
-        RightHand
+        rightHand
     }
 
     public virtual void VoidInteract() 
     {
     }
 
-    public virtual void VoidInteract(Hand hand)
+    //Separate as two functions because maybe different hands perform different functions
+    public virtual void Interact_R()
+    {
+
+    }
+
+    public virtual void Interact_L()
     {
 
     }
     
-    //TODO: add interact that return different type
 }

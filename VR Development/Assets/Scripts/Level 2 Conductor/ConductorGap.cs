@@ -5,26 +5,42 @@ using UnityEngine;
 public class ConductorGap : InteractableObject
 {
     [SerializeField]
+    private GameObject leftHand;
     private Animator leftHandAnimator;
     [SerializeField]
+    private GameObject rightHand;
     private Animator rightHandAnimator;
 
-    public override void VoidInteract(Hand hand)
+    private void Awake()
+    {
+        leftHandAnimator = leftHand.GetComponent<Animator>();
+        rightHandAnimator = rightHand.GetComponent<Animator>();
+    }
+
+    public override void Interact_R()
     {
         base.VoidInteract();
         if (!playerInRange) { return; }
-        HandGrip(hand);
+        HandGrip(Hand.rightHand);
     }
 
+    public override void Interact_L()
+    {
+        base.Interact_L();
+        if (!playerInRange) { return; }
+        HandGrip(Hand.leftHand);
+    }
     private void HandGrip(Hand hand)
     {
         switch(hand)
         {
             case Hand.leftHand:
-                leftHandAnimator.SetTrigger("Grip");
+                leftHand.SetActive(true);
+                leftHandAnimator.SetBool("Grip",true);
                 break;
-            case Hand.RightHand:
-                rightHandAnimator.SetTrigger("Grip");
+            case Hand.rightHand:
+                rightHand.SetActive(true);
+                rightHandAnimator.SetBool("Grip",true);
                 break;
         }
     }

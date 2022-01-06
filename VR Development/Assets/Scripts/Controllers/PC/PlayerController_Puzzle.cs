@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController_Puzzle : PlayerController_Base
 {
+    [SerializeField]
+    private GameObject leftHand;
+    [SerializeField]
+    private GameObject rightHand;
+
     private GameObject currentTriggerCollisionGO;
 
     public void Interact(InputAction.CallbackContext context)
@@ -62,11 +67,87 @@ public class PlayerController_Puzzle : PlayerController_Base
     public void Interact_R(InputAction.CallbackContext context)
     {
         Debug.Log("In Player Interact R");
+        if (context.performed)
+        {
+            rightHand.SetActive(false);
+            //Find the exact hit position using a raycast
+            if (currentInputDevice is Mouse)
+            {
+                Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
+                    if (interactableObject != null)
+                    {
+                        interactableObject.Interact_R();
+                    }
+                    else
+                    {
+                        Debug.Log("No interactables. What it hit is: " + hit.collider.gameObject.name);
+                    }
+                }
+            }
+
+            if (currentInputDevice is Gamepad)
+            {
+                Debug.Log("GamePad interact");
+                if (currentTriggerCollisionGO == null)
+                {
+                    return;
+                }
+
+                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+                if (checker != null)
+                {
+                    checker.interactable.Interact_R();
+                }
+            }
+        }
     }
 
     public void Interact_L(InputAction.CallbackContext context)
     {
         Debug.Log("In Player Interact L");
+        if (context.performed)
+        {
+            leftHand.SetActive(false);
+            //Find the exact hit position using a raycast
+            if (currentInputDevice is Mouse)
+            {
+                Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
+                    if (interactableObject != null)
+                    {
+                        interactableObject.Interact_L();
+                    }
+                    else
+                    {
+                        Debug.Log("No interactables. What it hit is: " + hit.collider.gameObject.name);
+                    }
+                }
+            }
+
+            if (currentInputDevice is Gamepad)
+            {
+                Debug.Log("GamePad interact");
+                if (currentTriggerCollisionGO == null)
+                {
+                    return;
+                }
+
+                RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+                if (checker != null)
+                {
+                    checker.interactable.Interact_L();
+                }
+            }
+        }
     }
 
 }

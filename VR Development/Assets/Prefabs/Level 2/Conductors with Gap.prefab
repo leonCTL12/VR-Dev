@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: 0
-  leftHandAnimator: {fileID: 8266064217962843823}
-  rightHandAnimator: {fileID: 122606556987869805}
+  leftHand: {fileID: 731633100388395657}
+  rightHand: {fileID: 4137567508827107624}
 --- !u!95 &8266064217962843823
 Animator:
   serializedVersion: 3
@@ -29371,7 +29371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
@@ -29451,6 +29451,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
       propertyPath: m_Name
       value: RightHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}

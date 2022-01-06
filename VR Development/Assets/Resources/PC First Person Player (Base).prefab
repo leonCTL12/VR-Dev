@@ -267,7 +267,19 @@ MonoBehaviour:
     m_ActionId: 084c157b-8b72-48de-914c-d19f5e7e4fd7
     m_ActionName: Player_SeperateHand/Interact_R[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2572785337429341430}
+        m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 85d91582-eaf3-47af-a947-5012f37bebb6
     m_ActionName: Player_SeperateHand/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
@@ -347,6 +359,8 @@ MonoBehaviour:
   mouseSensitivity: 30
   gamepadSensitivity: 200
   cameraTransform: {fileID: 8264216507431341333}
+  leftHand: {fileID: 5536719435465971176}
+  rightHand: {fileID: 6824229969460591731}
 --- !u!114 &1422353382096773994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,6 +845,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+--- !u!1 &5536719435465971176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+  m_PrefabInstance: {fileID: 4618170027609057465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5160474612009733970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
@@ -898,6 +917,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+--- !u!1 &6824229969460591731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+  m_PrefabInstance: {fileID: 5941902475384111394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6196770210271569609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
