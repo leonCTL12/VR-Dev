@@ -68,6 +68,7 @@ public class PlayerController_Base: MonoBehaviour
     private float xRotation = 0f;
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
+    protected bool moveable = true;
 
     private void PlayerControlSetting()
     {
@@ -127,6 +128,7 @@ public class PlayerController_Base: MonoBehaviour
     private void LookHandler()
     {
         if (!isMine) { return; }  //add to prevent it to improve efficiency
+        if (!moveable) { return; }
 
         float sensitivity = defaultSensitivity;
         if(currentInputDevice is Mouse)
@@ -149,7 +151,8 @@ public class PlayerController_Base: MonoBehaviour
 
     private void MovementHandler()
     {
-        if(!isMine) { return; }  //add to prevent it to improve efficiency
+        if (!isMine) { return; }  //add to prevent it to improve efficiency
+        if(!moveable) { return; }
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
         if (move != Vector3.zero)
         {
@@ -190,7 +193,7 @@ public class PlayerController_Base: MonoBehaviour
     private void JumpingAndGravityHandler ()
     {
         if (!isMine) { return; }  //add to prevent it to improve efficiency
-
+        if(!moveable) { return; }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         playerAnimator.SetBool("Grounded", isGrounded);
 
@@ -212,7 +215,7 @@ public class PlayerController_Base: MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        
+        if(!moveable) { return; }
         if (context.started && isGrounded)
         {
             jumping = true;
@@ -227,6 +230,7 @@ public class PlayerController_Base: MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if(!moveable) { return; }
         if (context.performed)
         {
             walkInput = context.ReadValue<Vector2>();
@@ -239,6 +243,7 @@ public class PlayerController_Base: MonoBehaviour
 
     public void LookRotationX(InputAction.CallbackContext context)
     {
+        if(!moveable) { return; }
         currentInputDevice = context.control.device;
         if (context.performed)
         {
@@ -252,6 +257,7 @@ public class PlayerController_Base: MonoBehaviour
 
     public void LookRotationY(InputAction.CallbackContext context)
     {
+        if(!moveable) { return; }
         currentInputDevice = context.control.device;
         if (context.performed)
         {
@@ -267,6 +273,14 @@ public class PlayerController_Base: MonoBehaviour
     {
         characterController.enabled = false;
         transform.position = spawnPoint.position;
+        characterController.enabled = true;
+    }
+
+    public void Teleport(Transform destination)
+    {
+        characterController.enabled = false;
+        transform.position = destination.position;
+        transform.rotation = destination.rotation;
         characterController.enabled = true;
     }
 }

@@ -11,6 +11,8 @@ public class PlayerController_Puzzle : PlayerController_Base
     private GameObject rightHand;
 
     private GameObject currentTriggerCollisionGO;
+    private bool leftHandReleased;
+    private bool rightHandReleased;
 
     private InteractableObject currentInteractableObject;
     public void Interact(InputAction.CallbackContext context)
@@ -81,6 +83,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                     {
                         rightHand.SetActive(false);
                         currentInteractableObject.Interact_R();
+                        rightHandReleased = false;
                     }
                     else
                     {
@@ -96,6 +99,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                 if (checker != null)
                 {
                     checker.interactable.Interact_R();
+                    rightHandReleased = false;
                 }
             }
         } else if (context.canceled)
@@ -104,8 +108,10 @@ public class PlayerController_Puzzle : PlayerController_Base
             {
                 currentInteractableObject.Cancel_R();
                 rightHand.SetActive(true);
+                rightHandReleased = true;
             }
         }
+        moveable = rightHandReleased && leftHandReleased;
     }
 
     private void CancelAction()
@@ -138,6 +144,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                     {
                         leftHand.SetActive(false);
                         currentInteractableObject.Interact_L();
+                        leftHandReleased = false;
                     }
                     else
                     {
@@ -148,11 +155,10 @@ public class PlayerController_Puzzle : PlayerController_Base
 
             if (currentInputDevice is Gamepad)
             {
-                Debug.Log("GamePad interact");
-
                 if (checker != null)
                 {
                     checker.interactable.Interact_L();
+                    leftHandReleased = false;
                 }
             }
         }
@@ -162,8 +168,12 @@ public class PlayerController_Puzzle : PlayerController_Base
             {
                 currentInteractableObject.Cancel_L();
                 leftHand.SetActive(true);
+                leftHandReleased = true;
+                moveable = leftHandReleased && rightHandReleased;
             }
         }
+        moveable = rightHandReleased && leftHandReleased;
+
     }
 
 }

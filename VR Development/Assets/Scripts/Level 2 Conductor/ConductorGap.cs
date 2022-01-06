@@ -9,12 +9,16 @@ public class ConductorGap : InteractableObject
     private Animator leftHandAnimator;
     [SerializeField]
     private GameObject rightHand;
+    [SerializeReference]
+    private Transform playerFixPoint;
     private Animator rightHandAnimator;
+    private LevelManager_Base levelManager;
 
     private void Awake()
     {
         leftHandAnimator = leftHand.GetComponent<Animator>();
         rightHandAnimator = rightHand.GetComponent<Animator>();
+        levelManager = LevelManager_Base.Instance;
     }
 
     public override void Interact_R()
@@ -22,6 +26,7 @@ public class ConductorGap : InteractableObject
         base.VoidInteract();
         if (!playerInRange) { return; }
         HandGrip(Hand.rightHand,true);
+        levelManager.TeleportPlayerTo(playerFixPoint);
     }
 
     public override void Interact_L()
@@ -29,6 +34,7 @@ public class ConductorGap : InteractableObject
         base.Interact_L();
         if (!playerInRange) { return; }
         HandGrip(Hand.leftHand, true);
+        levelManager.TeleportPlayerTo(playerFixPoint);
     }
 
     public override void Cancel_L()

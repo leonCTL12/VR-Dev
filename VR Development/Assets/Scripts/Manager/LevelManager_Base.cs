@@ -72,6 +72,11 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
     }
 
+    public void TeleportPlayerTo(Transform destination)
+    {
+        currentPlayer.Teleport(destination);
+    }
+
     [PunRPC]
     public virtual void Receiver_SyncLevel(bool state)
     {
