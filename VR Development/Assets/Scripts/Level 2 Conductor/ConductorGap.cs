@@ -11,6 +11,8 @@ public class ConductorGap : InteractableObject
     private GameObject rightHand;
     [SerializeReference]
     private Transform playerFixPoint;
+    [SerializeField]
+    private Transform cameraFixPoint;
     private Animator rightHandAnimator;
     private LevelManager_Base levelManager;
     public PlayerController_Puzzle currentGripPlayer;
@@ -31,7 +33,7 @@ public class ConductorGap : InteractableObject
         base.VoidInteract();
         if (!playerInRange) { return; }
         HandGrip(Hand.rightHand,true);
-        levelManager.TeleportPlayerTo(playerFixPoint);
+        levelManager.TeleportPlayerTo(playerFixPoint,cameraFixPoint);
         rightHandGripped = true;
         gapClosed = rightHandGripped && leftHandGripped;
         currentGripPlayer = player;
@@ -42,7 +44,7 @@ public class ConductorGap : InteractableObject
         base.Interact_L();
         if (!playerInRange) { return; }
         HandGrip(Hand.leftHand, true);
-        levelManager.TeleportPlayerTo(playerFixPoint);
+        levelManager.TeleportPlayerTo(playerFixPoint,cameraFixPoint);
         leftHandGripped = true;
         gapClosed = rightHandGripped && leftHandGripped;
         currentGripPlayer = player;

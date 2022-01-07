@@ -103,12 +103,15 @@ public class PlayerController_Puzzle : PlayerController_Base
 
                 if (checker != null)
                 {
-                    checker.interactable.Interact_R(this);
+                    rightHand.SetActive(false);
+                    currentInteractableObject = checker.interactable;
+                    currentInteractableObject.Interact_R(this);
                     rightHandReleased = false;
                 }
             }
         } else if (context.canceled)
         {
+            Debug.Log("cancel input");
             if (currentTriggerCollisionGO != null && currentInteractableObject != null && interactable)
             {
                 currentInteractableObject.Cancel_R();
@@ -166,7 +169,9 @@ public class PlayerController_Puzzle : PlayerController_Base
             {
                 if (checker != null)
                 {
-                    checker.interactable.Interact_L(this);
+                    leftHand.SetActive(false);
+                    currentInteractableObject = checker.interactable;
+                    currentInteractableObject.Interact_L(this);
                     leftHandReleased = false;
                 }
             }

@@ -72,9 +72,9 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
     }
 
-    public void TeleportPlayerTo(Transform destination)
+    public void TeleportPlayerTo(Transform destination, Transform cameraTransform)
     {
-        currentPlayer.Teleport(destination);
+        currentPlayer.Teleport(destination, cameraTransform);
     }
 
     [PunRPC]

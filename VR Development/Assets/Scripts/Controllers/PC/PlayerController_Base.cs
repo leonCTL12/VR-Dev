@@ -275,11 +275,16 @@ public class PlayerController_Base: MonoBehaviour
         characterController.enabled = true;
     }
 
-    public void Teleport(Transform destination)
+    public void Teleport(Transform destination, Transform cameraTransform = null)
     {
         characterController.enabled = false;
         transform.position = destination.position;
         transform.rotation = destination.rotation;
+        if (cameraTransform != null)
+        {
+           Debug.Log("camera transform detected");
+           cameraTransform.rotation = cameraTransform.rotation; //for gamepad
+        }
         characterController.enabled = true;
     }
 }
