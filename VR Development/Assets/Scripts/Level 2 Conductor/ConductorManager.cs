@@ -20,6 +20,7 @@ public class ConductorManager : MonoBehaviour
 
     private IEnumerator PlayAnimationQueue()
     {
+        bool escapeFromBreak = false;
         foreach (GameObject go in conductors)
         {
             ConductorGap gap = go.GetComponent<ConductorGap>();
@@ -27,7 +28,7 @@ public class ConductorManager : MonoBehaviour
             {
                 if (!gap.gapClosed)
                 {
-                    StartCoroutine(PlayAnimationQueue()); //restart the loop
+                    escapeFromBreak = true;
                     break;
                 } else
                 {
@@ -40,6 +41,14 @@ public class ConductorManager : MonoBehaviour
                 yield return new WaitForSeconds(clip.length - animationOffset);
             }
         }
-        StartCoroutine(PlayAnimationQueue()); //restart the loop
+
+        if(escapeFromBreak)
+        {
+            StartCoroutine(PlayAnimationQueue()); //restart the loop
+        } else
+        {
+            Debug.Log("You Win!");
+            GetComponent<Animator>().SetTrigger("Clear");
+        }
     }
 }
