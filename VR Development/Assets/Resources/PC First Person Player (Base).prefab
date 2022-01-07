@@ -362,7 +362,7 @@ MonoBehaviour:
   leftHand: {fileID: 5536719435465971176}
   rightHand: {fileID: 6824229969460591731}
   ElectricShockParticles: {fileID: 7960536222531037436}
-  paralysisSec: 10
+  paralysisSec: 1
 --- !u!114 &1422353382096773994
 MonoBehaviour:
   m_ObjectHideFlags: 0

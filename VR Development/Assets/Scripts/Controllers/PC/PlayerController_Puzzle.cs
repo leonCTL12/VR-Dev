@@ -154,6 +154,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                     currentInteractableObject = hit.collider.GetComponent<InteractableObject>();
                     if (currentInteractableObject != null && checker != null)
                     {
+                        Debug.Log("Mouse Perform");
                         leftHand.SetActive(false);
                         currentInteractableObject.Interact_L(this);
                         leftHandReleased = false;
