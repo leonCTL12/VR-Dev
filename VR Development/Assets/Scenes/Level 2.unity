@@ -1476,6 +1476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conductors:
   - {fileID: 1858016629}
+  - {fileID: 1045755197}
   - {fileID: 1704163305}
   - {fileID: 1669550683}
   - {fileID: 190313637}
@@ -3413,6 +3414,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1045755197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100680350886137593, guid: 081ca63450581264fbb12f0673413c46, type: 3}
+  m_PrefabInstance: {fileID: 4751080777386934106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1066941213
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,9 +22,27 @@ public class ConductorManager : MonoBehaviour
     {
         foreach (GameObject go in conductors)
         {
-            Debug.Log("Set Trigger");
-            go.GetComponent<Animator>().SetTrigger("Conduct");
-            yield return new WaitForSeconds(clip.length-animationOffset);
+            Debug.Log("go name:" + go.name);
+            ConductorGap gap = go.GetComponent<ConductorGap>();
+            if (gap != null)
+            {
+                Debug.Log("Gap Found");
+                if (!gap.gapClosed)
+                {
+                    Debug.Log("Break");
+                    StartCoroutine(PlayAnimationQueue()); //restart the loop
+                    break;
+                } else
+                {
+                    //TODO: conduct effect;
+                    yield return new WaitForSeconds(clip.length - animationOffset);
+                }
+            } else
+            {
+                go.GetComponent<Animator>().SetTrigger("Conduct");
+                yield return new WaitForSeconds(clip.length - animationOffset);
+            }
         }
+        StartCoroutine(PlayAnimationQueue()); //restart the loop
     }
 }

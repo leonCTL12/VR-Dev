@@ -14,6 +14,10 @@ public class ConductorGap : InteractableObject
     private Animator rightHandAnimator;
     private LevelManager_Base levelManager;
 
+    public bool gapClosed = false;
+    private bool rightHandGripped = false;
+    private bool leftHandGripped = false;
+
     private void Awake()
     {
         leftHandAnimator = leftHand.GetComponent<Animator>();
@@ -27,6 +31,8 @@ public class ConductorGap : InteractableObject
         if (!playerInRange) { return; }
         HandGrip(Hand.rightHand,true);
         levelManager.TeleportPlayerTo(playerFixPoint);
+        rightHandGripped = true;
+        gapClosed = rightHandGripped && leftHandGripped;
     }
 
     public override void Interact_L()
@@ -35,6 +41,8 @@ public class ConductorGap : InteractableObject
         if (!playerInRange) { return; }
         HandGrip(Hand.leftHand, true);
         levelManager.TeleportPlayerTo(playerFixPoint);
+        leftHandGripped = true;
+        gapClosed = rightHandGripped && leftHandGripped;
     }
 
     public override void Cancel_L()
@@ -43,6 +51,8 @@ public class ConductorGap : InteractableObject
         if (!playerInRange) { return; }
         leftHand.SetActive(false);
         HandGrip(Hand.leftHand, false);
+        leftHandGripped = false;
+        gapClosed = rightHandGripped && leftHandGripped;
     }
 
     public override void Cancel_R()
@@ -51,7 +61,8 @@ public class ConductorGap : InteractableObject
         if (!playerInRange) { return; }
         rightHand.SetActive(false);
         HandGrip(Hand.rightHand, false); //not for playing release animation, just for reset the state to idle
-
+        rightHandGripped = false;
+        gapClosed = rightHandGripped && leftHandGripped;
     }
 
     private void HandGrip(Hand hand, bool grip)
@@ -67,8 +78,6 @@ public class ConductorGap : InteractableObject
                 rightHandAnimator.SetBool("Grip", grip);
                 break;
         }
-
-        
     }
 
 
