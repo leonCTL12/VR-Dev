@@ -12,7 +12,6 @@ public class RangeChecker : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("In Range!");
             interactable.playerInRange = true;
         }
     }

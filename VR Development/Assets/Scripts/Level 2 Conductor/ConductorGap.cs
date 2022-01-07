@@ -13,6 +13,7 @@ public class ConductorGap : InteractableObject
     private Transform playerFixPoint;
     private Animator rightHandAnimator;
     private LevelManager_Base levelManager;
+    public PlayerController_Puzzle currentGripPlayer;
 
     public bool gapClosed = false;
     private bool rightHandGripped = false;
@@ -25,7 +26,7 @@ public class ConductorGap : InteractableObject
         levelManager = LevelManager_Base.Instance;
     }
 
-    public override void Interact_R()
+    public override void Interact_R(PlayerController_Puzzle player)
     {
         base.VoidInteract();
         if (!playerInRange) { return; }
@@ -33,9 +34,10 @@ public class ConductorGap : InteractableObject
         levelManager.TeleportPlayerTo(playerFixPoint);
         rightHandGripped = true;
         gapClosed = rightHandGripped && leftHandGripped;
+        currentGripPlayer = player;
     }
 
-    public override void Interact_L()
+    public override void Interact_L(PlayerController_Puzzle player)
     {
         base.Interact_L();
         if (!playerInRange) { return; }
@@ -43,6 +45,7 @@ public class ConductorGap : InteractableObject
         levelManager.TeleportPlayerTo(playerFixPoint);
         leftHandGripped = true;
         gapClosed = rightHandGripped && leftHandGripped;
+        currentGripPlayer = player;
     }
 
     public override void Cancel_L()
@@ -53,6 +56,7 @@ public class ConductorGap : InteractableObject
         HandGrip(Hand.leftHand, false);
         leftHandGripped = false;
         gapClosed = rightHandGripped && leftHandGripped;
+        currentGripPlayer = null;
     }
 
     public override void Cancel_R()
@@ -63,6 +67,7 @@ public class ConductorGap : InteractableObject
         HandGrip(Hand.rightHand, false); //not for playing release animation, just for reset the state to idle
         rightHandGripped = false;
         gapClosed = rightHandGripped && leftHandGripped;
+        currentGripPlayer = null;
     }
 
     private void HandGrip(Hand hand, bool grip)

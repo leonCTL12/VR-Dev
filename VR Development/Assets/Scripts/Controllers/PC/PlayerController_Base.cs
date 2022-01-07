@@ -25,7 +25,7 @@ public class PlayerController_Base: MonoBehaviour
     private bool gamePadMode = false;
     private bool isMine;
     protected InputDevice currentInputDevice;
-
+    protected bool moveable = true;
 
     //Walk
     [SerializeField]
@@ -68,7 +68,6 @@ public class PlayerController_Base: MonoBehaviour
     private float xRotation = 0f;
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
-    protected bool moveable = true;
 
     private void PlayerControlSetting()
     {

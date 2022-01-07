@@ -1481,7 +1481,7 @@ MonoBehaviour:
   - {fileID: 1669550683}
   - {fileID: 190313637}
   clip: {fileID: 7400000, guid: 930f19a9ed1a28d4abf57dcd9257c8e3, type: 2}
-  animationOffset: 0.4
+  animationOffset: 0
 --- !u!1001 &412823750
 PrefabInstance:
   m_ObjectHideFlags: 0

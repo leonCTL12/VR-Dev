@@ -9,15 +9,21 @@ public class PlayerController_Puzzle : PlayerController_Base
     private GameObject leftHand;
     [SerializeField]
     private GameObject rightHand;
+    [SerializeField]
+    private GameObject ElectricShockParticles;
+    [SerializeField]
+    private float paralysisSec;
 
     private GameObject currentTriggerCollisionGO;
     private bool leftHandReleased;
     private bool rightHandReleased;
 
     private InteractableObject currentInteractableObject;
+
+    private bool interactable = true;
     public void Interact(InputAction.CallbackContext context)
     {
-        if (currentTriggerCollisionGO == null) { return; } //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !interactable) { return; } //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -61,11 +67,10 @@ public class PlayerController_Puzzle : PlayerController_Base
     private void OnTriggerExit(Collider other)
     {
         currentTriggerCollisionGO = null;
-        CancelAction();
     }
     public void Interact_R(InputAction.CallbackContext context)
     {
-        if (currentTriggerCollisionGO == null) { return;} //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !interactable) { return;} //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -82,7 +87,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                     if (currentInteractableObject != null && checker != null)
                     {
                         rightHand.SetActive(false);
-                        currentInteractableObject.Interact_R();
+                        currentInteractableObject.Interact_R(this);
                         rightHandReleased = false;
                     }
                     else
@@ -98,13 +103,13 @@ public class PlayerController_Puzzle : PlayerController_Base
 
                 if (checker != null)
                 {
-                    checker.interactable.Interact_R();
+                    checker.interactable.Interact_R(this);
                     rightHandReleased = false;
                 }
             }
         } else if (context.canceled)
         {
-            if (currentTriggerCollisionGO != null && currentInteractableObject != null)
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null && interactable)
             {
                 currentInteractableObject.Cancel_R();
                 rightHand.SetActive(true);
@@ -114,19 +119,23 @@ public class PlayerController_Puzzle : PlayerController_Base
         moveable = rightHandReleased && leftHandReleased;
     }
 
-    private void CancelAction()
+    //To be removed: coz now when player grip something, they cant move
+    private void CancelAction(InteractableObject interactableObj)
     {
-        currentInteractableObject.Cancel_R();
-        currentInteractableObject.Cancel_L();
-        currentInteractableObject = null;
+        interactableObj.Cancel_R();
+        interactableObj.Cancel_L();
 
         leftHand.SetActive(true);
         rightHand.SetActive(true);
+        leftHandReleased = true;
+        rightHandReleased = true;
+        interactable = true;
+        moveable = true;
     }
 
     public void Interact_L(InputAction.CallbackContext context) //I have to separate L and R interact into two functions even if they are similar, because input system cannot take parameters to distinguish left and right 
     {
-        if (currentTriggerCollisionGO == null) { return; } //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !interactable) { return; } //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -143,12 +152,12 @@ public class PlayerController_Puzzle : PlayerController_Base
                     if (currentInteractableObject != null && checker != null)
                     {
                         leftHand.SetActive(false);
-                        currentInteractableObject.Interact_L();
+                        currentInteractableObject.Interact_L(this);
                         leftHandReleased = false;
                     }
                     else
                     {
-                        Debug.Log("No interactables. What it hit is: " + hit.collider.gameObject.name);
+                        //Debug.Log("No interactables. What it hit is: " + hit.collider.gameObject.name);
                     }
                 }
             }
@@ -157,14 +166,14 @@ public class PlayerController_Puzzle : PlayerController_Base
             {
                 if (checker != null)
                 {
-                    checker.interactable.Interact_L();
+                    checker.interactable.Interact_L(this);
                     leftHandReleased = false;
                 }
             }
         }
         else if (context.canceled)
         {
-            if (currentTriggerCollisionGO != null && currentInteractableObject != null)
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null && interactable)
             {
                 currentInteractableObject.Cancel_L();
                 leftHand.SetActive(true);
@@ -173,7 +182,16 @@ public class PlayerController_Puzzle : PlayerController_Base
             }
         }
         moveable = rightHandReleased && leftHandReleased;
+    }
 
+    public IEnumerator ParalyseForSeconds(InteractableObject interactableObj)
+    {
+        interactable = false;
+        ElectricShockParticles.SetActive(true);
+        yield return new WaitForSeconds(paralysisSec);
+        interactable = true;
+        ElectricShockParticles.SetActive(false);
+        CancelAction(interactableObj);
     }
 
 }

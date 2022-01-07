@@ -22,7 +22,16 @@ public class InteractableObject : MonoBehaviour
 
     }
 
+    public virtual void Interact_R(PlayerController_Puzzle player)
+    {
+
+    }
+
     public virtual void Interact_L()
+    {
+
+    }
+    public virtual void Interact_L(PlayerController_Puzzle player)
     {
 
     }
