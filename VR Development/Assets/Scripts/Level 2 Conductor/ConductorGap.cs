@@ -25,6 +25,10 @@ public class ConductorGap : InteractableObject
     {
         leftHandAnimator = leftHand.GetComponent<Animator>();
         rightHandAnimator = rightHand.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
         levelManager = LevelManager_Base.Instance;
     }
 
@@ -44,6 +48,8 @@ public class ConductorGap : InteractableObject
         base.Interact_L();
         if (!playerInRange) { return; }
         HandGrip(Hand.leftHand, true);
+        Debug.Log("In conductor gap interact L");
+        Debug.Log("level manager null? " + (levelManager == null));
         levelManager.TeleportPlayerTo(playerFixPoint,cameraFixPoint);
         leftHandGripped = true;
         gapClosed = rightHandGripped && leftHandGripped;
