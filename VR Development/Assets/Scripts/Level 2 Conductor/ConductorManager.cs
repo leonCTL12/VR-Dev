@@ -13,7 +13,10 @@ public class ConductorManager : MonoBehaviour
     [SerializeField]
     private float animationOffset;
 
-    private void Start()
+    [SerializeField]
+    private PressureSensor pressureSensor;
+
+    public void StartEnergyTransmission()
     {
         StartCoroutine(PlayAnimationQueue());
     }
@@ -44,11 +47,11 @@ public class ConductorManager : MonoBehaviour
 
         if(escapeFromBreak)
         {
-            StartCoroutine(PlayAnimationQueue()); //restart the loop
         } else
         {
-            Debug.Log("You Win!");
             GetComponent<Animator>().SetTrigger("Clear");
         }
+        pressureSensor.ResetButton(); //no matter succeed or not, reset the button
+
     }
 }
