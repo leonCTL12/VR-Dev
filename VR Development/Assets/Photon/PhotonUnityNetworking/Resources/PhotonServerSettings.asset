@@ -45,6 +45,7 @@ MonoBehaviour:
   - TogglePlane
   - Receiver_SyncLevel
   - ChangePlaneState
+  - Pressed
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
