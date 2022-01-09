@@ -40,25 +40,16 @@ public class ConductorGap : InteractableObject
         base.VoidInteract();
         if (!playerInRange) { return; }
         levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
-        photonView.RPC("Interact_Sync", RpcTarget.Others, true);
-        Interact_Sync(true);
+        photonView.RPC("Interact_Sync", RpcTarget.All, true, true);
         currentGripPlayer = (PlayerController_Puzzle)levelManager.currentPlayer;
     }
 
-    [PunRPC]
-    private void Interact_Sync(bool right) 
+    public override void Cancel_R()
     {
-        if(right)
-        {
-            HandGrip(Hand.rightHand, true);
-            rightHandGripped = true;
-        } 
-        else
-        {
-            HandGrip(Hand.leftHand, true);
-            leftHandGripped = true;
-        }
-        gapClosed = rightHandGripped && leftHandGripped;
+        base.Cancel_R();
+        if (!playerInRange) { return; }
+        photonView.RPC("Interact_Sync", RpcTarget.All, true, false);
+        currentGripPlayer = null;
     }
 
     public override void Interact_L()
@@ -66,31 +57,41 @@ public class ConductorGap : InteractableObject
         base.Interact_L();
         if (!playerInRange) { return; }
         levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
-        photonView.RPC("Interact_Sync", RpcTarget.Others, false);
-        Interact_Sync(false);
+        photonView.RPC("Interact_Sync", RpcTarget.All, false, true);
         currentGripPlayer = (PlayerController_Puzzle)levelManager.currentPlayer;
     }
+
+  
 
     public override void Cancel_L()
     {
         base.Cancel_L();
         if (!playerInRange) { return; }
-        leftHand.SetActive(false);
-        HandGrip(Hand.leftHand, false);
-        leftHandGripped = false;
-        gapClosed = rightHandGripped && leftHandGripped;
+        photonView.RPC("Interact_Sync", RpcTarget.All, false, false);
         currentGripPlayer = null;
     }
 
-    public override void Cancel_R()
+
+
+    [PunRPC]
+    private void Interact_Sync(bool right, bool grip)
     {
-        base.Cancel_R();
-        if (!playerInRange) { return; }
-        rightHand.SetActive(false);
-        HandGrip(Hand.rightHand, false); //not for playing release animation, just for reset the state to idle
-        rightHandGripped = false;
+        if (right)
+        {
+            HandGrip(Hand.rightHand, grip); //set false: not for playing release animation, just for reset the state to idle
+            rightHandGripped = grip;
+        }
+        else
+        {
+            HandGrip(Hand.leftHand, grip);
+            leftHandGripped = grip;
+        }
         gapClosed = rightHandGripped && leftHandGripped;
-        currentGripPlayer = null;
+        if (!grip)
+        {
+            GameObject targetHand = right ? rightHand : leftHand;
+            targetHand.SetActive(false);
+        }
     }
 
     private void HandGrip(Hand hand, bool grip)
