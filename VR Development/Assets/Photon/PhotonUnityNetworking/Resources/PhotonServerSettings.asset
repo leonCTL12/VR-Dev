@@ -47,6 +47,7 @@ MonoBehaviour:
   - ChangePlaneState
   - Pressed
   - Interact_Sync
+  - ShowThirdPersonParalysisFX_Sync
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

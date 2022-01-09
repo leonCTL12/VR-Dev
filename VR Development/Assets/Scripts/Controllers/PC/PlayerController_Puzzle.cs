@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerController_Puzzle : PlayerController_Base
 {
@@ -10,7 +11,7 @@ public class PlayerController_Puzzle : PlayerController_Base
     [SerializeField]
     private GameObject rightHand;
     [SerializeField]
-    private GameObject ElectricShockParticles;
+    private GameObject firstPersonElectricShockParticles, thirdPersonElectricShockParticles;
     [SerializeField]
     private float paralysisSec;
 
@@ -193,11 +194,31 @@ public class PlayerController_Puzzle : PlayerController_Base
     public IEnumerator ParalyseForSeconds(InteractableObject interactableObj)
     {
         interactable = false;
-        ElectricShockParticles.SetActive(true);
+        firstPersonElectricShockParticles.SetActive(true);
         yield return new WaitForSeconds(paralysisSec);
         interactable = true;
-        ElectricShockParticles.SetActive(false);
+        firstPersonElectricShockParticles.SetActive(false);
+        thirdPersonElectricShockParticles.SetActive(false);
         CancelAction(interactableObj);
+    }
+
+    public void ShowThirdPersonParalysisFX()
+    {
+        photonView.RPC("ShowThirdPersonParalysisFX_Sync", RpcTarget.Others);
+    }
+
+    [PunRPC]
+    private void ShowThirdPersonParalysisFX_Sync()
+    {
+        StartCoroutine(ThirdPersonParalysisFX());
+    }
+
+    private IEnumerator ThirdPersonParalysisFX()
+    {
+        thirdPersonElectricShockParticles.SetActive(true);
+        yield return new WaitForSeconds(paralysisSec);
+        thirdPersonElectricShockParticles.SetActive(false);
+
     }
 
 }

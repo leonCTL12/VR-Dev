@@ -39,6 +39,7 @@ public class ConductorManager : MonoBehaviour
                     if (player != null)
                     {
                         StartCoroutine(player.ParalyseForSeconds(gap));
+                        player.ShowThirdPersonParalysisFX();
                     }
                 }
             } else

@@ -26,6 +26,7 @@ public class PlayerController_Base: MonoBehaviour
     private bool isMine;
     protected InputDevice currentInputDevice;
     protected bool moveable = true;
+    protected PhotonView photonView;
 
     //Walk
     [SerializeField]
@@ -71,7 +72,8 @@ public class PlayerController_Base: MonoBehaviour
 
     private void PlayerControlSetting()
     {
-        isMine = GetComponent<PhotonView>().IsMine;
+        photonView = GetComponent<PhotonView>();
+        isMine = photonView.IsMine;
         player3rdPersonModel.SetActive(!isMine);
         player1stPersonModel.SetActive(isMine);
         //player3rdPersonModel.SetActive(true); //for animation testing
