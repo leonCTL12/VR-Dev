@@ -87,7 +87,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                     if (currentInteractableObject != null && checker != null)
                     {
                         rightHand.SetActive(false);
-                        currentInteractableObject.Interact_R(this);
+                        currentInteractableObject.Interact_R();
                         rightHandReleased = false;
                     }
                     else
@@ -105,7 +105,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                 {
                     rightHand.SetActive(false);
                     currentInteractableObject = checker.interactable;
-                    currentInteractableObject.Interact_R(this);
+                    currentInteractableObject.Interact_R();
                     rightHandReleased = false;
                 }
             }
@@ -156,7 +156,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                     {
                         Debug.Log("Mouse Perform");
                         leftHand.SetActive(false);
-                        currentInteractableObject.Interact_L(this);
+                        currentInteractableObject.Interact_L();
                         leftHandReleased = false;
                     }
                     else
@@ -172,7 +172,7 @@ public class PlayerController_Puzzle : PlayerController_Base
                 {
                     leftHand.SetActive(false);
                     currentInteractableObject = checker.interactable;
-                    currentInteractableObject.Interact_L(this);
+                    currentInteractableObject.Interact_L();
                     leftHandReleased = false;
                 }
             }
