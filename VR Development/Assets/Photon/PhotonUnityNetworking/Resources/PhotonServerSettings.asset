@@ -46,6 +46,7 @@ MonoBehaviour:
   - Receiver_SyncLevel
   - ChangePlaneState
   - Pressed
+  - Interact_Sync
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

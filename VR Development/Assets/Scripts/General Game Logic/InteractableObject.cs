@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class InteractableObject : MonoBehaviour
+using Photon.Pun;
+public class InteractableObject : MonoBehaviourPun
 {
     public bool playerInRange = false;
 
@@ -22,16 +22,7 @@ public class InteractableObject : MonoBehaviour
 
     }
 
-    public virtual void Interact_R(PlayerController_Puzzle player)
-    {
-
-    }
-
     public virtual void Interact_L()
-    {
-
-    }
-    public virtual void Interact_L(PlayerController_Puzzle player)
     {
 
     }

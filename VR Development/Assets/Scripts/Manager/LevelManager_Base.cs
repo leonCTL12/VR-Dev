@@ -15,7 +15,8 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     [SerializeField]
     private string[] actionMapNameList;
 
-    private PlayerController_Base currentPlayer;
+    public PlayerController_Base currentPlayer;
+    public PlayerController_Base partnerPlayer;
     private GameObject spawnedPlayer;
 
     private static LevelManager_Base _instance;
@@ -72,7 +73,21 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
     }
 
-    public void TeleportPlayerTo(Transform destination, Transform cameraTransform)
+    public void GetPartnerPlayerReference()
+    {
+        Debug.Log("Getting Partner Reference");
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            Debug.Log(go.name);
+            if (!go.GetComponent<PhotonView>().IsMine)
+            {
+                partnerPlayer  = go.GetComponent<PlayerController_Base>();
+                Debug.Log("Partner Player Found: " + (partnerPlayer != null));
+            }
+        }
+    }
+
+    public void TeleportPlayerTo(Transform destination, Transform cameraTransform) 
     {
         currentPlayer.Teleport(destination, cameraTransform);
     }

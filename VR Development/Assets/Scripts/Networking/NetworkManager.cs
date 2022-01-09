@@ -42,7 +42,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-
+        Debug.Log("Joined Room");
         LevelManager_Base.InputDeviceType device;
 
         switch(SystemInfo.deviceType.ToString())
@@ -70,6 +70,8 @@ public class NetworkManager: MonoBehaviourPunCallbacks
 
             //TODO: Spawn VR Player Controller
         }
+
+        levelManager.GetPartnerPlayerReference();
     }
 
     public override void OnLeftRoom()
@@ -82,6 +84,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
         Debug.Log("A new player joined the room");
         base.OnPlayerEnteredRoom(newPlayer);
         levelManager.Sender_SyncLevel();
+        levelManager.GetPartnerPlayerReference();
     }
 
 }
