@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 97956120127224393}
   - component: {fileID: 97956120120228449}
   m_Layer: 0
-  m_Name: Red_Soul Eater
+  m_Name: Boss_Red_Soul Eater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

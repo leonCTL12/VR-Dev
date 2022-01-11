@@ -2798,6 +2798,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4792971915389728, guid: 5682857c8ba071948964acb8c814e21b, type: 3}
   m_PrefabInstance: {fileID: 1489664458}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1506177126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 97956120127391069, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
+  m_PrefabInstance: {fileID: 97956120131203758}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1506177127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506177126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9c8765f7302694f85a72b31ce95919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackInterval: 10
+  switchTargetInterval: 1
 --- !u!1 &1554989735
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,7 +4331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 97956120127391069, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
       propertyPath: m_Name
-      value: Red_Soul Eater
+      value: Boss_Red_Soul Eater
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}

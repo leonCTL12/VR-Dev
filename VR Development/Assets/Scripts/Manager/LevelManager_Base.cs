@@ -83,7 +83,6 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             if (go.GetComponent<PhotonView>().IsMine)
             {
                 partnerPlayer = go.GetComponent<PlayerController_Base>();
-                Debug.Log("Partner Player Found: " + (partnerPlayer != null));
             }
         }
     }
