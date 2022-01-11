@@ -7,6 +7,7 @@ using UnityEngine.UI; //Testing purpose
 public class NetworkManager: MonoBehaviourPunCallbacks
 {
     private LevelManager_Base levelManager;
+    private bool roomCreator = false;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     {
         base.OnCreatedRoom();
         Debug.Log("Created Room");
+        roomCreator = true;
         levelManager.InitialiseLevel();
     }
 
@@ -71,7 +73,10 @@ public class NetworkManager: MonoBehaviourPunCallbacks
             //TODO: Spawn VR Player Controller
         }
 
-        levelManager.GetPartnerPlayerReference();
+        if(!roomCreator)
+        {
+            StartCoroutine(levelManager.GetPartnerPlayerReference());
+        }
     }
 
     public override void OnLeftRoom()
@@ -84,7 +89,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
         Debug.Log("A new player joined the room");
         base.OnPlayerEnteredRoom(newPlayer);
         levelManager.Sender_SyncLevel();
-        levelManager.GetPartnerPlayerReference();
+        StartCoroutine(levelManager.GetPartnerPlayerReference());
     }
 
 }

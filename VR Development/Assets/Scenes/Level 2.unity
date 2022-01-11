@@ -7822,6 +7822,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1757016689, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
+      propertyPath: playerPrefabName
+      value: PC First Person Player (Base)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757016689, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
       propertyPath: actionMapNameList.Array.data[0]
       value: Player_Interact
       objectReference: {fileID: 0}

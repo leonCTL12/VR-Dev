@@ -14,6 +14,8 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     private int level;
     [SerializeField]
     private string[] actionMapNameList;
+    [SerializeField]
+    private string playerPrefabName;
 
     public PlayerController_Base currentPlayer;
     public PlayerController_Base partnerPlayer;
@@ -58,11 +60,11 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
-            spawnedPlayer = PhotonNetwork.Instantiate("PC First Person Player (Base)", spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+            spawnedPlayer = PhotonNetwork.Instantiate(playerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
             currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
             spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
-        } 
+        }
     }
 
     public virtual void InitialiseLevel() //inherit
@@ -73,15 +75,14 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
     }
 
-    public void GetPartnerPlayerReference()
+    public IEnumerator GetPartnerPlayerReference()
     {
-        Debug.Log("Getting Partner Reference");
-        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+        yield return new WaitUntil(() => (GameObject.FindGameObjectsWithTag("Player").Length > 1)); //Wait until it get its partner's photon view
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
         {
-            Debug.Log(go.name);
-            if (!go.GetComponent<PhotonView>().IsMine)
+            if (go.GetComponent<PhotonView>().IsMine)
             {
-                partnerPlayer  = go.GetComponent<PlayerController_Base>();
+                partnerPlayer = go.GetComponent<PlayerController_Base>();
                 Debug.Log("Partner Player Found: " + (partnerPlayer != null));
             }
         }
