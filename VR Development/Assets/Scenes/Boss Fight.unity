@@ -2841,10 +2841,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchTargetInterval: 1
   attackInterval: 10
-  stoneNumber: 10
+  stoneNumber: 15
   stonePrefab: {fileID: 5896632680419270825, guid: 1f35ce2070904604990e91815905e7f7, type: 3}
-  randomStoneMinPoint: {x: 50, y: 180, z: -120}
-  randomStoneMaxPoint: {x: -250, y: 360, z: 230}
+  randomStoneMinPoint: {x: 50, y: 360, z: -120}
+  randomStoneMaxPoint: {x: -250, y: 800, z: 230}
   rejectMinPoint: {x: -190, y: 0, z: -20}
   rejectMaxPoint: {x: 10, y: 0, z: 180}
 --- !u!1 &1554989735
@@ -4333,7 +4333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 97956120120228449, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 97956120127213489, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

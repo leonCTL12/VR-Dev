@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     #region general
     [SerializeField]
     private float switchTargetInterval;
+    private Animator animator;
     #endregion
 
     #region attack general
@@ -35,7 +36,12 @@ public class Boss : MonoBehaviour
 
     private LevelManager_Base levelManager;
 
-    private GameObject currentTarget; 
+    private GameObject currentTarget;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -93,6 +99,7 @@ public class Boss : MonoBehaviour
 
     private void StoneAttack()
     {
+        animator.SetTrigger("Scream");
         for (int i = 0; i<stoneNumber; i++)
         {
             float randomX = Random.Range(randomStoneMinPoint.x, randomStoneMaxPoint.x);
