@@ -107,4 +107,9 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.Destroy(spawnedPlayer);
     }
+
+    public void PlayerDamageHandler()
+    {
+
+    }
 }
