@@ -52,6 +52,7 @@ public class TogglePlanesManager : MonoBehaviourPunCallbacks
             btn.ChangeButtonColor(redState);
         }
     }
+
     public void Initialse()
     {
         ChangePlaneState(false);

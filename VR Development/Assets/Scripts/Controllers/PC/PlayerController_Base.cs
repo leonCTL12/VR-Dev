@@ -23,7 +23,7 @@ public class PlayerController_Base: MonoBehaviour
     //TODO: hook up with setting
     [SerializeField]
     private bool gamePadMode = false;
-    private bool isMine;
+    public bool isMine;
     protected InputDevice currentInputDevice;
     protected bool moveable = true;
     protected PhotonView photonView;
@@ -300,6 +300,7 @@ public class PlayerController_Base: MonoBehaviour
     
     public void DeathHandler(Transform spawnPoint)
     {
+
         characterController.enabled = false;
         transform.position = spawnPoint.position;
         characterController.enabled = true;
@@ -317,4 +318,5 @@ public class PlayerController_Base: MonoBehaviour
         }
         characterController.enabled = true;
     }
+
 }

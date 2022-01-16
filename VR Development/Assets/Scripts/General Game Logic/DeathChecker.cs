@@ -15,8 +15,7 @@ public class DeathChecker : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("You Died");
-            manager.DeathHandling();
+            manager.DeathHandling(!other.GetComponent<PlayerController_Base>().isMine);
         }
     }
 }

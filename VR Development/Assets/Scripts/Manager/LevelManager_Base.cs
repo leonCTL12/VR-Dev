@@ -49,9 +49,15 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
     }
 
-    public void DeathHandling()
+    public void DeathHandling(bool isPartnerPlayer)
     {
-        currentPlayer.DeathHandler(spawnPoint.transform);
+        if(isPartnerPlayer)
+        {
+            //Do Nothing for now, coz photon transform view auto sync player's position
+        } else
+        {
+            currentPlayer.DeathHandler(spawnPoint.transform);
+        }
     }
 
     public void SpawnPlayer(InputDeviceType InputDeviceType)

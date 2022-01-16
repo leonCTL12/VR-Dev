@@ -345,6 +345,7 @@ MonoBehaviour:
   fpsCam: {fileID: 1593585684729707950}
   sightUI: {fileID: 5080311329749372774}
   gamePadMode: 0
+  isMine: 0
   speed: 25
   animator_moveSpeed: 6
   animator_speedChangeRate: 10
@@ -354,7 +355,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  jumpHeight: 3
+  jumpHeight: 6
   defaultSensitivity: 30
   mouseSensitivity: 30
   gamepadSensitivity: 200
@@ -363,7 +364,7 @@ MonoBehaviour:
   rightHand: {fileID: 6824229969460591731}
   firstPersonElectricShockParticles: {fileID: 7960536222531037436}
   thirdPersonElectricShockParticles: {fileID: 7701658371251937332}
-  paralysisSec: 10
+  paralysisSec: 8
 --- !u!114 &1422353382096773994
 MonoBehaviour:
   m_ObjectHideFlags: 0

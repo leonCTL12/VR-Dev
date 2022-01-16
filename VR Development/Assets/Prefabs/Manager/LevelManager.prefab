@@ -51,6 +51,9 @@ MonoBehaviour:
   actionMapNameList:
   - 
   - 
+  playerPrefabName: 
+  currentPlayer: {fileID: 0}
+  partnerPlayer: {fileID: 0}
 --- !u!1 &7900733923545456129
 GameObject:
   m_ObjectHideFlags: 0
