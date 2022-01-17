@@ -13,9 +13,11 @@ public class Boss : MonoBehaviour
     #region attack general
     [SerializeField]
     private float attackInterval;
+    [SerializeField]
+    private float initialAttackWait;
     private enum AttackType
     {
-        stone, fireBall, wave
+        stone, fireBall, lazer
     }
     #endregion
 
@@ -34,6 +36,21 @@ public class Boss : MonoBehaviour
     private Vector3 rejectMaxPoint;
     #endregion
 
+    #region fireBall_attack
+    [SerializeField]
+    private float fireBallSpeed;
+    [SerializeField]
+    private GameObject fireBallPrefab;
+    [SerializeField]
+    private Transform mouthTransform;
+    #endregion
+
+    #region lazer_attack
+    [SerializeField]
+    private GameObject lazerLauncher;
+    private Animator lazerAnimator;
+    #endregion
+
     private LevelManager_Base levelManager;
 
     private GameObject currentTarget;
@@ -41,6 +58,7 @@ public class Boss : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        lazerAnimator = lazerLauncher.GetComponent<Animator>();
     }
 
     private void Start()
@@ -76,30 +94,37 @@ public class Boss : MonoBehaviour
 
     private IEnumerator AttackCoroutine()
     {
+        yield return new WaitForSeconds(initialAttackWait); 
         while(true)
         {
-            Debug.Log("New Round of attack!");
             #region Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
-            attackIndex = 0; // hard code to test stone attack, remove it later
             #endregion
             AttackType attack = (AttackType)attackIndex;
             switch (attack)
             {
                 case AttackType.stone:
-                    StoneAttack();
+                    StartCoroutine(StoneAttack());
+                    break;
+                case AttackType.fireBall:
+                    yield return StartCoroutine(FireBallAttack()); ;
+                    break;
+                case AttackType.lazer:
+                    yield return StartCoroutine(LazerAttack()); ;
                     break;
                 default:
-                    StoneAttack();
+                    StartCoroutine(StoneAttack());
                     break;
             }
             yield return new WaitForSeconds(attackInterval);
         }
     }
 
-    private void StoneAttack()
+    private IEnumerator StoneAttack()
     {
         animator.SetTrigger("Scream");
+        yield return new WaitForSeconds(0.5f);
+
         for (int i = 0; i<stoneNumber; i++)
         {
             float randomX = Random.Range(randomStoneMinPoint.x, randomStoneMaxPoint.x);
@@ -120,6 +145,29 @@ public class Boss : MonoBehaviour
             Vector3 spawnPosition = new Vector3(randomX, randomY, randomZ);
             GameObject stone = Instantiate(stonePrefab, spawnPosition, Quaternion.identity);
         }
+    }
+
+    private IEnumerator FireBallAttack() //I think the reason that does not work is because of the scale of the world
+    {
+        animator.SetTrigger("Take Off");
+        yield return new WaitForSeconds(2.5f);
+        animator.SetTrigger("Fire");
+
+        GameObject fireBall = Instantiate(fireBallPrefab, mouthTransform.position, Quaternion.identity);
+        fireBall.GetComponent<AttackItem_FireBall>().targetTransform = currentTarget.transform;
+
+        yield return new WaitForSeconds(Random.Range(1.1f, 4f));
+        animator.SetTrigger("Land");
+    }
+
+    private IEnumerator LazerAttack()
+    {
+        animator.SetTrigger("Tail");
+        lazerLauncher.SetActive(true);
+        yield return new WaitForSeconds(1);
+        lazerAnimator.SetTrigger("Launch");
+        yield return new WaitForSeconds(0.5f);
+        lazerLauncher.SetActive(false);
     }
 }
 
