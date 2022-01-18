@@ -559,17 +559,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""18c51f1c-9bb9-4fee-a0fe-24ca21018672"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and mouse"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""49713e45-d173-4cf4-939d-a6b199fe3d16"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press"",

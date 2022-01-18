@@ -8,6 +8,7 @@ public class Wand : Gun_Base
     private GameObject analyticalLazer;
     public override void Fire()
     {
+        analyticalLazer.SetActive(true);
         base.Fire();
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -17,7 +18,12 @@ public class Wand : Gun_Base
         if (Physics.Raycast(ray, out hit))
         {
             Debug.Log("Ray Cast Hit: " + hit.collider.gameObject.name);
-            
         }
+    }
+
+    public override void CancelFire()
+    {
+        base.CancelFire();
+        analyticalLazer.SetActive(false);
     }
 }

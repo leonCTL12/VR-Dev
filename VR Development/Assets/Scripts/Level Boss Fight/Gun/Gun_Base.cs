@@ -13,4 +13,6 @@ public class Gun_Base : MonoBehaviour
     {
         
     }
+
+    public virtual void CancelFire() { }
 }

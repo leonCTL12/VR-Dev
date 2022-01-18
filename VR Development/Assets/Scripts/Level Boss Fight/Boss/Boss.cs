@@ -65,7 +65,7 @@ public class Boss : MonoBehaviour
     {
         levelManager = LevelManager_Base.Instance;
         StartCoroutine(SearchTarget());
-        StartCoroutine(AttackCoroutine());
+        //StartCoroutine(AttackCoroutine());
     }
 
     private void Update()

@@ -199,7 +199,7 @@ public class PlayerController_Base: MonoBehaviour
         playerAnimator.SetFloat("MotionSpeed", inputMagnitude);
     }
 
-    private void JumpingAndGravityHandler ()
+    private void JumpingAndGravityHandler()
     {
         if (!isMine) { return; }  //add to prevent it to improve efficiency
         if (!moveable)
