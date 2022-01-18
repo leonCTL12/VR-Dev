@@ -7,7 +7,8 @@ public class Boss : MonoBehaviour
     #region general
     [SerializeField]
     private float switchTargetInterval;
-
+    [SerializeField]
+    private GameObject[] weakSpotsArray;
     private Animator animator;
     #endregion
 
@@ -167,6 +168,11 @@ public class Boss : MonoBehaviour
         lazerAnimator.SetTrigger("Launch");
         yield return new WaitForSeconds(0.5f);
         lazerLauncher.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision) //It can be triggered by child's collider
+    {
+
     }
 }
 
