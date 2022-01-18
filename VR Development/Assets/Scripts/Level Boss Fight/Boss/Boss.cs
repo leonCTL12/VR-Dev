@@ -10,6 +10,16 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private GameObject[] weakSpotsArray;
     private Animator animator;
+    private static Boss instance;
+    public static Boss BossInstance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    public float revealWeakSpotsThreshold;
+    private int weakSpotsCount;
     #endregion
 
     #region attack general
@@ -59,13 +69,19 @@ public class Boss : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         lazerAnimator = lazerLauncher.GetComponent<Animator>();
+        instance = this;
+        foreach (GameObject spot in weakSpotsArray)
+        {
+            spot.SetActive(false);
+        }
+        weakSpotsCount = weakSpotsArray.Length;
     }
 
     private void Start()
     {
         levelManager = LevelManager_Base.Instance;
         StartCoroutine(SearchTarget());
-        //StartCoroutine(AttackCoroutine());
+        StartCoroutine(AttackCoroutine());
     }
 
     private void Update()
@@ -170,9 +186,9 @@ public class Boss : MonoBehaviour
         lazerLauncher.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision) //It can be triggered by child's collider
+    public void RevealWeakSpots()
     {
-
+        weakSpotsArray[weakSpotsCount - 1].SetActive(true);
     }
 }
 

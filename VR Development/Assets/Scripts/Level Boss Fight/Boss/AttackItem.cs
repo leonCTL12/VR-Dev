@@ -18,7 +18,6 @@ public class AttackItem : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit Player");
             PlayerStatus playerStatus = other.gameObject.GetComponent<PlayerStatus>();
             playerStatus.ReceiveDamage(damage);
         }
@@ -26,10 +25,8 @@ public class AttackItem : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("In Trigger Enter");
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit Player");
             PlayerStatus playerStatus = other.gameObject.GetComponent<PlayerStatus>();
             playerStatus.ReceiveDamage(damage);
         }

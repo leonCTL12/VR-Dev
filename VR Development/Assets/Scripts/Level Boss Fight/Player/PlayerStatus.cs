@@ -21,7 +21,6 @@ public class PlayerStatus : MonoBehaviour
 
     public void ReceiveDamage(float damage)
     {
-        Debug.Log("Received " + damage + " Damage");
         currentHP -= damage;
         playerUI.FillHPSlider(currentHP / maxHP);
     }

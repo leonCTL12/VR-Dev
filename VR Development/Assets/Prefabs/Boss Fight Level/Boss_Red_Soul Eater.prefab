@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 97956119021761813}
   m_Layer: 0
   m_Name: Hit Collider
-  m_TagString: Untagged
+  m_TagString: WeakSpotsRevealCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,6 +375,7 @@ MonoBehaviour:
   - {fileID: 5039857109079522923}
   - {fileID: 5039857110520487306}
   - {fileID: 5039857109885422661}
+  revealWeakSpotsThreshold: 5
   attackInterval: 3
   initialAttackWait: 2
   stoneNumber: 15
