@@ -9,15 +9,15 @@ public class AttackItem_FireBall : AttackItem
 
     public Transform targetTransform;
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.layer == 7) //layer of ground: 7
+        base.OnCollisionEnter(other);
+        if (other.gameObject.layer == 7) //layer of ground: 7
         {
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            //TODO: add logic to damage player
             Destroy(gameObject);
         }
     }

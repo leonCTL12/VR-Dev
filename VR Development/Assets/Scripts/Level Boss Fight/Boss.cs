@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     #region general
     [SerializeField]
     private float switchTargetInterval;
+
     private Animator animator;
     #endregion
 
@@ -38,8 +39,6 @@ public class Boss : MonoBehaviour
 
     #region fireBall_attack
     [SerializeField]
-    private float fireBallSpeed;
-    [SerializeField]
     private GameObject fireBallPrefab;
     [SerializeField]
     private Transform mouthTransform;
@@ -65,7 +64,7 @@ public class Boss : MonoBehaviour
     {
         levelManager = LevelManager_Base.Instance;
         StartCoroutine(SearchTarget());
-        //StartCoroutine(AttackCoroutine());
+        StartCoroutine(AttackCoroutine());
     }
 
     private void Update()

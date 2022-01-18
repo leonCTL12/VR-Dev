@@ -2853,7 +2853,6 @@ MonoBehaviour:
   randomStoneMaxPoint: {x: -250, y: 800, z: 230}
   rejectMinPoint: {x: -190, y: 0, z: -20}
   rejectMaxPoint: {x: 10, y: 0, z: 180}
-  fireBallSpeed: 100
   fireBallPrefab: {fileID: 4469025195301623343, guid: d3c3cca7908c3c74eb9746aa0908f4a1, type: 3}
   mouthTransform: {fileID: 2140294522}
   lazerLauncher: {fileID: 153866398}
@@ -5119,19 +5118,19 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6164347998281429980, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
+    - target: {fileID: 8513659767525280829, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6164347998590753258, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
+    - target: {fileID: 8513659768771886572, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6164347998634876931, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
+    - target: {fileID: 8513659769088462136, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6164347998713044172, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
+    - target: {fileID: 8513659769484384238, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}

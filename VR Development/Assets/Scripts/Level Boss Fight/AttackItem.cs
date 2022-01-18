@@ -14,11 +14,24 @@ public class AttackItem : MonoBehaviour
         manager = GetComponentInParent<LevelManager_Base>();
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected virtual void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            manager.DeathHandling(!other.gameObject.GetComponent<PlayerController_Base>().isMine);
+            Debug.Log("Hit Player");
+            PlayerStatus playerStatus = other.gameObject.GetComponent<PlayerStatus>();
+            playerStatus.ReceiveDamage(damage);
+        }
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("In Trigger Enter");
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Hit Player");
+            PlayerStatus playerStatus = other.gameObject.GetComponent<PlayerStatus>();
+            playerStatus.ReceiveDamage(damage);
         }
     }
 }
