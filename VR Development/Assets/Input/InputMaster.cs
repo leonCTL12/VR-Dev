@@ -690,6 +690,208 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Player_Shooter"",
+            ""id"": ""859ef61a-d7c8-4b6c-b78c-705b58594c3a"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""c89f3866-a09f-4855-95ae-ac15be8c2f19"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebbb3757-a4b2-4e3a-80d5-dd6bf0d9a580"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotation X"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3435d71c-330e-4eac-87ff-794bb750988a"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotation Y"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""817bf859-70b8-47c4-8328-bb3d4afb0a8e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""abcdf449-046e-4881-b57c-e6d81376b07d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b8da8559-2f6e-47c8-8417-399208dc8631"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Rotation Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d55bc854-bbab-4725-abd2-dbc1f5626a1d"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Rotation Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dd7150b-9bf9-4b01-9419-2d0eff02cd3e"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Rotation X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6af21dd-20ef-4d47-a6c5-f30a8c4d51bf"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Rotation X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2422b57c-1817-4597-80f8-7f77cd1862d9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e45b0a14-eb60-4fb9-8360-5b43ed23fd56"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""1ff22eb9-3fb0-4a22-8ffc-69c7b3e5bd69"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7af0e420-2acc-476c-a0c2-a97476c829cd"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ed8a8865-2dd2-4a38-81b3-b4aae59e5034"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""aaf9b799-4450-41e8-9a44-021e8a075047"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""cea58bd5-f0e8-49e8-ad68-12a4a3aac3c4"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe853774-d196-4d68-bbbc-cd89e0c42805"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6395d06-4893-47ba-a7f9-3675151e359e"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79c59816-ebf5-46d5-ac25-59b5903b7987"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -745,6 +947,13 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_SeperateHandInteract_Interact_L = m_Player_SeperateHandInteract.FindAction("Interact_L", throwIfNotFound: true);
         m_Player_SeperateHandInteract_Interact_R = m_Player_SeperateHandInteract.FindAction("Interact_R", throwIfNotFound: true);
         m_Player_SeperateHandInteract_Movement = m_Player_SeperateHandInteract.FindAction("Movement", throwIfNotFound: true);
+        // Player_Shooter
+        m_Player_Shooter = asset.FindActionMap("Player_Shooter", throwIfNotFound: true);
+        m_Player_Shooter_Movement = m_Player_Shooter.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Shooter_Jump = m_Player_Shooter.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Shooter_RotationX = m_Player_Shooter.FindAction("Rotation X", throwIfNotFound: true);
+        m_Player_Shooter_RotationY = m_Player_Shooter.FindAction("Rotation Y", throwIfNotFound: true);
+        m_Player_Shooter_Shoot = m_Player_Shooter.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1001,6 +1210,71 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public Player_SeperateHandInteractActions @Player_SeperateHandInteract => new Player_SeperateHandInteractActions(this);
+
+    // Player_Shooter
+    private readonly InputActionMap m_Player_Shooter;
+    private IPlayer_ShooterActions m_Player_ShooterActionsCallbackInterface;
+    private readonly InputAction m_Player_Shooter_Movement;
+    private readonly InputAction m_Player_Shooter_Jump;
+    private readonly InputAction m_Player_Shooter_RotationX;
+    private readonly InputAction m_Player_Shooter_RotationY;
+    private readonly InputAction m_Player_Shooter_Shoot;
+    public struct Player_ShooterActions
+    {
+        private @InputMaster m_Wrapper;
+        public Player_ShooterActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Player_Shooter_Movement;
+        public InputAction @Jump => m_Wrapper.m_Player_Shooter_Jump;
+        public InputAction @RotationX => m_Wrapper.m_Player_Shooter_RotationX;
+        public InputAction @RotationY => m_Wrapper.m_Player_Shooter_RotationY;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shooter_Shoot;
+        public InputActionMap Get() { return m_Wrapper.m_Player_Shooter; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Player_ShooterActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer_ShooterActions instance)
+        {
+            if (m_Wrapper.m_Player_ShooterActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnMovement;
+                @Jump.started -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnJump;
+                @RotationX.started -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnRotationX;
+                @RotationX.performed -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnRotationX;
+                @RotationX.canceled -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnRotationX;
+                @RotationY.started -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnRotationY;
+                @RotationY.performed -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnRotationY;
+                @RotationY.canceled -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnRotationY;
+                @Shoot.started -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_Player_ShooterActionsCallbackInterface.OnShoot;
+            }
+            m_Wrapper.m_Player_ShooterActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @RotationX.started += instance.OnRotationX;
+                @RotationX.performed += instance.OnRotationX;
+                @RotationX.canceled += instance.OnRotationX;
+                @RotationY.started += instance.OnRotationY;
+                @RotationY.performed += instance.OnRotationY;
+                @RotationY.canceled += instance.OnRotationY;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+            }
+        }
+    }
+    public Player_ShooterActions @Player_Shooter => new Player_ShooterActions(this);
     private int m_KeyboardandmouseSchemeIndex = -1;
     public InputControlScheme KeyboardandmouseScheme
     {
@@ -1044,5 +1318,13 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnInteract_L(InputAction.CallbackContext context);
         void OnInteract_R(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IPlayer_ShooterActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnRotationX(InputAction.CallbackContext context);
+        void OnRotationY(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
