@@ -27,7 +27,6 @@ public class WeakSpotGun : Gun_Base
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
             targetPoint = hit.point;
         } 
         else
