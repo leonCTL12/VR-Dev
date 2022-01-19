@@ -116,6 +116,7 @@ public class Boss : MonoBehaviour
             #region Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
             #endregion
+            attackIndex = 2;
             AttackType attack = (AttackType)attackIndex;
             switch (attack)
             {

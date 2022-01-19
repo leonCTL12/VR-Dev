@@ -873,7 +873,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""79c59816-ebf5-46d5-ac25-59b5903b7987"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(pressPoint=0.5)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard and mouse"",
                     ""action"": ""Shoot"",
