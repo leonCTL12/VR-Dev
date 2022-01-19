@@ -314,6 +314,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6164347998031852855, guid: e4f9c34c34c979a4fa1d6440133c0808, type: 3}
   m_PrefabInstance: {fileID: 6164347998185711017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &183106888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183106889}
+  - component: {fileID: 183106890}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &183106889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183106888}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 154, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 680768992}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &183106890
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183106888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10000, y: 1, z: 10000}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &192604489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1304,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0223f77114284b47a0e8b317e71e4dc, type: 3}
+--- !u!1 &680768991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680768992}
+  m_Layer: 0
+  m_Name: Bullet Destroy Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680768992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680768991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 183106889}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &701367769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4311,6 +4386,14 @@ PrefabInstance:
       propertyPath: lazerLauncher
       value: 
       objectReference: {fileID: 153866398}
+    - target: {fileID: 97956119021761813, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 97956119021761815, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 97956120127224393, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4358,6 +4441,18 @@ PrefabInstance:
     - target: {fileID: 97956120127391069, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
       propertyPath: m_Name
       value: Boss_Red_Soul Eater
+      objectReference: {fileID: 0}
+    - target: {fileID: 789386031079237129, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
+      propertyPath: m_Size.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 789386031079237129, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
+      propertyPath: m_Size.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 789386031079237129, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}
+      propertyPath: m_Size.z
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aea41eeefa59a1429049a5dc933893b, type: 3}

@@ -8,6 +8,13 @@ public class WeakSpotGun : Gun_Base
     private float powerBeamDuration;
     [SerializeField]
     private GameObject powerBeam;
+    [SerializeField]
+    private GameObject bulletPrefab;
+    [SerializeField]
+    private float shootForce;
+    [SerializeField]
+    private Transform attackPoint;
+
     public override void Fire()
     {
         base.Fire();
@@ -20,9 +27,22 @@ public class WeakSpotGun : Gun_Base
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log(hit.collider.gameObject.name);
             targetPoint = hit.point;
+        } 
+        else
+        {
+            targetPoint = ray.GetPoint(75);
         }
-        StartCoroutine(FireParticle());
+
+        Vector3 direction = targetPoint - attackPoint.position;
+
+        GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, Quaternion.identity);
+        bullet.transform.forward = direction.normalized;
+
+        bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
+
+        //StartCoroutine(FireParticle());
     }
 
     private IEnumerator FireParticle()

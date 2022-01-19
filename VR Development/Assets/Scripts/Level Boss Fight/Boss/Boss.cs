@@ -72,7 +72,7 @@ public class Boss : MonoBehaviour
         instance = this;
         foreach (GameObject spot in weakSpotsArray)
         {
-            spot.SetActive(false);
+            spot.SetActive(true); //set it to false later
         }
         weakSpotsCount = weakSpotsArray.Length;
     }
@@ -81,7 +81,7 @@ public class Boss : MonoBehaviour
     {
         levelManager = LevelManager_Base.Instance;
         StartCoroutine(SearchTarget());
-        StartCoroutine(AttackCoroutine());
+        //StartCoroutine(AttackCoroutine());
     }
 
     private void Update()
@@ -116,7 +116,6 @@ public class Boss : MonoBehaviour
             #region Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
             #endregion
-            attackIndex = 2;
             AttackType attack = (AttackType)attackIndex;
             switch (attack)
             {

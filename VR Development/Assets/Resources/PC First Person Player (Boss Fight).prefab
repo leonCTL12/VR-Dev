@@ -728,6 +728,9 @@ MonoBehaviour:
   fpsCam: {fileID: 679958358552028682}
   powerBeamDuration: 0.1
   powerBeam: {fileID: 2076864688862905198}
+  bulletPrefab: {fileID: 1695963573511495220, guid: 93fa629ac8badc44e8771cdeab50f21d, type: 3}
+  shootForce: 150
+  attackPoint: {fileID: 3980545767368519472}
 --- !u!1 &5364217316991708124
 GameObject:
   m_ObjectHideFlags: 0
