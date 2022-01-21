@@ -207,11 +207,12 @@ public class Boss : MonoBehaviour
     private IEnumerator LazerAttack()
     {
         animator.SetTrigger("Tail");
-        lazerLauncher.SetActive(true);
         yield return new WaitForSeconds(1);
+        lazerLauncher.SetActive(true);
         lazerAnimator.SetTrigger("Launch");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         lazerLauncher.SetActive(false);
+        lazerAnimator.SetTrigger("Back");
     }
 
     public void RevealWeakSpots()
