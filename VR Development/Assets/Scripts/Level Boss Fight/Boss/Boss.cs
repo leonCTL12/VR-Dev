@@ -99,7 +99,7 @@ public class Boss : MonoBehaviour
         if (masterBoss)
         {
             StartCoroutine(SearchTarget());
-            //StartCoroutine(AttackCoroutine());
+            StartCoroutine(AttackCoroutine());
         }
     }
 
@@ -131,36 +131,14 @@ public class Boss : MonoBehaviour
         }
     }
 
-    [PunRPC]
-    private void SetTarget_Remote(bool myPlayer) 
-    {
-        currentTarget = myPlayer ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
-    }
-
     private IEnumerator AttackCoroutine()
     {
         yield return new WaitForSeconds(initialAttackWait); 
         while(true)
         {
-            #region Choose Attack
+            //Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
-            #endregion
-            AttackType attack = (AttackType)attackIndex;
-            switch (attack)
-            {
-                case AttackType.stone:
-                    StartCoroutine(StoneAttack());
-                    break;
-                case AttackType.fireBall:
-                    yield return StartCoroutine(FireBallAttack()); ;
-                    break;
-                case AttackType.lazer:
-                    yield return StartCoroutine(LazerAttack()); ;
-                    break;
-                default:
-                    StartCoroutine(StoneAttack());
-                    break;
-            }
+            photonView.RPC("LaunchAttack", RpcTarget.All, attackIndex);
             yield return new WaitForSeconds(attackInterval);
         }
     }
@@ -192,7 +170,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private IEnumerator FireBallAttack() //I think the reason that does not work is because of the scale of the world
+    private IEnumerator FireBallAttack() 
     {
         animator.SetTrigger("Take Off");
         yield return new WaitForSeconds(2.5f);
@@ -219,6 +197,36 @@ public class Boss : MonoBehaviour
     {
         weakSpotsArray[weakSpotsCount - 1].SetActive(true);
     }
+
+    #region RPC Function
+    [PunRPC]
+    private void SetTarget_Remote(bool myPlayer)
+    {
+        currentTarget = myPlayer ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
+    }
+
+    [PunRPC]
+    private void LaunchAttack(int attackIndex)
+    {
+        AttackType attack = (AttackType)attackIndex;
+
+        switch (attack)
+        {
+            case AttackType.stone:
+                StartCoroutine(StoneAttack());
+                break;
+            case AttackType.fireBall:
+                StartCoroutine(FireBallAttack()); ;
+                break;
+            case AttackType.lazer:
+                StartCoroutine(LazerAttack()); ;
+                break;
+            default:
+                StartCoroutine(StoneAttack());
+                break;
+        }
+    }
+    #endregion
 }
 
 

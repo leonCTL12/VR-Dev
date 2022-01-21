@@ -378,8 +378,8 @@ MonoBehaviour:
   - {fileID: 5039857109885422661}
   lookSpeed: 2
   revealWeakSpotsThreshold: 5
-  attackInterval: 3
-  initialAttackWait: 2
+  attackInterval: 10
+  initialAttackWait: 7
   stoneNumber: 15
   stonePrefab: {fileID: 5896632680419270825, guid: 1f35ce2070904604990e91815905e7f7, type: 3}
   randomStoneMinPoint: {x: 50, y: 200, z: -120}

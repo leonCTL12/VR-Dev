@@ -49,6 +49,7 @@ MonoBehaviour:
   - Interact_Sync
   - ShowThirdPersonParalysisFX_Sync
   - SetTarget_Remote
+  - LaunchAttack
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
