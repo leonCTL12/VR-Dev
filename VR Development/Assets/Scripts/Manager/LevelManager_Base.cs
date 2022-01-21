@@ -86,9 +86,10 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         yield return new WaitUntil(() => (GameObject.FindGameObjectsWithTag("Player").Length > 1)); //Wait until it get its partner's photon view
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if (go.GetComponent<PhotonView>().IsMine)
+            if (!go.GetComponent<PhotonView>().IsMine)
             {
                 partnerPlayer = go.GetComponent<PlayerController_Base>();
+                Debug.Log("partner found!");
             }
         }
     }

@@ -7,7 +7,6 @@ using UnityEngine.UI; //Testing purpose
 public class NetworkManager: MonoBehaviourPunCallbacks
 {
     private LevelManager_Base levelManager;
-    private bool roomCreator = false;
 
     void Start()
     {
@@ -37,7 +36,6 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     {
         base.OnCreatedRoom();
         Debug.Log("Created Room");
-        roomCreator = true;
         levelManager.InitialiseLevel();
     }
 
@@ -73,7 +71,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
             //TODO: Spawn VR Player Controller
         }
 
-        if(!roomCreator)
+        if(!PhotonNetwork.IsMasterClient)
         {
             StartCoroutine(levelManager.GetPartnerPlayerReference());
         }
