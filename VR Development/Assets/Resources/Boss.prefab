@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9c8765f7302694f85a72b31ce95919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchTargetInterval: 2
+  switchTargetInterval: 30
   weakSpotsArray:
   - {fileID: 5039857109929774558}
   - {fileID: 5039857109415906986}
@@ -379,7 +379,7 @@ MonoBehaviour:
   lookSpeed: 2
   revealWeakSpotsThreshold: 5
   attackInterval: 10
-  initialAttackWait: 7
+  initalActionWait: 6
   stoneNumber: 15
   stonePrefab: {fileID: 5896632680419270825, guid: 1f35ce2070904604990e91815905e7f7, type: 3}
   randomStoneMinPoint: {x: 50, y: 200, z: -120}

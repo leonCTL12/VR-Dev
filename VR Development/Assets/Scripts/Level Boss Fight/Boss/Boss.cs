@@ -31,7 +31,7 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private float attackInterval;
     [SerializeField]
-    private float initialAttackWait;
+    private float initalActionWait;
     private enum AttackType
     {
         stone, fireBall, lazer
@@ -116,12 +116,13 @@ public class Boss : MonoBehaviour
 
     private IEnumerator SearchTarget()
     {
-        //Wait until player go is spawned
-        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Player").Length != 0);
+        ////Wait until player go is spawned
+        //yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Player").Length != 0);
+
+        yield return new WaitForSeconds(initalActionWait);
 
         while (true)
         {
-            Debug.Log("Target Switch!");
             GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player"); //refresh to check if player disconnected/reconnected
             //Randomly Choose one target;
             int chosenTarget = Random.Range(0, playerList.Length);
@@ -133,30 +134,37 @@ public class Boss : MonoBehaviour
 
     private IEnumerator AttackCoroutine()
     {
-        yield return new WaitForSeconds(initialAttackWait); 
+        yield return new WaitForSeconds(initalActionWait); 
         while(true)
         {
             //Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
-            photonView.RPC("LaunchAttack", RpcTarget.All, attackIndex);
+
+            //Generate Stone attack position
+            Vector3[] randomRockPosition = null;
+            if((AttackType)attackIndex == AttackType.stone)
+            {
+                randomRockPosition = GenerateRockPosition();
+            }
+
+            photonView.RPC("LaunchAttack", RpcTarget.All, attackIndex, randomRockPosition);
+
             yield return new WaitForSeconds(attackInterval);
         }
     }
 
-    private IEnumerator StoneAttack()
+    private Vector3[] GenerateRockPosition()
     {
-        animator.SetTrigger("Scream");
-        yield return new WaitForSeconds(0.5f);
-
-        for (int i = 0; i<stoneNumber; i++)
+        Vector3[] rockPosition = new Vector3[stoneNumber];
+        for (int i = 0; i < stoneNumber; i++)
         {
             float randomX = Random.Range(randomStoneMinPoint.x, randomStoneMaxPoint.x);
-            
+
             while (rejectMinPoint.x < randomX && randomX < rejectMaxPoint.x)
             {
                 randomX = Random.Range(randomStoneMinPoint.x, randomStoneMaxPoint.x);
             }
-           
+
             float randomY = Random.Range(randomStoneMinPoint.y, randomStoneMaxPoint.y);
 
             float randomZ = Random.Range(randomStoneMinPoint.z, randomStoneMaxPoint.z);
@@ -166,7 +174,19 @@ public class Boss : MonoBehaviour
             }
 
             Vector3 spawnPosition = new Vector3(randomX, randomY, randomZ);
-            GameObject stone = Instantiate(stonePrefab, spawnPosition, Quaternion.identity);
+            rockPosition[i] = spawnPosition;
+        }
+        return rockPosition;
+    }
+
+    private IEnumerator StoneAttack(Vector3[] rockPositions)
+    {
+        animator.SetTrigger("Scream");
+        yield return new WaitForSeconds(0.5f);
+
+        foreach(Vector3 position in rockPositions)
+        {
+            GameObject stone = Instantiate(stonePrefab, position, Quaternion.identity);
         }
     }
 
@@ -206,14 +226,14 @@ public class Boss : MonoBehaviour
     }
 
     [PunRPC]
-    private void LaunchAttack(int attackIndex)
+    private void LaunchAttack(int attackIndex, Vector3[] rockPositions = null)
     {
         AttackType attack = (AttackType)attackIndex;
 
         switch (attack)
         {
             case AttackType.stone:
-                StartCoroutine(StoneAttack());
+                StartCoroutine(StoneAttack(rockPositions));
                 break;
             case AttackType.fireBall:
                 StartCoroutine(FireBallAttack()); ;
@@ -222,7 +242,7 @@ public class Boss : MonoBehaviour
                 StartCoroutine(LazerAttack()); ;
                 break;
             default:
-                StartCoroutine(StoneAttack());
+                StartCoroutine(FireBallAttack());
                 break;
         }
     }
