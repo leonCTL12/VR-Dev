@@ -22,6 +22,7 @@ public class Boss : MonoBehaviour
     }
     public float revealWeakSpotsThreshold;
     private int weakSpotsCount;
+    private PhotonView photonView;
     #endregion
 
     #region attack general
@@ -78,6 +79,7 @@ public class Boss : MonoBehaviour
             spot.SetActive(false); //set it to false later
         }
         weakSpotsCount = weakSpotsArray.Length;
+        photonView = GetComponent<PhotonView>();
     }
 
     private void Start()
@@ -89,16 +91,13 @@ public class Boss : MonoBehaviour
         #endregion
 
         levelManager = LevelManager_Base.Instance;
-        StartCoroutine(SearchTarget());
-        //StartCoroutine(AttackCoroutine());
-        if(PhotonNetwork.IsMasterClient)
+      
+        masterBoss = PhotonNetwork.IsMasterClient;
+
+        if (masterBoss)
         {
-            masterBoss = true;
-            Debug.Log("I am Master Boss");
-        } else
-        {
-            masterBoss = false;
-            Debug.Log("I am not Master Boss");
+            StartCoroutine(SearchTarget());
+            //StartCoroutine(AttackCoroutine());
         }
     }
 
@@ -117,13 +116,20 @@ public class Boss : MonoBehaviour
 
         while (true)
         {
+            Debug.Log("Target Switch!");
             GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player"); //refresh to check if player disconnected/reconnected
             //Randomly Choose one target;
-            Random.Range(0, playerList.Length);
-            currentTarget = playerList[0];
+            int chosenTarget = Random.Range(0, playerList.Length);
+            currentTarget = playerList[chosenTarget];
+            photonView.RPC("SetTarget_Remote", RpcTarget.Others, currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer);
             yield return new WaitForSeconds(switchTargetInterval);
         }
-      
+    }
+
+    [PunRPC]
+    private void SetTarget_Remote(bool myPlayer) 
+    {
+        currentTarget = myPlayer ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
     }
 
     private IEnumerator AttackCoroutine()

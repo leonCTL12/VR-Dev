@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9c8765f7302694f85a72b31ce95919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchTargetInterval: 1
+  switchTargetInterval: 2
   weakSpotsArray:
   - {fileID: 5039857109929774558}
   - {fileID: 5039857109415906986}
