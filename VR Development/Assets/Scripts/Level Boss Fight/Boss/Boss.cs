@@ -10,6 +10,8 @@ public class Boss : MonoBehaviour
     private float switchTargetInterval;
     [SerializeField]
     private GameObject[] weakSpotsArray;
+    [SerializeField]
+    private float lookSpeed;
     private Animator animator;
     private bool masterBoss;
     private static Boss instance;
@@ -105,7 +107,10 @@ public class Boss : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            transform.LookAt(currentTarget.transform);
+            var targetRotation = Quaternion.LookRotation(currentTarget.transform.position - transform.position);
+
+            // Smoothly rotate towards the target point.
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookSpeed * Time.deltaTime);
         }
     }
 

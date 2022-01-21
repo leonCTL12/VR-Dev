@@ -376,6 +376,7 @@ MonoBehaviour:
   - {fileID: 5039857109079522923}
   - {fileID: 5039857110520487306}
   - {fileID: 5039857109885422661}
+  lookSpeed: 2
   revealWeakSpotsThreshold: 5
   attackInterval: 3
   initialAttackWait: 2
