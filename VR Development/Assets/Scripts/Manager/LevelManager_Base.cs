@@ -60,7 +60,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         }
     }
 
-    public void SpawnPlayer(InputDeviceType InputDeviceType)
+    public virtual void SpawnPhotonObjects(InputDeviceType InputDeviceType)
     {
         if (InputDeviceType == InputDeviceType.PC)
         {

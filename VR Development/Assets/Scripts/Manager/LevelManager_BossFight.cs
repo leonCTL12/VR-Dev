@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class LevelManager_BossFight : MonoBehaviour
+public class LevelManager_BossFight : LevelManager_Base
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private string bossPrefabName;
+    [SerializeField]
+    private Transform bossSpawnPoint;
+    public override void SpawnPhotonObjects(InputDeviceType InputDeviceType)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.SpawnPhotonObjects(InputDeviceType);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate(bossPrefabName, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
+        }
     }
 }

@@ -60,7 +60,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
         }
         if (SystemInfo.deviceType.ToString() == "Desktop")
         {
-            levelManager.SpawnPlayer(device);
+            levelManager.SpawnPhotonObjects(device);
         }
         if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
         {
@@ -89,5 +89,4 @@ public class NetworkManager: MonoBehaviourPunCallbacks
         levelManager.Sender_SyncLevel();
         StartCoroutine(levelManager.GetPartnerPlayerReference());
     }
-
 }

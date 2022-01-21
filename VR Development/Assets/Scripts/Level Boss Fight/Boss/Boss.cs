@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Boss : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private GameObject[] weakSpotsArray;
     private Animator animator;
+    private bool masterBoss;
     private static Boss instance;
     public static Boss BossInstance
     {
@@ -57,6 +59,7 @@ public class Boss : MonoBehaviour
 
     #region lazer_attack
     [SerializeField]
+    private string lazerLauncherName;
     private GameObject lazerLauncher;
     private Animator lazerAnimator;
     #endregion
@@ -68,20 +71,35 @@ public class Boss : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        lazerAnimator = lazerLauncher.GetComponent<Animator>();
+        
         instance = this;
         foreach (GameObject spot in weakSpotsArray)
         {
-            spot.SetActive(true); //set it to false later
+            spot.SetActive(false); //set it to false later
         }
         weakSpotsCount = weakSpotsArray.Length;
     }
 
     private void Start()
     {
+        #region initalise lazer launcher
+        lazerLauncher = GameObject.Find(lazerLauncherName);
+        lazerAnimator = lazerLauncher.GetComponent<Animator>();
+        lazerLauncher.SetActive(false);
+        #endregion
+
         levelManager = LevelManager_Base.Instance;
         StartCoroutine(SearchTarget());
         //StartCoroutine(AttackCoroutine());
+        if(PhotonNetwork.IsMasterClient)
+        {
+            masterBoss = true;
+            Debug.Log("I am Master Boss");
+        } else
+        {
+            masterBoss = false;
+            Debug.Log("I am not Master Boss");
+        }
     }
 
     private void Update()
