@@ -78,7 +78,8 @@ public class Boss : MonoBehaviour
         instance = this;
         foreach (GameObject spot in weakSpotsArray)
         {
-            spot.SetActive(false); //set it to false later
+            spot.SetActive(false);
+            spot.GetComponent<BoxCollider>().enabled = PhotonNetwork.IsMasterClient;
         }
         weakSpotsCount = weakSpotsArray.Length;
         photonView = GetComponent<PhotonView>();
