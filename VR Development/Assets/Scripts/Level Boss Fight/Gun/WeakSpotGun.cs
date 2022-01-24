@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class WeakSpotGun : Gun_Base
 {
     [SerializeField]
-    private float powerBeamDuration;
-    [SerializeField]
-    private GameObject powerBeam;
-    [SerializeField]
-    private GameObject bulletPrefab;
+    private string bulletPrefabName;
     [SerializeField]
     private float shootForce;
     [SerializeField]
@@ -36,20 +33,10 @@ public class WeakSpotGun : Gun_Base
 
         Vector3 direction = targetPoint - attackPoint.position;
 
-        GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, Quaternion.identity);
+        GameObject bullet = PhotonNetwork.Instantiate(bulletPrefabName, attackPoint.position, Quaternion.identity);
         bullet.transform.forward = direction.normalized;
 
         bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
-
-        //StartCoroutine(FireParticle());
     }
-
-    private IEnumerator FireParticle()
-    {
-        powerBeam.SetActive(true);
-        yield return new WaitForSeconds(powerBeamDuration);
-        powerBeam.SetActive(false);
-    }
-
 
 }
