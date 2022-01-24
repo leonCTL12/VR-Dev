@@ -22,7 +22,15 @@ public class PlayerController_Shooter : PlayerController_Base
     protected override void Start()
     {
         base.Start();
-        weaponType = PhotonNetwork.IsMasterClient ? WeaponType.gun : WeaponType.wand;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            weaponType = isMine ? WeaponType.gun: WeaponType.wand;
+        } 
+        else
+        {
+            weaponType = isMine ? WeaponType.wand : WeaponType.gun;
+        }
+
         switch (weaponType)
         {
             case WeaponType.wand:
@@ -38,6 +46,7 @@ public class PlayerController_Shooter : PlayerController_Base
 
         weakSpotGun.gameObject.SetActive(weapon == weakSpotGun);
         wand.gameObject.SetActive(weapon == wand);
+        presenter.ShowCorrectWeapon(weapon == weakSpotGun);
     }
 
 

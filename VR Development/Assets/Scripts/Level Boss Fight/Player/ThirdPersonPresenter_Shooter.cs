@@ -11,6 +11,8 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
     [SerializeField]
     private GameObject wand;
     [SerializeField]
+    private GameObject gun;
+    [SerializeField]
     private Vector3? wandTargetPoint;
     #endregion
 
@@ -22,6 +24,13 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
         thirdPersonWandBeam.SetActive(false);
+    }
+
+    public void ShowCorrectWeapon(bool gunUser)
+    {
+        Debug.Log("I am a gun user: " + gunUser);
+        wand.SetActive(!gunUser);
+        gun.SetActive(gunUser);
     }
 
     private void Update()
