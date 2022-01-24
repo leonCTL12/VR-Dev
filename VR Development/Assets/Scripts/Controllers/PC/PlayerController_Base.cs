@@ -85,7 +85,7 @@ public class PlayerController_Base: MonoBehaviour
         this.enabled = isMine;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         PlayerControlSetting();
 

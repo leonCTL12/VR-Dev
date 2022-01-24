@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerController_Shooter : PlayerController_Base
 {
@@ -9,7 +10,6 @@ public class PlayerController_Shooter : PlayerController_Base
     private Gun_Base wand;
     [SerializeField]
     private Gun_Base weakSpotGun;
-    [SerializeField]
     private WeaponType weaponType;
     [SerializeField]
     private ThirdPersonPresenter_Shooter presenter;
@@ -19,10 +19,10 @@ public class PlayerController_Shooter : PlayerController_Base
         wand, gun
     }
     private Gun_Base weapon;
-
-
-    private void Awake()
+    protected override void Start()
     {
+        base.Start();
+        weaponType = PhotonNetwork.IsMasterClient ? WeaponType.gun : WeaponType.wand;
         switch (weaponType)
         {
             case WeaponType.wand:

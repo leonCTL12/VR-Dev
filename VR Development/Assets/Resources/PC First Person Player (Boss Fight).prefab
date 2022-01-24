@@ -344,7 +344,6 @@ MonoBehaviour:
   cameraTransform: {fileID: 7908982964651185841}
   wand: {fileID: 5341217562411405044}
   weakSpotGun: {fileID: 8851184573207231746}
-  weaponType: 1
   presenter: {fileID: 718516980724457877}
 --- !u!114 &8460248570441782516
 MonoBehaviour:
