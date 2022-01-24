@@ -11,6 +11,8 @@ public class WeakSpotGun : Gun_Base
     private float shootForce;
     [SerializeField]
     private Transform attackPoint;
+    [SerializeField]
+    private ParticleSystem gunShotParticle;
 
     public override void Fire()
     {
@@ -37,6 +39,7 @@ public class WeakSpotGun : Gun_Base
         bullet.transform.forward = direction.normalized;
 
         bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
+        gunShotParticle.Play();
     }
 
 }
