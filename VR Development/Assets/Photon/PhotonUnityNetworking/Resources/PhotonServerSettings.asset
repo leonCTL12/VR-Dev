@@ -52,6 +52,7 @@ MonoBehaviour:
   - LaunchAttack
   - ShowBeam_Sync
   - RevealWeakSpotSync
+  - BossDeathHandler
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
