@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour
         }
     }
     public float revealWeakSpotsThreshold;
-    private int weakSpotsCount;
+    private int currentWeakSpot;
     private PhotonView photonView;
     #endregion
 
@@ -81,7 +81,6 @@ public class Boss : MonoBehaviour
             spot.SetActive(false);
             spot.GetComponent<BoxCollider>().enabled = PhotonNetwork.IsMasterClient;
         }
-        weakSpotsCount = weakSpotsArray.Length;
         photonView = GetComponent<PhotonView>();
     }
 
@@ -99,8 +98,8 @@ public class Boss : MonoBehaviour
 
         if (masterBoss)
         {
-            StartCoroutine(SearchTarget());
-            StartCoroutine(AttackCoroutine());
+            //StartCoroutine(SearchTarget());
+            //StartCoroutine(AttackCoroutine());
         }
     }
 
@@ -140,7 +139,6 @@ public class Boss : MonoBehaviour
         {
             //Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
-            attackIndex = 2;
 
             //Generate Stone attack position
             Vector3[] randomRockPosition = null;
@@ -218,10 +216,22 @@ public class Boss : MonoBehaviour
 
     public void RevealWeakSpots()
     {
-        weakSpotsArray[weakSpotsCount - 1].SetActive(true);
+        if (currentWeakSpot >= weakSpotsArray.Length)
+        {
+            return;
+        }
+        photonView.RPC("RevealWeakSpotSync", RpcTarget.All, currentWeakSpot);
+        currentWeakSpot++;
     }
 
+
     #region RPC Function
+    [PunRPC]
+    private void RevealWeakSpotSync(int weakSpotNumber)
+    {
+        weakSpotsArray[weakSpotNumber].SetActive(true);
+    }
+
     [PunRPC]
     private void SetTarget_Remote(bool myPlayer)
     {
