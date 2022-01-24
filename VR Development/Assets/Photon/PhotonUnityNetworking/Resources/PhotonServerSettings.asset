@@ -53,6 +53,7 @@ MonoBehaviour:
   - ShowBeam_Sync
   - RevealWeakSpotSync
   - BossDeathHandler
+  - OnDestoryWeakSpot
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
