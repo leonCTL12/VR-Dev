@@ -7,7 +7,7 @@ public class Wand : Gun_Base
     [SerializeField]
     private GameObject analyticalLazer;
     [SerializeField]
-    private ThirdPersonWandPowerBeam thirdPersonPowerBeam;
+    private PlayerController_Shooter shooterController;
 
     private float startTime;
 
@@ -51,18 +51,18 @@ public class Wand : Gun_Base
                 if (hit.collider.gameObject.tag == "WeakSpotsRevealCollider")
                 {
                     countTime = true;
-                    thirdPersonPowerBeam.targetPoint = hit.point;
                 }
                 else
                 {
                     countTime = false;
                     startTime = Time.time; //reset start time;
-                    thirdPersonPowerBeam.targetPoint = hit.point;
                 }
-            } else
+                shooterController.ShowWandBeam(hit.point);
+            }
+            else
             {
-                thirdPersonPowerBeam.targetPoint = ray.GetPoint(75);
-                Debug.Log("ray point = " + ray.GetPoint(75));
+                shooterController.ShowWandBeam(ray.GetPoint(75));
+
             }
         }
     }
@@ -70,7 +70,6 @@ public class Wand : Gun_Base
     public override void Fire()
     {
         analyticalLazer.SetActive(true);
-        thirdPersonPowerBeam.gameObject.SetActive(true);
         base.Fire();
         firing = true;
         startTime = Time.time;
@@ -81,7 +80,7 @@ public class Wand : Gun_Base
     {
         base.CancelFire();
         analyticalLazer.SetActive(false);
-        thirdPersonPowerBeam.gameObject.SetActive(false);
+        shooterController.ShowWandBeam(null);
         countTime = false;
         firing = false;
     }

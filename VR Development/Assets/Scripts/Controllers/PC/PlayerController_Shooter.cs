@@ -11,6 +11,8 @@ public class PlayerController_Shooter : PlayerController_Base
     private Gun_Base weakSpotGun;
     [SerializeField]
     private WeaponType weaponType;
+    [SerializeField]
+    private ThirdPersonPresenter_Shooter presenter;
 
     private enum WeaponType
     {
@@ -49,5 +51,10 @@ public class PlayerController_Shooter : PlayerController_Base
         {
             weapon.CancelFire();
         }
+    }
+
+    public void ShowWandBeam(Vector3? targetPoint)
+    {
+        presenter.ShowBeam(targetPoint);
     }
 }
