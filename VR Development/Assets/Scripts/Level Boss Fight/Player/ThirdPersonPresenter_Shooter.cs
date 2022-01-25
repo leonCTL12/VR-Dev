@@ -14,6 +14,12 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
     private GameObject gun;
     [SerializeField]
     private Vector3? wandTargetPoint;
+    [SerializeField]
+    private GameObject thirdPersonModel;
+    [SerializeField]
+    private ParticleSystem deathParticle;
+    [SerializeField]
+    private ParticleSystem healParticle;
     #endregion
 
     #region general
@@ -46,6 +52,16 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
         photonView.RPC("ShowBeam_Sync", RpcTarget.Others, targetPoint);
     }
 
+    public void ShowDeath()
+    {
+        if(!photonView.IsMine)
+        {
+            Debug.Log("About to show opponent's death");
+        }
+        photonView.RPC("ShowDeath_Sync", RpcTarget.Others);
+    }
+
+    #region RPC
     [PunRPC]
     private void ShowBeam_Sync(Vector3? targetPoint)
     {
@@ -58,5 +74,14 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
             thirdPersonWandBeam.SetActive(true);
         }
     }
+
+    [PunRPC] 
+    private void ShowDeath_Sync()
+    {
+        thirdPersonModel.SetActive(false);
+        deathParticle.Play();
+        healParticle.Play();
+    }
+    #endregion
 
 }

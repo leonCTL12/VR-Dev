@@ -157,7 +157,6 @@ public class Boss : MonoBehaviour
         {
             //Choose Attack
             int attackIndex = Random.Range(0, System.Enum.GetValues(typeof(AttackType)).Length);
-            attackIndex = 1;
             //Generate Stone attack position
             Vector3[] randomRockPosition = null;
             if((AttackType)attackIndex == AttackType.stone)
