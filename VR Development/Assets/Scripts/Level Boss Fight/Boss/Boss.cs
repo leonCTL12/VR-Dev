@@ -27,6 +27,11 @@ public class Boss : MonoBehaviour
     private int destroyedWeakSpotCounter;
     private int bossHP;
     private PhotonView photonView;
+    private enum Phrase
+    {
+        reveal,hit
+    }
+    private Phrase currentPhrase = Phrase.reveal;
     #endregion
 
     #region attack general
@@ -80,7 +85,7 @@ public class Boss : MonoBehaviour
         instance = this;
         foreach (GameObject spot in weakSpotsArray)
         {
-            spot.SetActive(true);
+            spot.SetActive(false);
             spot.GetComponent<BoxCollider>().enabled = PhotonNetwork.IsMasterClient;
         }
         photonView = GetComponent<PhotonView>();
@@ -220,7 +225,7 @@ public class Boss : MonoBehaviour
 
     public void RevealWeakSpots()
     {
-        if (currentWeakSpot >= weakSpotsArray.Length)
+        if (currentWeakSpot >= weakSpotsArray.Length || currentPhrase != Phrase.reveal)
         {
             return;
         }
@@ -230,6 +235,7 @@ public class Boss : MonoBehaviour
 
     public void OnWeakSpotHit()
     {
+        if (currentPhrase != Phrase.hit) { return; }
         photonView.RPC("OnHitWeakSpot_Sync", RpcTarget.All);
     }
 
@@ -251,11 +257,13 @@ public class Boss : MonoBehaviour
         {
             BossDeathHandler();
         }
+        currentPhrase = Phrase.reveal;
     }
     [PunRPC]
     private void RevealWeakSpotSync(int weakSpotNumber)
     {
         weakSpotsArray[weakSpotNumber].SetActive(true);
+        currentPhrase = Phrase.hit;
     }
 
     [PunRPC]
