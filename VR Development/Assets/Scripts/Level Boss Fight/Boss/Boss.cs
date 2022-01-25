@@ -136,11 +136,20 @@ public class Boss : MonoBehaviour
             //Randomly Choose one target;
             int chosenTarget = Random.Range(0, playerList.Length);
             currentTarget = playerList[chosenTarget];
+            CheckDeathSwitchTarget();
             photonView.RPC("SetTarget_Remote", RpcTarget.Others, currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer);
             yield return new WaitForSeconds(switchTargetInterval);
         }
     }
 
+    private void CheckDeathSwitchTarget()
+    {
+        if (currentTarget.GetComponent<PlayerStatus>().waitingForResurrection)
+        {
+            currentTarget = (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer) ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
+            Debug.Log("Switch Target! Now the player is partner player: " + (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer));
+        }
+    }
     private IEnumerator AttackCoroutine()
     {
         yield return new WaitForSeconds(initalActionWait); 
