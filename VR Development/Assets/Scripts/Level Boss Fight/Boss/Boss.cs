@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
 
     #region attack general
     [SerializeField]
-    private float attackInterval;
+    private float attackInterval; //attack interval cannot be too low (e.g. 7), coz some of the attack takes more than 7 sec
     [SerializeField]
     private float initalActionWait;
     private enum AttackType
@@ -144,7 +144,7 @@ public class Boss : MonoBehaviour
 
     private void CheckDeathSwitchTarget()
     {
-        if (currentTarget.GetComponent<PlayerStatus>().waitingForResurrection)
+        if (currentTarget.GetComponent<PlayerStatus>().waitingForResurrection && levelManager.partnerPlayer!=null)
         {
             currentTarget = (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer) ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
             Debug.Log("Switch Target! Now the player is partner player: " + (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer));
@@ -211,13 +211,13 @@ public class Boss : MonoBehaviour
     private IEnumerator FireBallAttack() 
     {
         animator.SetTrigger("Take Off");
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         animator.SetTrigger("Fire");
-
+        yield return new WaitForSeconds(1f);
         GameObject fireBall = Instantiate(fireBallPrefab, mouthTransform.position, Quaternion.identity);
         fireBall.GetComponent<AttackItem_FireBall>().targetTransform = currentTarget.transform;
 
-        yield return new WaitForSeconds(Random.Range(1.1f, 4f));
+        yield return new WaitForSeconds(2);
         animator.SetTrigger("Land");
     }
 
