@@ -25,6 +25,7 @@ public class Boss : MonoBehaviour
     public float revealWeakSpotsThreshold;
     private int currentWeakSpot;
     private int destroyedWeakSpotCounter;
+    private int bossHP;
     private PhotonView photonView;
     #endregion
 
@@ -83,6 +84,8 @@ public class Boss : MonoBehaviour
             spot.GetComponent<BoxCollider>().enabled = PhotonNetwork.IsMasterClient;
         }
         photonView = GetComponent<PhotonView>();
+
+        bossHP = weakSpotsArray.Length;
     }
 
     private void Start()
@@ -240,8 +243,11 @@ public class Boss : MonoBehaviour
     private void OnHitWeakSpot_Sync()
     {
         destroyedWeakSpotCounter++;
-        //if (destroyedWeakSpotCounter >= weakSpotsArray.Length) 
-        if (destroyedWeakSpotCounter >= 3)
+        bossHP = weakSpotsArray.Length - destroyedWeakSpotCounter;
+        LevelManager_BossFight manager_BossFight = (LevelManager_BossFight)levelManager;
+        manager_BossFight.UpdatePlayerUIWeakSpot(bossHP);
+        if (destroyedWeakSpotCounter >= weakSpotsArray.Length)
+            //if (destroyedWeakSpotCounter >= 3)
         {
             BossDeathHandler();
         }

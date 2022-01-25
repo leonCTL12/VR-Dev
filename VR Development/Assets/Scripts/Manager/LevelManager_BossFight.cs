@@ -17,4 +17,10 @@ public class LevelManager_BossFight : LevelManager_Base
             PhotonNetwork.Instantiate(bossPrefabName, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
         }
     }
+
+    public void UpdatePlayerUIWeakSpot(int index)
+    {
+        //handle current player only, coz partner player's level manager will handle theirs
+        currentPlayer.GetComponent<PlayerStatus>().playerUI.DisableWeakSpot(index);
+    }
 }

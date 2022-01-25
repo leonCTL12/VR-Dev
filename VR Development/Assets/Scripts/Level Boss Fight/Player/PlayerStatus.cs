@@ -7,7 +7,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     private float maxHP; //use float so that the division can return a float
     [SerializeField]
-    private PlayerUI playerUI;
+    public PlayerUI playerUI;
 
     private float currentHP;
 
@@ -24,5 +24,4 @@ public class PlayerStatus : MonoBehaviour
         currentHP -= damage;
         playerUI.FillHPSlider(currentHP / maxHP);
     }
-
 }
