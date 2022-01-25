@@ -227,20 +227,24 @@ public class Boss : MonoBehaviour
 
     public void OnWeakSpotHit()
     {
-        destroyedWeakSpotCounter++;
-        //if (destroyedWeakSpotCounter >= weakSpotsArray.Length) 
-        if (destroyedWeakSpotCounter >= 3) 
-        {
-            photonView.RPC("BossDeathHandler", RpcTarget.All);
-        }
+        photonView.RPC("OnHitWeakSpot_Sync", RpcTarget.All);
+    }
+
+    private void BossDeathHandler()
+    {
+        animator.SetBool("Death", true);
     }
 
     #region RPC Function
     [PunRPC]
-    private void BossDeathHandler()
+    private void OnHitWeakSpot_Sync()
     {
-        Debug.Log("Boss Die!");
-        animator.SetBool("Death", true);
+        destroyedWeakSpotCounter++;
+        //if (destroyedWeakSpotCounter >= weakSpotsArray.Length) 
+        if (destroyedWeakSpotCounter >= 3)
+        {
+            BossDeathHandler();
+        }
     }
     [PunRPC]
     private void RevealWeakSpotSync(int weakSpotNumber)
