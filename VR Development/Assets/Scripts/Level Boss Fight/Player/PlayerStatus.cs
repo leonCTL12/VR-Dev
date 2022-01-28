@@ -30,8 +30,6 @@ public class PlayerStatus : MonoBehaviour
         playerUI.FillHPSlider(currentHP / maxHP);
         waitingForResurrection = false;
         if(!photonView.IsMine) { enabled = false; }
-        //remove later
-        testing_purposeImmune = !PhotonNetwork.IsMasterClient;
     }
 
     public void ReceiveDamage(float damage)
