@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ThirdPersonPresenter_Shooter : MonoBehaviour
+public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third person logic (in peer)
 {
     #region Wand
     [SerializeField]
@@ -20,6 +20,8 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
     private ParticleSystem deathParticle;
     [SerializeField]
     private ParticleSystem healParticle;
+    [SerializeField]
+    private Resurrection resurrection;
     #endregion
 
     #region general
@@ -81,6 +83,7 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour
         thirdPersonModel.SetActive(false);
         deathParticle.Play();
         healParticle.Play();
+        resurrection.ToggleResurrection(true);
     }
     #endregion
 

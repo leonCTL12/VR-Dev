@@ -12,14 +12,17 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private GameObject deathPanel;
     private AudioSource audioSource;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     private void Start()
     {
         deathPanel.SetActive(false);
     }
+
     public void FillHPSlider(float amount)
     {
         HPslider.value = amount;

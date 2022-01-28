@@ -14,6 +14,7 @@ public class PlayerStatus : MonoBehaviour
     public bool testing_purposeImmune;
     [SerializeField]
     private ThirdPersonPresenter_Shooter presenter;
+
     private float currentHP;
     public bool waitingForResurrection;
     private PhotonView photonView;
@@ -21,12 +22,14 @@ public class PlayerStatus : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
     }
+
     // Start is called before the first frame update
     private void Start()
     {
         currentHP = maxHP;
         playerUI.FillHPSlider(currentHP / maxHP);
         waitingForResurrection = false;
+        if(!photonView.IsMine) { enabled = false; }
         //remove later
         testing_purposeImmune = !PhotonNetwork.IsMasterClient;
     }

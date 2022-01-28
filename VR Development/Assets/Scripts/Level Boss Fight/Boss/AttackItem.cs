@@ -19,7 +19,10 @@ public class AttackItem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerStatus playerStatus = other.gameObject.GetComponent<PlayerStatus>();
-            playerStatus.ReceiveDamage(damage);
+            if (playerStatus.enabled)
+            {
+                playerStatus.ReceiveDamage(damage);
+            }
         }
     }
 
@@ -28,7 +31,10 @@ public class AttackItem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerStatus playerStatus = other.gameObject.GetComponent<PlayerStatus>();
-            playerStatus.ReceiveDamage(damage);
+            if(playerStatus.enabled)
+            {
+                playerStatus.ReceiveDamage(damage);
+            }
         }
     }
 }
