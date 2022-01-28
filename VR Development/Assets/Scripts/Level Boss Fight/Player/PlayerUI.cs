@@ -37,6 +37,6 @@ public class PlayerUI : MonoBehaviour
     public void ShowAndHideDeathPanel(bool show)
     {
         deathPanel.SetActive(show);
-        audioSource.Play();
+        //audioSource.Play();
     }
 }

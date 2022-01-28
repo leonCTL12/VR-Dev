@@ -56,4 +56,13 @@ public class PlayerStatus : MonoBehaviour
         presenter.ShowDeath();
         waitingForResurrection = true;
     }
+
+    public void ResurrectionHandler()
+    {
+        GetComponent<PlayerInput>().enabled = true;
+        playerUI.ShowAndHideDeathPanel(false);
+        waitingForResurrection = false;
+        currentHP = maxHP;
+        playerUI.FillHPSlider(currentHP / maxHP);
+    }
 }

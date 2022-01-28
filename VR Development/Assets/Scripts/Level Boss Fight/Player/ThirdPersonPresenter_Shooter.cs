@@ -26,12 +26,14 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
 
     #region general
     private PhotonView photonView;
+    private PlayerStatus status;
     #endregion 
 
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
         thirdPersonWandBeam.SetActive(false);
+        status = GetComponent<PlayerStatus>();
     }
 
     public void ShowCorrectWeapon(bool gunUser)
@@ -63,6 +65,16 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
         photonView.RPC("ShowDeath_Sync", RpcTarget.Others);
     }
 
+    public void ShowResurrection()
+    {
+        //3rd person logic for resurrection
+        thirdPersonModel.SetActive(true);
+        deathParticle.Stop();
+        healParticle.Stop();
+        resurrection.ToggleResurrection(false);
+        photonView.RPC("ShowResurrection_Sync", RpcTarget.Others);
+    }
+
     #region RPC
     [PunRPC]
     private void ShowBeam_Sync(Vector3? targetPoint)
@@ -84,6 +96,13 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
         deathParticle.Play();
         healParticle.Play();
         resurrection.ToggleResurrection(true);
+    }
+
+    [PunRPC]
+    private void ShowResurrection_Sync()
+    {
+        //1st person logic for resurrection
+        status.ResurrectionHandler();
     }
     #endregion
 

@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resurrectionThreshold: 3
   myPlayer: {fileID: 5580846595556615104}
+  thirdPersonPresenter: {fileID: 718516980724457877}
 --- !u!136 &8215069592984615736
 CapsuleCollider:
   m_ObjectHideFlags: 0
