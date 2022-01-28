@@ -11,11 +11,11 @@ public class PlayerUI : MonoBehaviour
     private GameObject[] weakSpots;
     [SerializeField]
     private GameObject deathPanel;
-    private AudioSource audioSource;
+    private Animator animator;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -26,6 +26,7 @@ public class PlayerUI : MonoBehaviour
     public void FillHPSlider(float amount)
     {
         HPslider.value = amount;
+        Debug.Log("Receive Call, Slider value = " + HPslider.value);
     }
     
     public void DisableWeakSpot(int index)
@@ -36,7 +37,12 @@ public class PlayerUI : MonoBehaviour
 
     public void ShowAndHideDeathPanel(bool show)
     {
-        deathPanel.SetActive(show);
-        //audioSource.Play();
+        if (show)
+        {
+            animator.SetTrigger("Death");
+        } else
+        {
+            animator.SetTrigger("Respawn");
+        }
     }
 }
