@@ -38,7 +38,6 @@ public class TogglePlane : MonoBehaviour
             animator.SetBool("show", color == colorGroup.blue);
             clip = color == colorGroup.blue ? scaleUp : scaleDown;
         }
-        audioSource.clip = clip;
-        audioSource.Play();
+        audioSource.PlayOneShot(clip);
     }
 }

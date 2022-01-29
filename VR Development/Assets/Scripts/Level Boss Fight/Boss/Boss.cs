@@ -32,6 +32,7 @@ public class Boss : MonoBehaviour
         reveal,hit
     }
     private Phrase currentPhrase = Phrase.reveal;
+    private BossSFX bossSFX;
     #endregion
 
     #region attack general
@@ -81,6 +82,7 @@ public class Boss : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        bossSFX = GetComponent<BossSFX>();
         
         instance = this;
         foreach (GameObject spot in weakSpotsArray)
@@ -199,6 +201,7 @@ public class Boss : MonoBehaviour
     private IEnumerator StoneAttack(Vector3[] rockPositions)
     {
         animator.SetTrigger("Scream");
+        bossSFX.StoneAttackSFX();
         yield return new WaitForSeconds(0.5f);
 
         foreach(Vector3 position in rockPositions)
@@ -212,6 +215,7 @@ public class Boss : MonoBehaviour
         animator.SetTrigger("Take Off");
         yield return new WaitForSeconds(2f);
         animator.SetTrigger("Fire");
+        bossSFX.FireBallSFX();
         yield return new WaitForSeconds(1f);
         GameObject fireBall = Instantiate(fireBallPrefab, mouthTransform.position, Quaternion.identity);
         fireBall.GetComponent<AttackItem_FireBall>().targetTransform = currentTarget.transform;
@@ -223,7 +227,9 @@ public class Boss : MonoBehaviour
     private IEnumerator LazerAttack()
     {
         animator.SetTrigger("Tail");
+        bossSFX.TailAttackSFX();
         yield return new WaitForSeconds(1);
+        bossSFX.LazerLaunchSFX();
         lazerLauncher.SetActive(true);
         lazerAnimator.SetTrigger("Launch");
         yield return new WaitForSeconds(1f);
