@@ -13,9 +13,12 @@ public class TogglePlaneButton : InteractableObject
 
     private TogglePlanesManager manager;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         clicker = transform.GetChild(0).gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -29,6 +32,7 @@ public class TogglePlaneButton : InteractableObject
         if(!playerInRange) { return; }
 
         manager.Trigger_ChangePlaneState();
+        audioSource.Play();
     }
 
     public void ChangeButtonColor(bool redState)
