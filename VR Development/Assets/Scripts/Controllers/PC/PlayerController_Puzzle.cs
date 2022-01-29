@@ -195,7 +195,9 @@ public class PlayerController_Puzzle : PlayerController_Base
     {
         interactable = false;
         firstPersonElectricShockParticles.SetActive(true);
+        audioSource.Play();
         yield return new WaitForSeconds(paralysisSec);
+        audioSource.Stop();
         interactable = true;
         firstPersonElectricShockParticles.SetActive(false);
         thirdPersonElectricShockParticles.SetActive(false);
@@ -216,9 +218,10 @@ public class PlayerController_Puzzle : PlayerController_Base
     private IEnumerator ThirdPersonParalysisFX()
     {
         thirdPersonElectricShockParticles.SetActive(true);
+        audioSource.Play();
         yield return new WaitForSeconds(paralysisSec);
         thirdPersonElectricShockParticles.SetActive(false);
-
+        audioSource.Stop();
     }
 
 }

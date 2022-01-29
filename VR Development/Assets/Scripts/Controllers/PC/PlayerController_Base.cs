@@ -29,6 +29,7 @@ public class PlayerController_Base: MonoBehaviour
     protected InputDevice currentInputDevice;
     protected bool moveable = true;
     protected PhotonView photonView;
+    protected AudioSource audioSource;
 
     //Walk
     [SerializeField]
@@ -72,9 +73,13 @@ public class PlayerController_Base: MonoBehaviour
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
 
-    private void PlayerControlSetting()
+    private void Awake()
     {
         photonView = GetComponent<PhotonView>();
+        audioSource = GetComponent<AudioSource>();
+    }
+    private void PlayerControlSetting()
+    {
         isMine = photonView.IsMine;
         player3rdPersonModel.SetActive(!isMine);
         player3rdPersonSkeleton.SetActive(!isMine);
