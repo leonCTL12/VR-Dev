@@ -11,10 +11,12 @@ public class WeakSpot : MonoBehaviour
     private GameObject onHitParticle;
     private PhotonView photonView;
     private Boss boss;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -37,9 +39,10 @@ public class WeakSpot : MonoBehaviour
     
     private IEnumerator DestroyWeakSpotCoroutine()
     {
+        audioSource.Play();
         normalParticle.SetActive(false);
         onHitParticle.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
 

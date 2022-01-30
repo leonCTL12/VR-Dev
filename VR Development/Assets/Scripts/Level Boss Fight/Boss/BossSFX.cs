@@ -14,6 +14,8 @@ public class BossSFX : MonoBehaviour
     private AudioClip tailAttack;
     [SerializeField]
     private AudioClip lazerSound;
+    [SerializeField]
+    private AudioClip dieSound;
 
     private void Awake()
     {
@@ -38,5 +40,10 @@ public class BossSFX : MonoBehaviour
     public void LazerLaunchSFX()
     {
         audioSource.PlayOneShot(lazerSound);
+    }
+
+    public void PlayDieSound()
+    {
+        audioSource.PlayOneShot(dieSound);
     }
 }

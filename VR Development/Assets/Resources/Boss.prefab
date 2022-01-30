@@ -541,6 +541,7 @@ MonoBehaviour:
   fireBall: {fileID: 8300000, guid: 7d156b8a5b340cd46bcf0a76557dd2dd, type: 3}
   tailAttack: {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
   lazerSound: {fileID: 8300000, guid: 9634d33df2f5d704992e84220db478e6, type: 3}
+  dieSound: {fileID: 8300000, guid: 1d24e73209454c640bbcdc0dbc1e6bd7, type: 3}
 --- !u!1 &97956120127395205
 GameObject:
   m_ObjectHideFlags: 0

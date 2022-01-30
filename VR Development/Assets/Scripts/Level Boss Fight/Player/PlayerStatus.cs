@@ -14,6 +14,7 @@ public class PlayerStatus : MonoBehaviour
     public bool testing_purposeImmune;
     [SerializeField]
     private ThirdPersonPresenter_Shooter presenter;
+    private PlayerSFX playerSFX;
 
     private float currentHP;
     public bool waitingForResurrection;
@@ -21,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
+        playerSFX = GetComponent<PlayerSFX>();
     }
 
     // Start is called before the first frame update
@@ -40,10 +42,15 @@ public class PlayerStatus : MonoBehaviour
 
         currentHP -= damage;
         playerUI.FillHPSlider(currentHP / maxHP);
+        playerSFX.PlayBleed();
+
         if(currentHP <= 0 )
         {
             currentHP = 0;
             DeathHandler();
+        } else
+        {
+            playerUI.ShowOnScreenHurt();
         }
     }
 

@@ -70,6 +70,7 @@ public class Wand : Gun_Base
     public override void Fire()
     {
         analyticalLazer.SetActive(true);
+        audioSource.Play();
         base.Fire();
         firing = true;
         startTime = Time.time;
@@ -83,5 +84,6 @@ public class Wand : Gun_Base
         shooterController.ShowWandBeam(null);
         countTime = false;
         firing = false;
+        audioSource.Stop();
     }
 }

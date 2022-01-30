@@ -255,7 +255,16 @@ public class Boss : MonoBehaviour
 
     private void BossDeathHandler()
     {
+        StartCoroutine(BossDeathCoroutine());
+    }
+
+    private IEnumerator BossDeathCoroutine()
+    {
         animator.SetBool("Death", true);
+        yield return new WaitForSeconds(0.4f);
+        bossSFX.PlayDieSound();
+        yield return new WaitForSeconds(4);
+        Destroy(gameObject);
     }
 
     #region RPC Function
@@ -266,8 +275,8 @@ public class Boss : MonoBehaviour
         bossHP = weakSpotsArray.Length - destroyedWeakSpotCounter;
         LevelManager_BossFight manager_BossFight = (LevelManager_BossFight)levelManager;
         manager_BossFight.UpdatePlayerUIWeakSpot(bossHP);
-        if (destroyedWeakSpotCounter >= weakSpotsArray.Length)
-            //if (destroyedWeakSpotCounter >= 3)
+        //if (destroyedWeakSpotCounter >= weakSpotsArray.Length)
+        if (destroyedWeakSpotCounter >= 1)
         {
             BossDeathHandler();
         }

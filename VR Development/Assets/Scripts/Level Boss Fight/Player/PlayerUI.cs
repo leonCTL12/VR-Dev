@@ -40,9 +40,15 @@ public class PlayerUI : MonoBehaviour
         if (show)
         {
             animator.SetTrigger("Death");
+            Debug.Log("In show death panel");
         } else
         {
             animator.SetTrigger("Respawn");
         }
+    }
+
+    public void ShowOnScreenHurt()
+    {
+        animator.SetTrigger("Hurt");
     }
 }

@@ -40,6 +40,7 @@ public class WeakSpotGun : Gun_Base
 
         bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
         gunShotParticle.Play();
+        audioSource.Play();
     }
 
 }
