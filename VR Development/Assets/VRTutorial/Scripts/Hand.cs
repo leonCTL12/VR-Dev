@@ -81,6 +81,7 @@ public class Hand : MonoBehaviour
     internal void SetTrigger(float v)
     {
         triggerTarget = v;
+        Debug.Log("Trigger value = " + v);
     }
 
     void AnimateHand()

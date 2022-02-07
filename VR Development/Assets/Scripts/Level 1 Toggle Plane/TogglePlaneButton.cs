@@ -29,7 +29,7 @@ public class TogglePlaneButton : InteractableObject
     public override void VoidInteract()
     {
         base.VoidInteract();
-        if(!playerInRange) { return; }
+        //if(!playerInRange) { return; } //do range checking later VR no need range change
 
         manager.Trigger_ChangePlaneState();
         audioSource.Play();

@@ -62,7 +62,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
 
     public virtual void SpawnPhotonObjects(InputDeviceType InputDeviceType)
     {
-        if (InputDeviceType == InputDeviceType.PC)
+        if (InputDeviceType == InputDeviceType.PC && false)
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
