@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea0b16cc14b52c4f96386be2db2db81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 0
+  animationSpeed: 10
   followObject: {fileID: 2683729942465866673}
   followSpeed: 30
   rotateSpeed: 100
@@ -860,8 +860,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.2
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 90
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea0b16cc14b52c4f96386be2db2db81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 0
+  animationSpeed: 10
   followObject: {fileID: 2683729941340532184}
   followSpeed: 30
   rotateSpeed: 100

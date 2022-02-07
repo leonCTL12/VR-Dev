@@ -16,7 +16,7 @@ public class Hand : MonoBehaviour
     private string animatorGripParam = "Grip";
     private string animatorTriggerParam = "Trigger";
     [SerializeField]
-    private float animationSpeed;
+    private float animationSpeed = 10;
 
     //Physics Movement
     [SerializeField]
@@ -76,6 +76,7 @@ public class Hand : MonoBehaviour
     internal void SetGrip(float v)
     {
         gripTarget = v;
+        Debug.Log("Grip value = " + v);
     }
 
     internal void SetTrigger(float v)
@@ -90,6 +91,7 @@ public class Hand : MonoBehaviour
         {
             gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * animationSpeed);
             animator.SetFloat(animatorGripParam, gripCurrent);
+            Debug.Log("Setting Float in grip");
         }
         if (triggerCurrent != triggerTarget)
         {

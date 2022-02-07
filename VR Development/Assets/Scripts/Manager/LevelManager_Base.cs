@@ -15,7 +15,11 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     [SerializeField]
     private string[] actionMapNameList;
     [SerializeField]
-    private string playerPrefabName;
+    private string PCPlayerPrefabName;
+    [SerializeField]
+    private string VRPlayerPrefabName;
+    [SerializeField]
+    private bool dontSpawnObject;
 
     public PlayerController_Base currentPlayer;
     public PlayerController_Base partnerPlayer;
@@ -57,24 +61,26 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
 
     public virtual void SpawnPhotonObjects()
     {
-        //if (InputDeviceType == InputDeviceType.PC)
-        //{
-        //    Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
-        //    //add a random offset to prevent two player's collider clash and stick together
-        //    spawnedPlayer = PhotonNetwork.Instantiate(playerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
-        //    //spawnedPlayer.transform.parent = playersContainer.transform;
-        //    currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
-        //    spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
-        //}
+       if(dontSpawnObject) { return; }
+        if (SystemInfo.deviceType.ToString() == "Desktop")
+        {
+            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+            //add a random offset to prevent two player's collider clash and stick together
+            spawnedPlayer = PhotonNetwork.Instantiate(PCPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+            //spawnedPlayer.transform.parent = playersContainer.transform;
+            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
+        }
+        if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
+        {
+            //Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+            ////add a random offset to prevent two player's collider clash and stick together
+            //spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+            ////spawnedPlayer.transform.parent = playersContainer.transform;
+            //currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+        }
 
-
-        //Try to put all controls (VR, PC, Mobile) into one prefab
-        Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
-        //add a random offset to prevent two player's collider clash and stick together
-        spawnedPlayer = PhotonNetwork.Instantiate(playerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
-        //spawnedPlayer.transform.parent = playersContainer.transform;
-        currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
-        spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
+       
     }
 
     public virtual void InitialiseLevel() //inherit
