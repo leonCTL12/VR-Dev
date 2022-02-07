@@ -9,9 +9,9 @@ public class LevelManager_BossFight : LevelManager_Base
     private string bossPrefabName;
     [SerializeField]
     private Transform bossSpawnPoint;
-    public override void SpawnPhotonObjects(InputDeviceType InputDeviceType)
+    public override void SpawnPhotonObjects()
     {
-        base.SpawnPhotonObjects(InputDeviceType);
+        base.SpawnPhotonObjects();
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Instantiate(bossPrefabName, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);

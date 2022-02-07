@@ -29,11 +29,6 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         set { _instance = value; }
     }
 
-    public enum InputDeviceType
-    {
-        PC, VR, mobile
-    }
-
     private void Awake()
     {
         if (Instance != null)
@@ -60,17 +55,26 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         }
     }
 
-    public virtual void SpawnPhotonObjects(InputDeviceType InputDeviceType)
+    public virtual void SpawnPhotonObjects()
     {
-        if (InputDeviceType == InputDeviceType.PC && false)
-        {
-            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
-            //add a random offset to prevent two player's collider clash and stick together
-            spawnedPlayer = PhotonNetwork.Instantiate(playerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
-            //spawnedPlayer.transform.parent = playersContainer.transform;
-            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
-            spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
-        }
+        //if (InputDeviceType == InputDeviceType.PC)
+        //{
+        //    Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+        //    //add a random offset to prevent two player's collider clash and stick together
+        //    spawnedPlayer = PhotonNetwork.Instantiate(playerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+        //    //spawnedPlayer.transform.parent = playersContainer.transform;
+        //    currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+        //    spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
+        //}
+
+
+        //Try to put all controls (VR, PC, Mobile) into one prefab
+        Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+        //add a random offset to prevent two player's collider clash and stick together
+        spawnedPlayer = PhotonNetwork.Instantiate(playerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+        //spawnedPlayer.transform.parent = playersContainer.transform;
+        currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+        spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
     }
 
     public virtual void InitialiseLevel() //inherit

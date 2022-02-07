@@ -43,33 +43,8 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log("Joined Room");
-        LevelManager_Base.InputDeviceType device;
-
-        switch(SystemInfo.deviceType.ToString())
-        {
-            case "Desktop":
-                device = LevelManager_Base.InputDeviceType.PC;
-                break;
-            case "Handheld":
-                device = LevelManager_Base.InputDeviceType.VR;
-                break;
-            default:
-                device = LevelManager_Base.InputDeviceType.PC;
-                break;
-
-        }
-        if (SystemInfo.deviceType.ToString() == "Desktop")
-        {
-            levelManager.SpawnPhotonObjects(device);
-        }
-        if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
-        {
-            //Reference
-            //spawnedPlayer = PhotonNetwork.Instantiate("XR Rig", transform.position, transform.rotation);
-            //spawnedPlayer.GetComponent<CameraController>().CameraOn();
-
-            //TODO: Spawn VR Player Controller
-        }
+       
+        levelManager.SpawnPhotonObjects();
 
         if(!PhotonNetwork.IsMasterClient)
         {

@@ -382,6 +382,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""be93db16-d149-45e4-8fa6-ac346c32db5c"",
+                    ""path"": ""<OculusTouchController>{RightHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ff43b461-b9c1-490a-8442-71f3595125b8"",
                     ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
