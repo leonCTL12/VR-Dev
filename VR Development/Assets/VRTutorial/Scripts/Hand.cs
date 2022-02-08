@@ -76,14 +76,12 @@ public class Hand : MonoBehaviour
     internal void SetGrip(float v)
     {
         gripTarget = v;
-        Debug.Log("Grip value = " + v);
     }
 
     internal void SetTrigger(float v)
     {
         triggerTarget = v;
-        Debug.Log("Trigger value = " + v);
-    }
+    }   
 
     void AnimateHand()
     {
@@ -91,7 +89,6 @@ public class Hand : MonoBehaviour
         {
             gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * animationSpeed);
             animator.SetFloat(animatorGripParam, gripCurrent);
-            Debug.Log("Setting Float in grip");
         }
         if (triggerCurrent != triggerTarget)
         {

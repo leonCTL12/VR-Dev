@@ -20,6 +20,8 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     private string VRPlayerPrefabName;
     [SerializeField]
     private bool dontSpawnObject;
+    [SerializeField]
+    private bool forceSpawnVR;
 
     public PlayerController_Base currentPlayer;
     public PlayerController_Base partnerPlayer;
@@ -61,7 +63,18 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
 
     public virtual void SpawnPhotonObjects()
     {
-       if(dontSpawnObject) { return; }
+        #region Temp Code
+        if (dontSpawnObject) { return; }
+        if(forceSpawnVR)
+        {
+            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+            //add a random offset to prevent two player's collider clash and stick together
+            spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+            //spawnedPlayer.transform.parent = playersContainer.transform;
+            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            return;
+        }
+        #endregion
         if (SystemInfo.deviceType.ToString() == "Desktop")
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
@@ -73,11 +86,11 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         }
         if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
         {
-            //Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
-            ////add a random offset to prevent two player's collider clash and stick together
-            //spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
-            ////spawnedPlayer.transform.parent = playersContainer.transform;
-            //currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+            //add a random offset to prevent two player's collider clash and stick together
+            spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+            //spawnedPlayer.transform.parent = playersContainer.transform;
+            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
         }
 
        

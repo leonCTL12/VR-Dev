@@ -22,6 +22,7 @@ public class PlayerController_Base: MonoBehaviour
     protected Camera fpsCam;
     [SerializeField]
     private GameObject sightUI;
+
     //TODO: hook up with setting
     [SerializeField]
     private bool gamePadMode = false;
@@ -78,23 +79,23 @@ public class PlayerController_Base: MonoBehaviour
         photonView = GetComponent<PhotonView>();
         audioSource = GetComponent<AudioSource>();
     }
-    private void PlayerControlSetting()
+    private void SetGameObjectActiveState()
     {
         isMine = photonView.IsMine;
         player3rdPersonModel.SetActive(!isMine);
         player3rdPersonSkeleton.SetActive(!isMine);
-        player1stPersonModel.SetActive(isMine);
-        //player3rdPersonModel.SetActive(true); //for animation testing
+        
         fpsCam.gameObject.SetActive(isMine);
+        player1stPersonModel.SetActive(isMine);
         GetComponent<PlayerInput>().enabled = isMine;
+        PCInputDeviceChange(!gamePadMode);
+
         this.enabled = isMine;
     }
 
     protected virtual void Start()
     {
-        PlayerControlSetting();
-
-        PCInputDeviceChange(!gamePadMode);
+        SetGameObjectActiveState();
         InputSystem.onDeviceChange += (device, change) =>
         {
             switch (change)
@@ -128,9 +129,7 @@ public class PlayerController_Base: MonoBehaviour
     private void Update()
     {
         JumpingAndGravityHandler();
-
         MovementHandler();
-
         LookHandler();
     }
 
@@ -222,9 +221,10 @@ public class PlayerController_Base: MonoBehaviour
         {
             velocity.y = -2f; //work better, coz maybe player is ground but still dropping.
         }
-
+        Debug.Log("Jump: " + jumping + "is grounded: " + isGrounded);
         if (jumping && isGrounded)
         {
+            Debug.Log("in the mid air");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumping = false;
         }

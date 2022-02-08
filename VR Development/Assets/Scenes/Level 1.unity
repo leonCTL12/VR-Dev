@@ -3663,7 +3663,8 @@ MonoBehaviour:
   - Player_SeperateHandInteract
   PCPlayerPrefabName: PC First Person Player (Base)
   VRPlayerPrefabName: XR Rig With Physics Hand (Level 1)
-  dontSpawnObject: 1
+  dontSpawnObject: 0
+  forceSpawnVR: 1
   currentPlayer: {fileID: 0}
   partnerPlayer: {fileID: 0}
 --- !u!1 &256949006 stripped
@@ -11487,63 +11488,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 493956, guid: ad4dfe1ea448bb849be9e911a68dce43, type: 3}
   m_PrefabInstance: {fileID: 773649190}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &775615939
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996857, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683729941435996862, guid: 97a9536e7e815db47855602f166a625b, type: 3}
-      propertyPath: m_Name
-      value: XR Rig With Physics Hand (Level 1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 97a9536e7e815db47855602f166a625b, type: 3}
 --- !u!1001 &775630756
 PrefabInstance:
   m_ObjectHideFlags: 0
