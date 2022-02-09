@@ -11,8 +11,6 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     protected CharacterController characterController;
     [SerializeField]
-    private Animator playerAnimator;
-    [SerializeField]
     private GameObject player3rdPersonModel;
     [SerializeField]
     private GameObject player3rdPersonSkeleton;
@@ -22,6 +20,7 @@ public class PlayerController_Base: MonoBehaviour
     protected Camera fpsCam;
     [SerializeField]
     private GameObject sightUI;
+    private ThirdPersonPresenter_Base presenter_base;
 
     //TODO: hook up with setting
     [SerializeField]
@@ -36,15 +35,6 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     private float speed;
     private Vector2 walkInput;
-
-    //Walk Animator
-    [SerializeField]
-    private float animator_moveSpeed;
-    [SerializeField]
-    private float animator_speedChangeRate;
-    private float animator_speed;
-    private float _animationBlend;
-
 
     //Jump and Gravity
     [SerializeField]
@@ -78,6 +68,7 @@ public class PlayerController_Base: MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
         audioSource = GetComponent<AudioSource>();
+        presenter_base = GetComponent<ThirdPersonPresenter_Base>();
     }
     private void SetGameObjectActiveState()
     {
@@ -176,34 +167,8 @@ public class PlayerController_Base: MonoBehaviour
         }
 
         //animation
-        float targetSpeed = animator_moveSpeed;
-
-        if (move == Vector3.zero)
-        {
-            targetSpeed = 0f;
-        }
-
-        // a reference to the players current horizontal velocity
         float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;
-        float speedOffset = 0.1f;
-        float inputMagnitude = 1f;
-
-        if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-        {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
-            animator_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * animator_speedChangeRate);
-
-            // round speed to 3 decimal places
-            animator_speed = Mathf.Round(animator_speed * 1000f) / 1000f;
-        }
-        else
-        {
-            animator_speed = targetSpeed;
-        }
-        _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * animator_speedChangeRate);
-        playerAnimator.SetFloat("Speed", _animationBlend);
-        playerAnimator.SetFloat("MotionSpeed", inputMagnitude);
+        presenter_base.Movement(move, currentHorizontalSpeed);
     }
 
     private void JumpingAndGravityHandler()
@@ -215,7 +180,7 @@ public class PlayerController_Base: MonoBehaviour
             return;
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        playerAnimator.SetBool("Grounded", isGrounded);
+        presenter_base.Ground(isGrounded);
 
         if (isGrounded && velocity.y < 0) //velocity.y < 0 = still falling
         {
@@ -249,8 +214,7 @@ public class PlayerController_Base: MonoBehaviour
         {
             jumping = false;
         }
-        playerAnimator.SetBool("Jump", jumping);
-
+        presenter_base.Jump(jumping);
     }
 
     public void Move(InputAction.CallbackContext context)

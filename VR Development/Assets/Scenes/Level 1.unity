@@ -3664,7 +3664,7 @@ MonoBehaviour:
   PCPlayerPrefabName: PC First Person Player (Base)
   VRPlayerPrefabName: XR Rig With Physics Hand (Level 1)
   dontSpawnObject: 0
-  forceSpawnVR: 1
+  forceSpawnVR: 0
   currentPlayer: {fileID: 0}
   partnerPlayer: {fileID: 0}
 --- !u!1 &256949006 stripped
