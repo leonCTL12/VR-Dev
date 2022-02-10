@@ -64,7 +64,7 @@ public class PlayerController_Base: MonoBehaviour
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         photonView = GetComponent<PhotonView>();
         audioSource = GetComponent<AudioSource>();
@@ -72,6 +72,7 @@ public class PlayerController_Base: MonoBehaviour
     }
     private void SetGameObjectActiveState()
     {
+        Debug.Log("Photon Null: " + photonView == null);
         isMine = photonView.IsMine;
         player3rdPersonModel.SetActive(!isMine);
         player3rdPersonSkeleton.SetActive(!isMine);
@@ -116,8 +117,7 @@ public class PlayerController_Base: MonoBehaviour
         sightUI.SetActive(keyboardUI);
     }
 
-
-    private void Update()
+    protected virtual void Update()
     {
         JumpingAndGravityHandler();
         MovementHandler();
@@ -269,26 +269,4 @@ public class PlayerController_Base: MonoBehaviour
             rotationInputY = 0f;
         }
     }
-    
-    public void DeathHandler(Transform spawnPoint)
-    {
-
-        characterController.enabled = false;
-        transform.position = spawnPoint.position;
-        characterController.enabled = true;
-    }
-
-    public void Teleport(Transform destination, Transform cameraTransform = null)
-    {
-        characterController.enabled = false;
-        transform.position = destination.position;
-        transform.rotation = destination.rotation;
-        if (cameraTransform != null)
-        {
-           Debug.Log("camera transform detected");
-           cameraTransform.rotation = cameraTransform.rotation; //for gamepad
-        }
-        characterController.enabled = true;
-    }
-
 }

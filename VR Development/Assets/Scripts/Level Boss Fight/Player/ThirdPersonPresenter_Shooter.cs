@@ -26,14 +26,14 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
 
     #region general
     private PhotonView photonView;
-    private PlayerStatus status;
+    private Player_BossFight player;
     #endregion 
 
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
         thirdPersonWandBeam.SetActive(false);
-        status = GetComponent<PlayerStatus>();
+        player = GetComponent<Player_BossFight>();
     }
 
     public void ShowCorrectWeapon(bool gunUser)
@@ -102,7 +102,7 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
     private void ShowResurrection_Sync()
     {
         //1st person logic for resurrection
-        status.ResurrectionHandler();
+        player.ResurrectionHandler();
     }
     #endregion
 

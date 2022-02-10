@@ -3661,7 +3661,7 @@ MonoBehaviour:
   actionMapNameList:
   - Player_Interact
   - Player_SeperateHandInteract
-  PCPlayerPrefabName: PC First Person Player (Base)
+  PCPlayerPrefabName: PC First Person Player (Puzzle)
   VRPlayerPrefabName: XR Rig With Physics Hand (Level 1)
   dontSpawnObject: 0
   forceSpawnVR: 0

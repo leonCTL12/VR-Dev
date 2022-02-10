@@ -21,6 +21,6 @@ public class LevelManager_BossFight : LevelManager_Base
     public void UpdatePlayerUIWeakSpot(int index)
     {
         //handle current player only, coz partner player's level manager will handle theirs
-        currentPlayer.GetComponent<PlayerStatus>().playerUI.DisableWeakSpot(index);
+        currentPlayer.GetComponent<Player_BossFight>().playerUI.DisableWeakSpot(index);
     }
 }

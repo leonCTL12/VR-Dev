@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class LevelManager_Base : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private GameObject spawnPoint;
+    protected GameObject spawnPoint;
 
     [SerializeField]
     private int level;
@@ -23,8 +23,8 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     [SerializeField]
     private bool forceSpawnVR;
 
-    public PlayerController_Base currentPlayer;
-    public PlayerController_Base partnerPlayer;
+    public GameObject currentPlayer;
+    public GameObject partnerPlayer;
     private GameObject spawnedPlayer;
 
     private static LevelManager_Base _instance;
@@ -50,17 +50,6 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     {
     }
 
-    public void DeathHandling(bool isPartnerPlayer)
-    {
-        if(isPartnerPlayer)
-        {
-            //Do Nothing for now, coz photon transform view auto sync player's position
-        } else
-        {
-            currentPlayer.DeathHandler(spawnPoint.transform);
-        }
-    }
-
     public virtual void SpawnPhotonObjects()
     {
         #region Temp Code
@@ -71,7 +60,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             //add a random offset to prevent two player's collider clash and stick together
             spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
-            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            currentPlayer = spawnedPlayer;
             return;
         }
         #endregion
@@ -81,19 +70,18 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             //add a random offset to prevent two player's collider clash and stick together
             spawnedPlayer = PhotonNetwork.Instantiate(PCPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
-            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            currentPlayer = spawnedPlayer;
             spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
         }
+
         if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
             spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
-            currentPlayer = spawnedPlayer.GetComponent<PlayerController_Base>();
+            currentPlayer = spawnedPlayer;
         }
-
-       
     }
 
     public virtual void InitialiseLevel() //inherit
@@ -111,15 +99,9 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         {
             if (!go.GetComponent<PhotonView>().IsMine)
             {
-                partnerPlayer = go.GetComponent<PlayerController_Base>();
-                Debug.Log("partner found!");
+                partnerPlayer = go;
             }
         }
-    }
-
-    public void TeleportPlayerTo(Transform destination, Transform cameraTransform) 
-    {
-        currentPlayer.Teleport(destination, cameraTransform);
     }
 
     [PunRPC]

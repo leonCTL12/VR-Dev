@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8864449143726423534}
   - component: {fileID: 7024047714428237165}
   - component: {fileID: 99908739416458321}
-  - component: {fileID: 2572785337429341430}
+  - component: {fileID: 8696404134036544334}
   - component: {fileID: 4753974116912835155}
   - component: {fileID: 6613074390642235187}
   - component: {fileID: 32983986503595819}
@@ -113,7 +113,7 @@ MonoBehaviour:
     m_ActionName: Player_TPGun/Shoot[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Puzzle, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Interact[/Mouse/leftButton,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationY
         m_Mode: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Rotation Y[/Mouse/delta/y,/XInputControllerWindows/rightStick/y]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationX
         m_Mode: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Rotation X[/Mouse/delta/x,/XInputControllerWindows/rightStick/x]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_ActionName: Player_Base/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
     m_ActionName: Player_SeperateHand/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationX
         m_Mode: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
     m_ActionName: Player_SeperateHand/Rotation X[/Mouse/delta/x]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: LookRotationY
         m_Mode: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
     m_ActionName: Player_SeperateHand/Rotation Y[/Mouse/delta/y]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Puzzle, Assembly-CSharp
         m_MethodName: Interact_L
         m_Mode: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
     m_ActionName: Player_SeperateHand/Interact_L[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Puzzle, Assembly-CSharp
         m_MethodName: Interact_R
         m_Mode: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
     m_ActionName: Player_SeperateHand/Interact_R[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572785337429341430}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController_Base, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2572785337429341430
+--- !u!114 &8696404134036544334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 423348268188405572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a49dc405880b124ea9daee650c89f0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9e44603b725054e9b19208ac905b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 642851140783680578}
@@ -383,11 +383,6 @@ MonoBehaviour:
   mouseSensitivity: 30
   gamepadSensitivity: 200
   cameraTransform: {fileID: 8264216507431341333}
-  leftHand: {fileID: 5536719435465971176}
-  rightHand: {fileID: 6824229969460591731}
-  firstPersonElectricShockParticles: {fileID: 7960536222531037436}
-  thirdPersonElectricShockParticles: {fileID: 7701658371251937332}
-  paralysisSec: 1
 --- !u!82 &4753974116912835155
 AudioSource:
   m_ObjectHideFlags: 0
@@ -541,7 +536,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: 0
+  photonMicrophoneDeviceId: -1
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -1335,11 +1330,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
---- !u!1 &5536719435465971176 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
-  m_PrefabInstance: {fileID: 4618170027609057465}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5160474612009733970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
@@ -1407,11 +1397,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
---- !u!1 &6824229969460591731 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
-  m_PrefabInstance: {fileID: 5941902475384111394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6196770210271569609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}

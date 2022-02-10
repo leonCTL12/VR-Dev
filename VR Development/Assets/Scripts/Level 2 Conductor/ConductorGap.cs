@@ -15,8 +15,8 @@ public class ConductorGap : InteractableObject
     [SerializeField]
     private Transform cameraFixPoint;
     private Animator rightHandAnimator;
-    private LevelManager_Base levelManager;
-    public PlayerController_Puzzle currentGripPlayer;
+    private LevelManager_Puzzle levelManager;
+    public Player_Puzzle currentGripPlayer;
 
     public bool gapClosed = false;
     private bool rightHandGripped = false;
@@ -32,7 +32,7 @@ public class ConductorGap : InteractableObject
 
     private void Start()
     {
-        levelManager = LevelManager_Base.Instance;
+        levelManager = (LevelManager_Puzzle)LevelManager_Base.Instance;
     }
 
     public override void Interact_R()
@@ -41,7 +41,7 @@ public class ConductorGap : InteractableObject
         if (!playerInRange) { return; }
         levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
         photonView.RPC("Interact_Sync", RpcTarget.All, true, true);
-        currentGripPlayer = (PlayerController_Puzzle)levelManager.currentPlayer;
+        currentGripPlayer = levelManager.currentPlayer.GetComponent<Player_Puzzle>();
     }
 
     public override void Cancel_R()
@@ -58,7 +58,7 @@ public class ConductorGap : InteractableObject
         if (!playerInRange) { return; }
         levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
         photonView.RPC("Interact_Sync", RpcTarget.All, false, true);
-        currentGripPlayer = (PlayerController_Puzzle)levelManager.currentPlayer;
+        currentGripPlayer = levelManager.currentPlayer.GetComponent<Player_Puzzle>();
     }
 
   

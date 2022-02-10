@@ -1072,6 +1072,30 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &256364803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256364801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3d0ecad0cb64c4883a25cf47199b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 7900733924042111503}
+  level: 1
+  actionMapNameList:
+  - Player_Interact
+  - Player_SeperateHandInteract
+  - Player_Shooter
+  PCPlayerPrefabName: PC First Person Player (Puzzle)
+  VRPlayerPrefabName: 
+  dontSpawnObject: 0
+  forceSpawnVR: 0
+  currentPlayer: {fileID: 0}
+  partnerPlayer: {fileID: 0}
 --- !u!1001 &276470657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7992,6 +8016,10 @@ PrefabInstance:
       value: PC First Person Player (Base)
       objectReference: {fileID: 0}
     - target: {fileID: 1757016689, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
+      propertyPath: PCPlayerPrefabName
+      value: PC First Person Player (Puzzle)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757016689, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
       propertyPath: actionMapNameList.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -8103,8 +8131,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1757016689, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
+--- !u!1 &7900733924042111503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7900733924190665668, guid: 5471fef8785e62e409393c51f04f5de9, type: 3}
+  m_PrefabInstance: {fileID: 7900733924042111502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8316452173872522631
 PrefabInstance:
   m_ObjectHideFlags: 0

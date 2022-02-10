@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class LevelManager_TogglePlane : LevelManager_Base
+public class LevelManager_TogglePlane : LevelManager_Puzzle
 {
     private TogglePlanesManager togglePlanesManager;
 

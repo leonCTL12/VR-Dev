@@ -146,7 +146,7 @@ public class Boss : MonoBehaviour
 
     private void CheckDeathSwitchTarget()
     {
-        if (currentTarget.GetComponent<PlayerStatus>().waitingForResurrection && levelManager.partnerPlayer!=null)
+        if (currentTarget.GetComponent<Player_BossFight>().waitingForResurrection && levelManager.partnerPlayer!=null)
         {
             currentTarget = (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer) ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
             Debug.Log("Switch Target! Now the player is partner player: " + (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer));

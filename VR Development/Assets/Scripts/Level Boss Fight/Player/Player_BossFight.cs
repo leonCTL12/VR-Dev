@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-public class PlayerStatus : MonoBehaviour
+public class Player_BossFight : MonoBehaviour
 {
     [SerializeField]
     private float maxHP; //use float so that the division can return a float

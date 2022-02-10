@@ -10,10 +10,7 @@ public class PlayerController_Puzzle : PlayerController_Base
     private GameObject leftHand;
     [SerializeField]
     private GameObject rightHand;
-    [SerializeField]
-    private GameObject firstPersonElectricShockParticles, thirdPersonElectricShockParticles;
-    [SerializeField]
-    private float paralysisSec;
+  
 
     private GameObject currentTriggerCollisionGO;
     private bool leftHandReleased;
@@ -21,10 +18,17 @@ public class PlayerController_Puzzle : PlayerController_Base
 
     private InteractableObject currentInteractableObject;
 
-    private bool interactable = true;
+    private Player_Puzzle player_puzzle;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        player_puzzle = GetComponent<Player_Puzzle>();
+    }
+
     public void Interact(InputAction.CallbackContext context)
     {
-        if (currentTriggerCollisionGO == null || !interactable) { return; } //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !player_puzzle.interactable) { return; } //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -71,7 +75,7 @@ public class PlayerController_Puzzle : PlayerController_Base
     }
     public void Interact_R(InputAction.CallbackContext context)
     {
-        if (currentTriggerCollisionGO == null || !interactable) { return;} //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !player_puzzle.interactable) { return;} //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -113,7 +117,7 @@ public class PlayerController_Puzzle : PlayerController_Base
         } else if (context.canceled)
         {
             Debug.Log("cancel input");
-            if (currentTriggerCollisionGO != null && currentInteractableObject != null && interactable)
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null && player_puzzle.interactable)
             {
                 currentInteractableObject.Cancel_R();
                 rightHand.SetActive(true);
@@ -133,13 +137,13 @@ public class PlayerController_Puzzle : PlayerController_Base
         rightHand.SetActive(true);
         leftHandReleased = true;
         rightHandReleased = true;
-        interactable = true;
+        player_puzzle.interactable = true;
         moveable = true;
     }
 
     public void Interact_L(InputAction.CallbackContext context) //I have to separate L and R interact into two functions even if they are similar, because input system cannot take parameters to distinguish left and right 
     {
-        if (currentTriggerCollisionGO == null || !interactable) { return; } //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !player_puzzle.interactable) { return; } //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -180,7 +184,7 @@ public class PlayerController_Puzzle : PlayerController_Base
         }
         else if (context.canceled)
         {
-            if (currentTriggerCollisionGO != null && currentInteractableObject != null && interactable)
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null && player_puzzle.interactable)
             {
                 currentInteractableObject.Cancel_L();
                 leftHand.SetActive(true);
@@ -191,37 +195,9 @@ public class PlayerController_Puzzle : PlayerController_Base
         moveable = rightHandReleased && leftHandReleased;
     }
 
-    public IEnumerator ParalyseForSeconds(InteractableObject interactableObj)
-    {
-        interactable = false;
-        firstPersonElectricShockParticles.SetActive(true);
-        audioSource.Play();
-        yield return new WaitForSeconds(paralysisSec);
-        audioSource.Stop();
-        interactable = true;
-        firstPersonElectricShockParticles.SetActive(false);
-        thirdPersonElectricShockParticles.SetActive(false);
-        CancelAction(interactableObj);
-    }
+   
 
-    public void ShowThirdPersonParalysisFX()
-    {
-        photonView.RPC("ShowThirdPersonParalysisFX_Sync", RpcTarget.Others);
-    }
 
-    [PunRPC]
-    private void ShowThirdPersonParalysisFX_Sync()
-    {
-        StartCoroutine(ThirdPersonParalysisFX());
-    }
-
-    private IEnumerator ThirdPersonParalysisFX()
-    {
-        thirdPersonElectricShockParticles.SetActive(true);
-        audioSource.Play();
-        yield return new WaitForSeconds(paralysisSec);
-        thirdPersonElectricShockParticles.SetActive(false);
-        audioSource.Stop();
-    }
+    
 
 }
