@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class VRController_Base : MonoBehaviour
 {
@@ -30,14 +31,47 @@ public class VRController_Base : MonoBehaviour
     private InputActionReference walkActionReference;
     #endregion
 
+    #region Multiplayer
+    private PhotonView photonView;
+    private bool isMine;
+    [SerializeField]
+    private GameObject player3rdPersonGeometry;
+    [SerializeField]
+    private GameObject player3rdPersonSkeleton; //It is for boss fight gun display
+    [SerializeField]
+    private Camera VRCamera;
+    [SerializeField]
+    private GameObject player1stPersonModel;
+    #endregion
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         presenter_base = GetComponent<ThirdPersonPresenter_Base>();
+        photonView = GetComponent<PhotonView>();
         jumpActionReference.action.started += OnJump;
         jumpActionReference.action.canceled += OnJump;
         walkActionReference.action.performed += Move;
         walkActionReference.action.canceled += Move;
+    }
+
+    private void SetGameObjectActiveState()
+    {
+        Debug.Log("Photon Null: " + photonView == null);
+        isMine = photonView.IsMine;
+        player3rdPersonGeometry.SetActive(!isMine);
+        //TODO: come back at boss level
+        //player3rdPersonSkeleton.SetActive(!isMine);
+
+        VRCamera.gameObject.SetActive(isMine);
+        player1stPersonModel.SetActive(isMine);
+
+        this.enabled = isMine;
+    }
+
+    private void Start()
+    {
+        SetGameObjectActiveState();
     }
 
     private void Update()
@@ -61,10 +95,8 @@ public class VRController_Base : MonoBehaviour
         {
             velocity.y = -2f; //work better, coz maybe player is ground but still dropping.
         }
-        Debug.Log("Jump: " + jumping + "; is grounded: " + isGrounded);
         if (jumping && isGrounded)
         {
-            Debug.Log("in the mid air");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumping = false;
         }

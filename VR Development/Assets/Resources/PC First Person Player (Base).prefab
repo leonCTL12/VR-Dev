@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 642851140783680578}
-  player3rdPersonModel: {fileID: 339806727919055114}
+  player3rdPersonGeometry: {fileID: 339806727919055114}
   player3rdPersonSkeleton: {fileID: 7185785810889999606}
   player1stPersonModel: {fileID: 7136435847043561257}
   fpsCam: {fileID: 1593585684729707950}
@@ -536,7 +536,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0

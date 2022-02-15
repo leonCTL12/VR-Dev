@@ -11,9 +11,9 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     protected CharacterController characterController;
     [SerializeField]
-    private GameObject player3rdPersonModel;
+    private GameObject player3rdPersonGeometry;
     [SerializeField]
-    private GameObject player3rdPersonSkeleton;
+    private GameObject player3rdPersonSkeleton; //It is for boss fight gun display
     [SerializeField]
     private GameObject player1stPersonModel;
     [SerializeField]
@@ -74,7 +74,7 @@ public class PlayerController_Base: MonoBehaviour
     {
         Debug.Log("Photon Null: " + photonView == null);
         isMine = photonView.IsMine;
-        player3rdPersonModel.SetActive(!isMine);
+        player3rdPersonGeometry.SetActive(!isMine);
         player3rdPersonSkeleton.SetActive(!isMine);
         
         fpsCam.gameObject.SetActive(isMine);
