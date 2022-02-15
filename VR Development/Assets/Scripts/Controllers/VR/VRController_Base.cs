@@ -22,16 +22,31 @@ public class VRController_Base : MonoBehaviour
     private bool jumping = false;
 
     private CharacterController characterController;
-    private ThirdPersonPresenter_Base presenter_Base;
+
+    #region WalkInput
+    private ThirdPersonPresenter_Base presenter_base;
+    private Vector2 walkInput;
+    [SerializeField]
+    private InputActionReference walkActionReference;
+    #endregion
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        presenter_Base = GetComponent<ThirdPersonPresenter_Base>();
+        presenter_base = GetComponent<ThirdPersonPresenter_Base>();
         jumpActionReference.action.started += OnJump;
+        jumpActionReference.action.canceled += OnJump;
+        walkActionReference.action.performed += Move;
+        walkActionReference.action.canceled += Move;
     }
 
     private void Update()
+    {
+        MovementAniamtionHandler();
+        JumpingAndGravityHandler();
+    }
+
+    private void JumpingAndGravityHandler()
     {
         //if (!isMine) { return; }  //add to prevent it to improve efficiency
         //if (!moveable)
@@ -40,7 +55,7 @@ public class VRController_Base : MonoBehaviour
         //    return;
         //}
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        presenter_Base.Ground(isGrounded);
+        presenter_base.Ground(isGrounded);
 
         if (isGrounded && velocity.y < 0) //velocity.y < 0 = still falling
         {
@@ -59,6 +74,16 @@ public class VRController_Base : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime); //multiply Time.deltaTime once more because d = 1/2*g*t^2
     }
 
+    private void MovementAniamtionHandler()
+    {
+        Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
+
+        //animation
+        float currentHorizontalSpeed = new Vector3(move.x, 0.0f, move.z).magnitude;
+        presenter_base.Movement(move, currentHorizontalSpeed);
+    }
+
+
     private void OnJump(InputAction.CallbackContext context)
     {
         Debug.Log("In OnJump");
@@ -71,8 +96,26 @@ public class VRController_Base : MonoBehaviour
         {
             jumping = false;
         }
-        presenter_Base.Jump(jumping);
+        presenter_base.Jump(jumping);
     }
 
+    public void Move(InputAction.CallbackContext context)
+    {
+        //TODO: investigate how to deal with movable
+        //if (!moveable)
+        //{
+        //    //Debug.Log("return from not movable");
+        //    return;
+        //}
+        if (context.performed)
+        {
+            walkInput = context.ReadValue<Vector2>();
+            print("Walk input received! " + walkInput);
+        }
+        else if (context.canceled)
+        {
+            walkInput = Vector2.zero;
+        }
+    }
 
 }
