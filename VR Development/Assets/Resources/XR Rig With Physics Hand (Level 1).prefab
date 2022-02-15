@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 981827297697042286}
   - component: {fileID: 871541346340221028}
   - component: {fileID: 8158830926867622973}
+  - component: {fileID: 7360783028419263920}
   m_Layer: 0
   m_Name: XR Rig With Physics Hand (Level 1)
   m_TagString: Player
@@ -983,6 +984,21 @@ MonoBehaviour:
   thirdPersonElectricShockParticles: {fileID: 0}
   paralysisSec: 2
   interactable: 1
+--- !u!114 &7360783028419263920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683729941435996862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c3c3ed933b9ba48a3dd182b8bcc95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator_moveSpeed: 6
+  animator_speedChangeRate: 10
+  animator: {fileID: 1120532795758527362}
 --- !u!1 &2683729941639280876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,7 +3672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8901855821748759721, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8901855821748759714, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
@@ -3665,14 +3681,19 @@ PrefabInstance:
     - {fileID: 8901855821748759717, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
     - {fileID: 8901855821748759715, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
+--- !u!1 &5919720971531535170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8901855821748759721, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
+  m_PrefabInstance: {fileID: 3003527567341957099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6443738955687991800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8125177727820215827, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
   m_PrefabInstance: {fileID: 3003527567341957099}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5919720971531535170 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8901855821748759721, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
+--- !u!95 &1120532795758527362 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2747832169523997801, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
   m_PrefabInstance: {fileID: 3003527567341957099}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6126577737946125020

@@ -22,10 +22,12 @@ public class VRController_Base : MonoBehaviour
     private bool jumping = false;
 
     private CharacterController characterController;
+    private ThirdPersonPresenter_Base presenter_Base;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        presenter_Base = GetComponent<ThirdPersonPresenter_Base>();
         jumpActionReference.action.started += OnJump;
     }
 
@@ -38,7 +40,7 @@ public class VRController_Base : MonoBehaviour
         //    return;
         //}
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        //playerAnimator.SetBool("Grounded", isGrounded);
+        presenter_Base.Ground(isGrounded);
 
         if (isGrounded && velocity.y < 0) //velocity.y < 0 = still falling
         {
@@ -69,6 +71,7 @@ public class VRController_Base : MonoBehaviour
         {
             jumping = false;
         }
+        presenter_Base.Jump(jumping);
     }
 
 
