@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 1543782323025901992}
-  player3rdPersonModel: {fileID: 1815087024206963936}
+  player3rdPersonGeometry: {fileID: 1815087024206963936}
   player3rdPersonSkeleton: {fileID: 9096790196145738012}
   player1stPersonModel: {fileID: 9119497826102207171}
   fpsCam: {fileID: 836207041693870148}
