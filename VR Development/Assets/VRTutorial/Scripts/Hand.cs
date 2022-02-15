@@ -34,6 +34,10 @@ public class Hand : MonoBehaviour
     private Transform _followTarget;
     private Rigidbody _body;
 
+    public bool objectGrip = false;
+    [SerializeField]
+    private float objectGripThreshHold = 0.3f;
+
     void Start()
     {
         // Animation
@@ -76,11 +80,21 @@ public class Hand : MonoBehaviour
     internal void SetGrip(float v)
     {
         gripTarget = v;
+
+        if(gripTarget > objectGripThreshHold && objectGrip)
+        {
+            gripTarget = objectGripThreshHold;
+        }
     }
 
     internal void SetTrigger(float v)
     {
         triggerTarget = v;
+
+        if (triggerTarget > objectGripThreshHold && objectGrip)
+        {
+            triggerTarget = objectGripThreshHold;
+        }
     }   
 
     void AnimateHand()
