@@ -115,4 +115,16 @@ public class Hand : MonoBehaviour
     {
         mesh.enabled = !mesh.enabled;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hand" || other.tag == "Player") return;
+        objectGrip = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Hand" || other.tag == "Player") return;
+        objectGrip = false;
+    }
 }

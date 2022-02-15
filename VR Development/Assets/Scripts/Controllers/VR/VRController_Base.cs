@@ -142,7 +142,6 @@ public class VRController_Base : MonoBehaviour
         if (context.performed)
         {
             walkInput = context.ReadValue<Vector2>();
-            print("Walk input received! " + walkInput);
         }
         else if (context.canceled)
         {
