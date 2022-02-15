@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class LevelManager_Base : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    protected GameObject spawnPoint;
+    public GameObject spawnPoint;
 
     [SerializeField]
     private int level;

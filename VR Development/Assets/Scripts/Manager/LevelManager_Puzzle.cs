@@ -9,7 +9,8 @@ public class LevelManager_Puzzle : LevelManager_Base
         currentPlayer.GetComponent<Player_Puzzle>().Teleport(destination, cameraTransform);
     }
 
-    public void DeathHandling(bool isPartnerPlayer)
+    //unused, maybe remove later
+    public void DeathHandling(bool isPartnerPlayer) 
     {
         if (isPartnerPlayer)
         {

@@ -15,7 +15,8 @@ public class DeathChecker : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            manager.DeathHandling(!other.GetComponent<PlayerController_Base>().isMine);
+            other.GetComponent<Player_Puzzle>().DeathHandler(manager.spawnPoint.transform);
+            
         }
     }
 }
