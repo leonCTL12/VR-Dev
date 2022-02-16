@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WeakSpotsRevealCollider
   - BulletDestroyCollider
+  - Hand
   layers:
   - Default
   - TransparentFX

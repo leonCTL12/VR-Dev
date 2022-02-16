@@ -38,7 +38,7 @@ public class ConductorManager : MonoBehaviour
                     Player_Puzzle player = gap.currentGripPlayer;
                     if (player != null)
                     {
-                        StartCoroutine(player.ParalyseForSeconds(gap));
+                        StartCoroutine(player.ParalyseForSeconds());
                         player.ShowThirdPersonParalysisFX();
                     }
                 }

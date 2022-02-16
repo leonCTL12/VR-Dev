@@ -43,7 +43,7 @@ public class Player_Puzzle : MonoBehaviour
         characterController.enabled = true;
     }
 
-    public IEnumerator ParalyseForSeconds(InteractableObject interactableObj)
+    public IEnumerator ParalyseForSeconds()
     {
         interactable = false;
         firstPersonElectricShockParticles.SetActive(true);
@@ -53,7 +53,6 @@ public class Player_Puzzle : MonoBehaviour
         interactable = true;
         firstPersonElectricShockParticles.SetActive(false);
         thirdPersonElectricShockParticles.SetActive(false);
-        //CancelAction(interactableObj);
     }
 
     [PunRPC]

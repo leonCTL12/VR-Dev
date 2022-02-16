@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 9097025170497861840}
   - component: {fileID: 7243835111123748360}
   - component: {fileID: 4904358374620838125}
-  - component: {fileID: 5217401115619662643}
   m_Layer: 0
-  m_Name: TriggerCollider
+  m_Name: PCTriggerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,34 +58,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: 0
-  leftHand: {fileID: 731633100388395657}
-  rightHand: {fileID: 4137567508827107624}
   playerFixPoint: {fileID: 6648943296265228104}
   cameraFixPoint: {fileID: 399053327804673867}
-  currentGripPlayer: {fileID: 0}
-  gapClosed: 0
---- !u!114 &5217401115619662643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100680350886137593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
+  gap: {fileID: 3585833028399222364}
 --- !u!95 &8266064217962843823
 Animator:
   serializedVersion: 3
@@ -14482,6 +14456,8 @@ GameObject:
   - component: {fileID: 4751080775832482404}
   - component: {fileID: 6374788219442074384}
   - component: {fileID: 2166049025935999968}
+  - component: {fileID: 3585833028399222364}
+  - component: {fileID: 1044286678785760799}
   m_Layer: 0
   m_Name: Conductors with Gap
   m_TagString: Untagged
@@ -14535,6 +14511,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: {fileID: 4904358374620838125}
+--- !u!114 &3585833028399222364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751080775832482407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c03dd7bceab9248b2a3e9381cf8918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 731633100388395657}
+  rightHand: {fileID: 4137567508827107624}
+  gapClosed: 0
+  currentGripPlayer: {fileID: 0}
+--- !u!114 &1044286678785760799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751080775832482407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4751080775834060979
 GameObject:
   m_ObjectHideFlags: 0
@@ -29658,14 +29672,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
---- !u!1 &731633100388395657 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
-  m_PrefabInstance: {fileID: 497121901460346840}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &102624847093379123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+  m_PrefabInstance: {fileID: 497121901460346840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &731633100388395657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
   m_PrefabInstance: {fileID: 497121901460346840}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3867182969220975737
@@ -29741,13 +29755,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
---- !u!1 &4137567508827107624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
-  m_PrefabInstance: {fileID: 3867182969220975737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3611965063774481298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
+  m_PrefabInstance: {fileID: 3867182969220975737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4137567508827107624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3856d7627e7b0c7419f606d968f02933, type: 3}
   m_PrefabInstance: {fileID: 3867182969220975737}
   m_PrefabAsset: {fileID: 0}

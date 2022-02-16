@@ -186,10 +186,8 @@ public class PlayerController_Base: MonoBehaviour
         {
             velocity.y = -2f; //work better, coz maybe player is ground but still dropping.
         }
-        Debug.Log("Jump: " + jumping + "is grounded: " + isGrounded);
         if (jumping && isGrounded)
         {
-            Debug.Log("in the mid air");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             jumping = false;
         }

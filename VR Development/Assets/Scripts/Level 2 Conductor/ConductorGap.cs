@@ -1,77 +1,50 @@
-using System.Collections;
+using System.Collections; 
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ConductorGap : InteractableObject
+public class ConductorGap : MonoBehaviour
 {
+    public enum Hand
+    {
+        leftHand,
+        rightHand
+    }
+
+    private PhotonView photonView;
     [SerializeField]
     private GameObject leftHand;
     private Animator leftHandAnimator;
     [SerializeField]
     private GameObject rightHand;
-    [SerializeReference]
-    private Transform playerFixPoint;
-    [SerializeField]
-    private Transform cameraFixPoint;
     private Animator rightHandAnimator;
-    private LevelManager_Puzzle levelManager;
-    public Player_Puzzle currentGripPlayer;
 
     public bool gapClosed = false;
     private bool rightHandGripped = false;
     private bool leftHandGripped = false;
-    private PhotonView photonView;
+    public Player_Puzzle currentGripPlayer;
+
 
     private void Awake()
     {
+        photonView = GetComponent<PhotonView>();
         leftHandAnimator = leftHand.GetComponent<Animator>();
         rightHandAnimator = rightHand.GetComponent<Animator>();
-        photonView = GetComponent<PhotonView>();
     }
 
-    private void Start()
+    public void Interact(bool right, bool grip, bool targetAll)
     {
-        levelManager = (LevelManager_Puzzle)LevelManager_Base.Instance;
+
+        if (targetAll)
+        {
+
+            photonView.RPC("Interact_Sync", RpcTarget.All, right, grip);
+        } else
+        {
+            photonView.RPC("Interact_Sync", RpcTarget.Others, right, grip);
+        }
+
     }
-
-    public override void Interact_R()
-    {
-        base.VoidInteract();
-        if (!playerInRange) { return; }
-        levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
-        photonView.RPC("Interact_Sync", RpcTarget.All, true, true);
-        currentGripPlayer = levelManager.currentPlayer.GetComponent<Player_Puzzle>();
-    }
-
-    public override void Cancel_R()
-    {
-        base.Cancel_R();
-        if (!playerInRange) { return; }
-        photonView.RPC("Interact_Sync", RpcTarget.All, true, false);
-        currentGripPlayer = null;
-    }
-
-    public override void Interact_L()
-    {
-        base.Interact_L();
-        if (!playerInRange) { return; }
-        levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
-        photonView.RPC("Interact_Sync", RpcTarget.All, false, true);
-        currentGripPlayer = levelManager.currentPlayer.GetComponent<Player_Puzzle>();
-    }
-
-  
-
-    public override void Cancel_L()
-    {
-        base.Cancel_L();
-        if (!playerInRange) { return; }
-        photonView.RPC("Interact_Sync", RpcTarget.All, false, false);
-        currentGripPlayer = null;
-    }
-
-
 
     [PunRPC]
     private void Interact_Sync(bool right, bool grip)
@@ -108,6 +81,4 @@ public class ConductorGap : InteractableObject
                 break;
         }
     }
-
-
 }
