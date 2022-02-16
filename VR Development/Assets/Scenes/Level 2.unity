@@ -1086,8 +1086,8 @@ MonoBehaviour:
   - Player_SeperateHandInteract
   - Player_Shooter
   PCPlayerPrefabName: PC First Person Player (Puzzle)
-  VRPlayerPrefabName: XR Rig With Physics Hand (Level 1)
-  dontSpawnObject: 0
+  VRPlayerPrefabName: VR Player Puzzle
+  dontSpawnObject: 1
   forceSpawnVR: 0
   currentPlayer: {fileID: 0}
   partnerPlayer: {fileID: 0}
