@@ -16,6 +16,9 @@ public class Player_Puzzle : MonoBehaviour
     public bool interactable = true;
     private PhotonView photonView;
 
+    [SerializeField]
+    private bool VRPlayer;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -47,12 +50,21 @@ public class Player_Puzzle : MonoBehaviour
     {
         interactable = false;
         firstPersonElectricShockParticles.SetActive(true);
+        //thirdPersonElectricShockParticles.SetActive(true);
         audioSource.Play();
+        if(VRPlayer)
+        {
+            GetComponent<VRController_Puzzle>().ToggleParalysis(false);
+        }
         yield return new WaitForSeconds(paralysisSec);
         audioSource.Stop();
         interactable = true;
         firstPersonElectricShockParticles.SetActive(false);
-        thirdPersonElectricShockParticles.SetActive(false);
+        //thirdPersonElectricShockParticles.SetActive(false);
+        if (VRPlayer)
+        {
+            GetComponent<VRController_Puzzle>().ToggleParalysis(true);
+        }
     }
 
     [PunRPC]

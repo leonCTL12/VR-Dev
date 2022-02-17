@@ -21,6 +21,7 @@ public class VRController_Base : MonoBehaviour
     private bool isGrounded;
     private Vector3 velocity;
     private bool jumping = false;
+    protected bool movable = true;
 
     private CharacterController characterController;
 
@@ -82,11 +83,11 @@ public class VRController_Base : MonoBehaviour
     private void JumpingAndGravityHandler()
     {
         //if (!isMine) { return; }  //add to prevent it to improve efficiency
-        //if (!moveable)
-        //{
-        //    Debug.Log("return from not movable");
-        //    return;
-        //}
+
+        if (!movable)
+        {
+            return;
+        }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         presenter_base.Ground(isGrounded);
 

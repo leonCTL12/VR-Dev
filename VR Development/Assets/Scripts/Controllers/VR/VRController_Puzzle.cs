@@ -16,6 +16,11 @@ public class VRController_Puzzle : VRController_Base
     private bool leftTriggerPressed, rightTriggerPressed;
     private bool leftGripPressed, rightGripPressed;
 
+    [SerializeField]
+    private GameObject locomotionSystem;
+    [SerializeField]
+    private GameObject leftController, rightController;
+
     protected override void Awake()
     {
         base.Awake();
@@ -107,5 +112,13 @@ public class VRController_Puzzle : VRController_Base
     {
         rightGripPressed = false;
         CancelEvent(true);
+    }
+
+    public void ToggleParalysis(bool active)
+    {
+        locomotionSystem.SetActive(active);
+        leftController.SetActive(active);
+        rightController.SetActive(active);
+        movable = active;
     }
 }
