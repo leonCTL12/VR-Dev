@@ -108,6 +108,7 @@ public class VRController_Base : MonoBehaviour
 
     private void MovementAniamtionHandler()
     {
+        if (!movable) return;
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
 
         //animation

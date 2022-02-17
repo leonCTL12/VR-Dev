@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 4185017230397076160}
   firstPersonElectricShockParticles: {fileID: 1032580610943206712}
-  thirdPersonElectricShockParticles: {fileID: 0}
+  thirdPersonElectricShockParticles: {fileID: 6107355466140747238}
   paralysisSec: 20
   interactable: 1
   VRPlayer: 1
@@ -333,6 +333,11 @@ GameObject:
 --- !u!1 &840470141022560206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3142671757751702346, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6107355466140747238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8427746748307704162, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
   m_PrefabInstance: {fileID: 2320744087961570436}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6666440812759149185 stripped

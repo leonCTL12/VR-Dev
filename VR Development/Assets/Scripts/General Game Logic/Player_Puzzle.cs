@@ -50,7 +50,6 @@ public class Player_Puzzle : MonoBehaviour
     {
         interactable = false;
         firstPersonElectricShockParticles.SetActive(true);
-        //thirdPersonElectricShockParticles.SetActive(true);
         audioSource.Play();
         if(VRPlayer)
         {
@@ -60,7 +59,6 @@ public class Player_Puzzle : MonoBehaviour
         audioSource.Stop();
         interactable = true;
         firstPersonElectricShockParticles.SetActive(false);
-        //thirdPersonElectricShockParticles.SetActive(false);
         if (VRPlayer)
         {
             GetComponent<VRController_Puzzle>().ToggleParalysis(true);
