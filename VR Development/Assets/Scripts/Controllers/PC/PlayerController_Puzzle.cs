@@ -10,7 +10,6 @@ public class PlayerController_Puzzle : PlayerController_Base
     private GameObject leftHand;
     [SerializeField]
     private GameObject rightHand;
-  
 
     private GameObject currentTriggerCollisionGO;
     private bool leftHandReleased;
@@ -194,10 +193,4 @@ public class PlayerController_Puzzle : PlayerController_Base
         }
         moveable = rightHandReleased && leftHandReleased;
     }
-
-   
-
-
-    
-
 }
