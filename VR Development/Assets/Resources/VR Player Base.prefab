@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea0b16cc14b52c4f96386be2db2db81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHand: 0
   animationSpeed: 10
   followObject: {fileID: 3712282708277348989}
   followSpeed: 30
@@ -220,6 +221,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: -90}
   objectGrip: 1
   objectGripThreshHold: 0.3
+  playerVR: {fileID: 0}
 --- !u!1 &1637669096851410218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea0b16cc14b52c4f96386be2db2db81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHand: 1
   animationSpeed: 10
   followObject: {fileID: 3712282707189632020}
   followSpeed: 30
@@ -2045,6 +2048,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: 90}
   objectGrip: 1
   objectGripThreshHold: 0.3
+  playerVR: {fileID: 0}
 --- !u!1 &6096435570362897180
 GameObject:
   m_ObjectHideFlags: 0

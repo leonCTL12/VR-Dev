@@ -44,7 +44,7 @@ public class VRController_Base : MonoBehaviour
     private GameObject player1stPersonModel;
     #endregion
 
-    private void Awake()
+    protected virtual void Awake()
     {
         characterController = GetComponent<CharacterController>();
         presenter_base = GetComponent<ThirdPersonPresenter_Base>();
@@ -57,7 +57,6 @@ public class VRController_Base : MonoBehaviour
 
     private void SetGameObjectActiveState()
     {
-        Debug.Log("Photon Null: " + photonView == null);
         isMine = photonView.IsMine;
         player3rdPersonGeometry.SetActive(!isMine);
         //TODO: come back at boss level
@@ -69,12 +68,12 @@ public class VRController_Base : MonoBehaviour
         this.enabled = isMine;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         SetGameObjectActiveState();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         MovementAniamtionHandler();
         JumpingAndGravityHandler();

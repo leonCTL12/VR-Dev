@@ -32,35 +32,35 @@ public class ConductorGap : MonoBehaviour
         rightHandAnimator = rightHand.GetComponent<Animator>();
     }
 
-    public void Interact(bool right, bool grip, bool targetAll)
+    public void Interact(bool right, bool grip, bool playAnimation)
     {
-
-        if (targetAll)
-        {
-
-            photonView.RPC("Interact_Sync", RpcTarget.All, right, grip);
-        } else
-        {
-            photonView.RPC("Interact_Sync", RpcTarget.Others, right, grip);
-        }
-
+        photonView.RPC("Interact_Sync", RpcTarget.All, right, grip, playAnimation);
     }
 
     [PunRPC]
-    private void Interact_Sync(bool right, bool grip)
+    private void Interact_Sync(bool right, bool grip, bool playAnimation)
     {
         if (right)
-        {
-            HandGrip(Hand.rightHand, grip); //set false: not for playing release animation, just for reset the state to idle
+        {  
+            if (playAnimation)
+            {
+                HandGrip(Hand.rightHand, grip); //set false: not for playing release animation, just for reset the state to idle
+            }
             rightHandGripped = grip;
         }
         else
         {
-            HandGrip(Hand.leftHand, grip);
+            if(playAnimation)
+            {
+                HandGrip(Hand.leftHand, grip);
+            }
             leftHandGripped = grip;
         }
         gapClosed = rightHandGripped && leftHandGripped;
-        if (!grip)
+
+        Debug.Log("Gap Closed: " + gapClosed);
+
+        if (!grip && playAnimation)
         {
             GameObject targetHand = right ? rightHand : leftHand;
             targetHand.SetActive(false);

@@ -901,7 +901,7 @@ GameObject:
   - component: {fileID: 8710621194363608972}
   - component: {fileID: 7606770980270037277}
   m_Layer: 0
-  m_Name: XR Rig With Physics Hand (Level 1)
+  m_Name: XR Rig With Physics Hand (Level 1) (Keep As reference)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

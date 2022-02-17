@@ -17,6 +17,37 @@ MonoBehaviour:
   thirdPersonElectricShockParticles: {fileID: 0}
   paralysisSec: 2
   interactable: 1
+--- !u!114 &5277060722120432485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418736171171018742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f411a98ce8b9044bb0f432e730a6d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpActionReference: {fileID: 6628594827127432476, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gravity: -9.81
+  groundCheck: {fileID: 3931320516043801007}
+  groundDistance: 0.3
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  jumpHeight: 10
+  walkActionReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  player3rdPersonGeometry: {fileID: 7829443455871609394}
+  player3rdPersonSkeleton: {fileID: 840470141022560206}
+  VRCamera: {fileID: 1418736170735876598}
+  player1stPersonModel: {fileID: 6666440812759149185}
+  triggerLeft: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  triggerRight: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gripLeft: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gripRight: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftHandContactObject: {fileID: 0}
+  rightHandContactObject: {fileID: 0}
 --- !u!1001 &2320744087961570436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,6 +103,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4881852122703355313, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: playerVR
+      value: 
+      objectReference: {fileID: 5277060722120432485}
+    - target: {fileID: 5122445935967243441, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: playerVR
+      value: 
+      objectReference: {fileID: 5277060722120432485}
     - target: {fileID: 5546642442726149045, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: sceneViewId
       value: 0
@@ -80,7 +119,8 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1919234247363596712, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
 --- !u!1 &1418736171171018742 stripped
 GameObject:
@@ -90,5 +130,30 @@ GameObject:
 --- !u!143 &4185017230397076160 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 1882744942111850052, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1418736170735876598 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3712282706843546994, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3931320516043801007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1637669096851410219, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7829443455871609394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5517812399504254646, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &840470141022560206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3142671757751702346, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6666440812759149185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8986656986945119749, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
   m_PrefabInstance: {fileID: 2320744087961570436}
   m_PrefabAsset: {fileID: 0}

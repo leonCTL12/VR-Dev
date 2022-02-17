@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Hand : MonoBehaviour
 {
+    [SerializeField]
+    private bool leftHand;
+
     //Animation
     Animator animator;
     SkinnedMeshRenderer mesh;
@@ -37,6 +40,10 @@ public class Hand : MonoBehaviour
     public bool objectGrip = false;
     [SerializeField]
     private float objectGripThreshHold = 0.3f;
+
+    [SerializeField]
+    private VRController_Puzzle playerVR;
+
 
     void Start()
     {
@@ -120,11 +127,35 @@ public class Hand : MonoBehaviour
     {
         if (other.tag == "Hand" || other.tag == "Player") return;
         objectGrip = true;
+
+        if(other.tag == "VRInteractable")
+        {
+            if(leftHand)
+            {
+                playerVR.leftHandContactObject = other.gameObject;
+            } 
+            else
+            {
+                playerVR.rightHandContactObject = other.gameObject;
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Hand" || other.tag == "Player") return;
         objectGrip = false;
+
+        if (other.tag == "VRInteractable")
+        {
+            if (leftHand)
+            {
+                playerVR.leftHandContactObject = null;
+            }
+            else
+            {
+                playerVR.rightHandContactObject = null;
+            }
+        }
     }
 }
