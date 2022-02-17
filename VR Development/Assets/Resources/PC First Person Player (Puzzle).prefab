@@ -17,6 +17,7 @@ MonoBehaviour:
   thirdPersonElectricShockParticles: {fileID: 8603714877669995998}
   paralysisSec: 2
   interactable: 1
+  VRPlayer: 0
 --- !u!114 &4223141302064289107
 MonoBehaviour:
   m_ObjectHideFlags: 0

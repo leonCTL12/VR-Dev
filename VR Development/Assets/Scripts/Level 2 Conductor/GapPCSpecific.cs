@@ -24,7 +24,7 @@ public class GapPCSpecific : InteractableObject
         base.VoidInteract();
         if (!playerInRange) { return; }
         levelManager.TeleportPlayerTo(playerFixPoint, cameraFixPoint); //dont need to handle in RPC function becoz I used photon view to sync player's position and rotation
-        gap.Interact(true, true, true);
+        gap.Interact(true, true, false);
         gap.currentGripPlayer = levelManager.currentPlayer.GetComponent<Player_Puzzle>();
     }
 

@@ -20,13 +20,13 @@ public class GapVRSpecific : MonoBehaviour
 
     public void Interact()
     {
-        gap.Interact(rightGap, true, false);
+        gap.Interact(rightGap, true, true);
         gap.currentGripPlayer = levelManager.currentPlayer.GetComponent<Player_Puzzle>();
     }
 
     public void Cancel()
     {
-        gap.Interact(rightGap, false, false);
+        gap.Interact(rightGap, false, true);
         gap.currentGripPlayer = null;
     }
 }

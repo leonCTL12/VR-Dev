@@ -32,9 +32,17 @@ public class ConductorGap : MonoBehaviour
         rightHandAnimator = rightHand.GetComponent<Animator>();
     }
 
-    public void Interact(bool right, bool grip, bool playAnimation)
+    public void Interact(bool right, bool grip, bool VRPlayer)
     {
-        photonView.RPC("Interact_Sync", RpcTarget.All, right, grip, playAnimation);
+        if (VRPlayer)
+        {
+            photonView.RPC("Interact_Sync", RpcTarget.Others, right, grip, true);
+            Interact_Sync(right, grip, false);
+        }
+        else
+        {
+            photonView.RPC("Interact_Sync", RpcTarget.All, right, grip, true);
+        }
     }
 
     [PunRPC]
