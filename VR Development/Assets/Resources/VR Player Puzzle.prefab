@@ -17,6 +17,7 @@ MonoBehaviour:
   thirdPersonElectricShockParticles: {fileID: 0}
   paralysisSec: 2
   interactable: 1
+  VRPlayer: 1
 --- !u!114 &5277060722120432485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,13 +31,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpActionReference: {fileID: 6628594827127432476, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  gravity: -9.81
+  gravity: -50
   groundCheck: {fileID: 3931320516043801007}
   groundDistance: 0.3
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  jumpHeight: 10
+  jumpHeight: 5
   walkActionReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   player3rdPersonGeometry: {fileID: 7829443455871609394}
   player3rdPersonSkeleton: {fileID: 840470141022560206}
