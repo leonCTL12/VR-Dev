@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea0b16cc14b52c4f96386be2db2db81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHand: 0
   animationSpeed: 10
   followObject: {fileID: 2683729942465866673}
   followSpeed: 30
@@ -85,6 +86,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: -90}
   objectGrip: 1
   objectGripThreshHold: 0.3
+  playerVR: {fileID: 0}
 --- !u!1 &549614348884335196
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +279,7 @@ GameObject:
   - component: {fileID: 369399541654747431}
   m_Layer: 0
   m_Name: TriggerCollider
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1035,6 +1037,7 @@ MonoBehaviour:
   thirdPersonElectricShockParticles: {fileID: 0}
   paralysisSec: 2
   interactable: 1
+  VRPlayer: 0
 --- !u!114 &7360783028419263920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,6 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea0b16cc14b52c4f96386be2db2db81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHand: 0
   animationSpeed: 10
   followObject: {fileID: 2683729941340532184}
   followSpeed: 30
@@ -2242,6 +2246,7 @@ MonoBehaviour:
   rotationOffset: {x: 0, y: 0, z: 90}
   objectGrip: 1
   objectGripThreshHold: 0.3
+  playerVR: {fileID: 0}
 --- !u!1 &7084008687909873838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2722,7 +2727,7 @@ GameObject:
   - component: {fileID: 7107398385762737675}
   m_Layer: 0
   m_Name: TriggerCollider
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

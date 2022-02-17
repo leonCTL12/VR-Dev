@@ -218,6 +218,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 479156449591726649, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: m_TagString
+      value: Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 638147608637102205, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 638147608637102205, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.015
+      objectReference: {fileID: 0}
     - target: {fileID: 3712282707278756722, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: m_Name
       value: VR Player Puzzle
@@ -277,6 +289,18 @@ PrefabInstance:
     - target: {fileID: 5546642442726149045, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: sceneViewId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959445481394814191, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959445481394814191, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944582834821698369, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: m_TagString
+      value: Hand
       objectReference: {fileID: 0}
     - target: {fileID: 7951242094914027072, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: sceneViewId
