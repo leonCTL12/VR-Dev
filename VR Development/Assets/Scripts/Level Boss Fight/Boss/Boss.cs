@@ -136,16 +136,20 @@ public class Boss : MonoBehaviour
         {
             GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player"); //refresh to check if player disconnected/reconnected
             //Randomly Choose one target;
-            int chosenTarget = Random.Range(0, playerList.Length);
+            int chosenTarget = Random.Range(0, playerList.Length-1);
+            Debug.Log("ChosenTarget = " + chosenTarget);
+            Debug.Log("player list length = " + playerList.Length);
             currentTarget = playerList[chosenTarget];
             CheckDeathSwitchTarget();
-            photonView.RPC("SetTarget_Remote", RpcTarget.Others, currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer);
+            photonView.RPC("SetTarget_Remote", RpcTarget.Others, currentTarget == levelManager.partnerPlayer);
             yield return new WaitForSeconds(switchTargetInterval);
         }
     }
 
     private void CheckDeathSwitchTarget()
     {
+        Debug.Log("Current Target null: " + (currentTarget.GetComponent<Player_BossFight>() == null));
+        Debug.Log("Level Manager null: " + levelManager == null);
         if (currentTarget.GetComponent<Player_BossFight>().waitingForResurrection && levelManager.partnerPlayer!=null)
         {
             currentTarget = (currentTarget.GetComponent<PlayerController_Base>() == levelManager.partnerPlayer) ? levelManager.currentPlayer.gameObject : levelManager.partnerPlayer.gameObject;
