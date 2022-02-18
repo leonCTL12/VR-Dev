@@ -20,6 +20,8 @@ public class Hand : MonoBehaviour
     private string animatorTriggerParam = "Trigger";
     [SerializeField]
     private float animationSpeed = 10;
+    [SerializeField]
+    private bool keepGrip;
 
     //Physics Movement
     [SerializeField]
@@ -61,11 +63,22 @@ public class Hand : MonoBehaviour
         //Teleport hands
         _body.position = _followTarget.position;
         _body.rotation = _followTarget.rotation;
+
+        fixHandGrip();
+    }
+
+    private void fixHandGrip()
+    {
+        animator.SetFloat(animatorGripParam, 1);
+        animator.SetFloat(animatorTriggerParam, 1);
     }
 
     void Update()
     {
-        AnimateHand();
+        if(!keepGrip)
+        {
+            AnimateHand();
+        }
 
         PhysicsMove();
     }
