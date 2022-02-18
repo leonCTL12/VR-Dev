@@ -479,9 +479,9 @@ MonoBehaviour:
   - Player_SeperateHandInteract
   - Player_Shooter
   PCPlayerPrefabName: PC First Person Player (Boss Fight)
-  VRPlayerPrefabName: 
+  VRPlayerPrefabName: VR Player (Boss Fight)
   dontSpawnObject: 0
-  forceSpawnVR: 0
+  forceSpawnVR: 1
   currentPlayer: {fileID: 0}
   partnerPlayer: {fileID: 0}
   bossPrefabName: Boss
