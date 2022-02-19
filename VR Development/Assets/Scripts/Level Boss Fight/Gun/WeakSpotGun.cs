@@ -10,8 +10,6 @@ public class WeakSpotGun : Gun_Base
     [SerializeField]
     private float shootForce;
     [SerializeField]
-    private Transform attackPoint;
-    [SerializeField]
     private ParticleSystem gunShotParticle;
 
     public override void Fire()

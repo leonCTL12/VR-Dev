@@ -574,9 +574,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 679958358552028682}
+  weaponVR: 0
+  attackPoint: {fileID: 8006311581235290163}
   bulletPrefabName: Weak Spot Bullet
   shootForce: 150
-  attackPoint: {fileID: 8006311581235290163}
   gunShotParticle: {fileID: 7067152437675709395}
 --- !u!82 &4584210548126367666
 AudioSource:
@@ -795,8 +796,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 679958358552028682}
+  weaponVR: 0
+  attackPoint: {fileID: 0}
   analyticalLazer: {fileID: 1300387144021449352}
-  shooterController: {fileID: 5580846595556615104}
+  presenter: {fileID: 718516980724457877}
 --- !u!82 &4298212792584208489
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2617,7 +2620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854477613097939084, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: photonMicrophoneDeviceId
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3073337857979887672, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: m_LocalPosition.x

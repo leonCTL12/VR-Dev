@@ -7,7 +7,7 @@ public class Wand : Gun_Base
     [SerializeField]
     private GameObject analyticalLazer;
     [SerializeField]
-    private PlayerController_Shooter shooterController;
+    private ThirdPersonPresenter_Shooter presenter;
 
     private float startTime;
 
@@ -42,7 +42,9 @@ public class Wand : Gun_Base
         if (firing)
         {
             //Find the exact hit position using a raycast
-            Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            Ray ray = weaponVR? new Ray(attackPoint.position, transform.up) : fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            //problem: this ray do not rotate with player, it will always draw towards 
+            //Update: it rotate with player, just that 3D illusion make it hard to see
             RaycastHit hit;
 
             //check if ray hits something
@@ -56,12 +58,14 @@ public class Wand : Gun_Base
                 {
                     countTime = false;
                     startTime = Time.time; //reset start time;
+
                 }
-                shooterController.ShowWandBeam(hit.point);
+                //TODO: add back later
+                presenter.ShowBeam(hit.point);
             }
             else
             {
-                shooterController.ShowWandBeam(ray.GetPoint(75));
+                presenter.ShowBeam(ray.GetPoint(75));
             }
         }
     }
@@ -80,7 +84,7 @@ public class Wand : Gun_Base
     {
         base.CancelFire();
         analyticalLazer.SetActive(false);
-        shooterController.ShowWandBeam(null);
+        presenter.ShowBeam(null);
         countTime = false;
         firing = false;
         audioSource.Stop();
