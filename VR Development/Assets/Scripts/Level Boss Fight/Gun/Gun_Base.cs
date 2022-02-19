@@ -7,6 +7,8 @@ public class Gun_Base : MonoBehaviour
     [SerializeField]
     protected Camera fpsCam;
     protected AudioSource audioSource;
+    [SerializeField]
+    protected bool weaponVR;
 
     private void Awake()
     {

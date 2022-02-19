@@ -19,7 +19,7 @@ public class WeakSpotGun : Gun_Base
         base.Fire();
        
         //Find the exact hit position using a raycast
-        Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = weaponVR? new Ray(attackPoint.position, transform.right) : fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         //check if ray hits something

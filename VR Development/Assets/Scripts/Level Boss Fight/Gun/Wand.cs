@@ -62,7 +62,6 @@ public class Wand : Gun_Base
             else
             {
                 shooterController.ShowWandBeam(ray.GetPoint(75));
-
             }
         }
     }

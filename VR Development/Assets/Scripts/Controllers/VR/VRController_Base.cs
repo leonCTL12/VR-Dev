@@ -34,11 +34,11 @@ public class VRController_Base : MonoBehaviour
 
     #region Multiplayer
     private PhotonView photonView;
-    private bool isMine;
+    protected bool isMine;
     [SerializeField]
     private GameObject player3rdPersonGeometry;
     [SerializeField]
-    private GameObject player3rdPersonSkeleton; //It is for boss fight gun display
+    private GameObject player3rdPersonSkeleton; 
     [SerializeField]
     private Camera VRCamera;
     [SerializeField]
@@ -61,7 +61,7 @@ public class VRController_Base : MonoBehaviour
         isMine = photonView.IsMine;
         player3rdPersonGeometry.SetActive(!isMine);
         //TODO: come back at boss level
-        //player3rdPersonSkeleton.SetActive(!isMine);
+        player3rdPersonSkeleton.SetActive(!isMine);
 
         VRCamera.gameObject.SetActive(isMine);
         player1stPersonModel.SetActive(isMine);
