@@ -21,11 +21,15 @@ public class VRController_Shooter : VRController_Base
     private GameObject handWithGun, handWithWand;
     [SerializeField]
     private InputActionReference rightTrigger;
+    [SerializeField]
+    private GameObject locomotionSystem;
+    [SerializeField]
+    private GameObject leftController, rightController;
     #endregion
 
     #region Testing Param
     [SerializeField]
-    private bool testing;
+    private bool weaponTesting;
     [SerializeField]
     private WeaponType testingForceUseWeapon;
     #endregion
@@ -53,7 +57,7 @@ public class VRController_Shooter : VRController_Base
         }
 
         //Testing Purpose, remove later
-        if(testing)
+        if(weaponTesting)
         {
             weaponType = testingForceUseWeapon;
         }
@@ -82,6 +86,7 @@ public class VRController_Shooter : VRController_Base
 
     public void Shoot(InputAction.CallbackContext context)
     {
+        if(!movable) { return; }
         if (context.performed)
         {
             weapon.Fire();
@@ -95,5 +100,13 @@ public class VRController_Shooter : VRController_Base
     public void ShowWandBeam(Vector3? targetPoint)
     {
         presenter.ShowBeam(targetPoint);
+    }
+
+    public void ToggleMotion(bool active)
+    {
+        locomotionSystem.SetActive(active);
+        leftController.SetActive(active);
+        rightController.SetActive(active);
+        movable = active;
     }
 }

@@ -15,10 +15,12 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField]
     private bool playerVR;
+    [SerializeField]
+    private Animator onScreenCanvasAnimator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = playerVR? onScreenCanvasAnimator: GetComponent<Animator>();
     }
 
     private void Start()

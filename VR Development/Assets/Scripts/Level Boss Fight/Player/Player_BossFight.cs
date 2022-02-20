@@ -11,14 +11,20 @@ public class Player_BossFight : MonoBehaviour
     [SerializeField]
     public PlayerUI playerUI;
     [SerializeField]
-    public bool testing_purposeImmune;
-    [SerializeField]
     private ThirdPersonPresenter_Shooter presenter;
     private PlayerSFX playerSFX;
 
     private float currentHP;
     public bool waitingForResurrection;
     private PhotonView photonView;
+
+    [SerializeField]
+    private bool playerVR;
+
+    #region Testing Param
+    [SerializeField]
+    private bool testTanky = false;
+    #endregion
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
@@ -28,6 +34,10 @@ public class Player_BossFight : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (testTanky)
+        {
+            maxHP *= 20;
+        }
         currentHP = maxHP;
         playerUI.FillHPSlider(currentHP / maxHP);
         waitingForResurrection = false;
@@ -36,7 +46,7 @@ public class Player_BossFight : MonoBehaviour
 
     public void ReceiveDamage(float damage)
     {
-        if(testing_purposeImmune || waitingForResurrection) { return; }
+        if(waitingForResurrection) { return; }
 
         if(!photonView.IsMine) { return; }
 
@@ -56,7 +66,14 @@ public class Player_BossFight : MonoBehaviour
 
     private void DeathHandler()
     {
-        GetComponent<PlayerInput>().enabled = false;
+        if(playerVR)
+        {
+            GetComponent<VRController_Shooter>().ToggleMotion(false);
+        }
+        else
+        {
+            GetComponent<PlayerInput>().enabled = false;
+        }
         playerUI.ShowAndHideDeathPanel(true);
         presenter.ShowDeath();
         waitingForResurrection = true;
@@ -64,7 +81,14 @@ public class Player_BossFight : MonoBehaviour
 
     public void ResurrectionHandler()
     {
-        GetComponent<PlayerInput>().enabled = true;
+        if (playerVR)
+        {
+            GetComponent<VRController_Shooter>().ToggleMotion(true);
+        }
+        else
+        {
+            GetComponent<PlayerInput>().enabled = true;
+        }
         playerUI.ShowAndHideDeathPanel(false);
         waitingForResurrection = false;
         currentHP = maxHP;
