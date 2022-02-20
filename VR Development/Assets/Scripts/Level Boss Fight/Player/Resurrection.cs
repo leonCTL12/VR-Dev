@@ -7,8 +7,6 @@ public class Resurrection : MonoBehaviour
     [SerializeField]
     private float resurrectionThreshold;
     [SerializeField]
-    private PlayerController_Shooter myPlayer; //To prevent self colliding
-    [SerializeField]
     private ThirdPersonPresenter_Shooter thirdPersonPresenter;
     private float startTime;
     private bool counting = false;
@@ -46,11 +44,6 @@ public class Resurrection : MonoBehaviour
         if (other.tag != "Player") {
             Debug.Log("It is player object");
             return; 
-        }
-        if (other.gameObject.GetComponent<PlayerController_Shooter>() == myPlayer)
-        {
-            Debug.Log("self colliding!");
-            return;
         }
         Debug.Log("resurrection collidered with " + other.gameObject.name);
         startTime = Time.time;

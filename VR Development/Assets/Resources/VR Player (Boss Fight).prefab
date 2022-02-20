@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resurrectionThreshold: 3
   myPlayer: {fileID: 0}
-  thirdPersonPresenter: {fileID: 0}
+  thirdPersonPresenter: {fileID: 7309101205551457450}
 --- !u!136 &6291318365090130078
 CapsuleCollider:
   m_ObjectHideFlags: 0

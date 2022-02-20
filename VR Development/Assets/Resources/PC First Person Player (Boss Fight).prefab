@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resurrectionThreshold: 3
-  myPlayer: {fileID: 5580846595556615104}
   thirdPersonPresenter: {fileID: 718516980724457877}
 --- !u!136 &8215069592984615736
 CapsuleCollider:
@@ -216,7 +215,7 @@ MonoBehaviour:
   presenter: {fileID: 718516980724457877}
   waitingForResurrection: 0
   playerVR: 0
-  testTanky: 0
+  testTanky: 1
 --- !u!1 &2234501155130070735
 GameObject:
   m_ObjectHideFlags: 0
