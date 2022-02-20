@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField]
-    private Slider HPslider;
+    private Slider HPSlider;
     [SerializeField]
     private GameObject[] weakSpots;
     [SerializeField]
     private GameObject deathPanel;
     private Animator animator;
+
+    [SerializeField]
+    private bool playerVR;
 
     private void Awake()
     {
@@ -25,8 +28,8 @@ public class PlayerUI : MonoBehaviour
 
     public void FillHPSlider(float amount)
     {
-        HPslider.value = amount;
-        Debug.Log("Receive Call, Slider value = " + HPslider.value);
+        HPSlider.value = amount;
+        Debug.Log("Receive Call, Slider value = " + HPSlider.value);
     }
     
     public void DisableWeakSpot(int index)
@@ -40,7 +43,6 @@ public class PlayerUI : MonoBehaviour
         if (show)
         {
             animator.SetTrigger("Death");
-            Debug.Log("In show death panel");
         } else
         {
             animator.SetTrigger("Respawn");

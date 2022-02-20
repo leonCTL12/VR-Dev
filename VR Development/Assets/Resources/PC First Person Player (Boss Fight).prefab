@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4221f3240d1f043a12a12adccc30bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPslider: {fileID: 8426579278973534567}
+  HPSlider: {fileID: 8426579278973534567}
   weakSpots:
   - {fileID: 1241642051817011785}
   - {fileID: 624591755638345374}
