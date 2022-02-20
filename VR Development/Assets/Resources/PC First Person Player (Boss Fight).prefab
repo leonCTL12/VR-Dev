@@ -288,9 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 300
   playerUI: {fileID: 7180178197594654018}
-  testing_purposeImmune: 0
   presenter: {fileID: 718516980724457877}
   waitingForResurrection: 0
+  testTanky: 1
 --- !u!82 &9098872864253995255
 AudioSource:
   m_ObjectHideFlags: 0
@@ -429,6 +429,7 @@ MonoBehaviour:
   - {fileID: 7347739202503907810}
   - {fileID: 112273534011647186}
   deathPanel: {fileID: 7116264205205015878}
+  playerVR: 0
 --- !u!1 &2450129601022681274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,14 +1030,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.73333335, g: 0.039215688, b: 0.11764706, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b8619642dd1f1174c9a531e7d4a18028, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
