@@ -22,7 +22,7 @@ public class Resurrection : MonoBehaviour
     public void ToggleResurrection(bool active)
     {
         capsuleCollider.enabled = active;
-        Debug.Log("capsule collider activate!");
+        Debug.Log("capsule collider activate: " + active);
         //TODO: maybe add SFX here
     }
 
@@ -41,9 +41,17 @@ public class Resurrection : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("In OnTriggerEnter");
         if (other.tag != "Player") {
-            Debug.Log("It is player object");
+            Debug.Log("It is not player object");
             return; 
+        }
+
+        // The collider is enabled on opponent's side, so it should not collide with anything that is not belong to itself
+        if (!other.GetComponent<PhotonView>().IsMine) 
+        {
+            Debug.Log("Self Colliding");
+            return;
         }
         Debug.Log("resurrection collidered with " + other.gameObject.name);
         startTime = Time.time;

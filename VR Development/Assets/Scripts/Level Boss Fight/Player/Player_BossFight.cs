@@ -81,6 +81,7 @@ public class Player_BossFight : MonoBehaviour
 
     public void ResurrectionHandler()
     {
+        Debug.Log("In Resurrection Handler");
         if (playerVR)
         {
             GetComponent<VRController_Shooter>().ToggleMotion(true);

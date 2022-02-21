@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3712282707278756722, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: m_Name
-      value: VR Player Puzzle
+      value: VR Player (Puzzle)
       objectReference: {fileID: 0}
     - target: {fileID: 3712282707278756725, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: m_RootOrder

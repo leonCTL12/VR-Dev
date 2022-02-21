@@ -67,6 +67,7 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
 
     public void ShowResurrection()
     {
+        Debug.Log("In Show Resurrection");
         //3rd person logic for resurrection
         thirdPersonModel.SetActive(true);
         deathParticle.Stop();
@@ -101,6 +102,7 @@ public class ThirdPersonPresenter_Shooter : MonoBehaviour //Handle all third per
     [PunRPC]
     private void ShowResurrection_Sync()
     {
+        Debug.Log("In Resurrection Sync");
         //1st person logic for resurrection
         player.ResurrectionHandler();
     }
