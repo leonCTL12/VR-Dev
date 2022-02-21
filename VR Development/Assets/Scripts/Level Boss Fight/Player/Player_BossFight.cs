@@ -77,10 +77,12 @@ public class Player_BossFight : MonoBehaviour
         playerUI.ShowAndHideDeathPanel(true);
         presenter.ShowDeath();
         waitingForResurrection = true;
+        playerSFX.PlayDeath();
     }
 
     public void ResurrectionHandler()
     {
+        playerSFX.PlayRespawn();
         Debug.Log("In Resurrection Handler");
         if (playerVR)
         {

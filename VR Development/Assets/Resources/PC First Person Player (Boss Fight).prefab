@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bleedingSound: {fileID: 8300000, guid: 22ac99a02aca588449c864c776c75d0d, type: 3}
+  deathSFX: {fileID: 8300000, guid: 8ee08a3f4b6c8b64eb4efbbe518597f9, type: 3}
+  respawnSFX: {fileID: 8300000, guid: 7a61ece51563e204dbc6ad18116ee889, type: 3}
 --- !u!114 &8460248570441782516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +217,7 @@ MonoBehaviour:
   presenter: {fileID: 718516980724457877}
   waitingForResurrection: 0
   playerVR: 0
-  testTanky: 1
+  testTanky: 0
 --- !u!1 &2234501155130070735
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,12 @@ public class PlayerSFX : MonoBehaviour
     [SerializeField]
     private AudioClip bleedingSound;
 
+    [SerializeField]
+    private AudioClip deathSFX;
+
+    [SerializeField]
+    private AudioClip respawnSFX;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -17,5 +23,15 @@ public class PlayerSFX : MonoBehaviour
     public void PlayBleed()
     {
         audioSource.PlayOneShot(bleedingSound);
+    }
+
+    public void PlayDeath()
+    {
+        audioSource.PlayOneShot(deathSFX);
+    }
+
+    public void PlayRespawn() 
+    {
+        audioSource.PlayOneShot(respawnSFX);
     }
 }
