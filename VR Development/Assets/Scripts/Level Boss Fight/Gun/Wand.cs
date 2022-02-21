@@ -31,7 +31,11 @@ public class Wand : Gun_Base
         {
             float timePassed = Time.time - startTime;
             //Debug.Log("Time Passed: " + timePassed);
-            if (timePassed > boss.revealWeakSpotsThreshold)
+            if (boss == null)
+            {
+                boss = Boss.BossInstance;
+            } 
+            else if (timePassed > boss.revealWeakSpotsThreshold)
             {
                 Debug.Log("Reveal Weak Spots!");
                 boss.RevealWeakSpots();
