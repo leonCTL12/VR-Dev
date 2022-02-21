@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: 0
   animationSpeed: 10
+  keepGrip: 0
   followObject: {fileID: 3712282708277348989}
   followSpeed: 30
   rotateSpeed: 100
@@ -2041,6 +2042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: 1
   animationSpeed: 10
+  keepGrip: 0
   followObject: {fileID: 3712282707189632020}
   followSpeed: 30
   rotateSpeed: 100
@@ -3568,7 +3570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125177727820215827, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8125177727820215827, guid: 6631601858746b24ba9288fa6b63a7d3, type: 3}
       propertyPath: m_LocalPosition.z
