@@ -51,7 +51,12 @@ MonoBehaviour:
   actionMapNameList:
   - 
   - 
-  playerPrefabName: 
+  PCPlayerPrefabName: 
+  VRPlayerPrefabName: 
+  mobileCanvasPrefab: {fileID: 457374126139065600, guid: 2fe7f23d4f382844b9a78ae8c267a761, type: 3}
+  mobilePlatform: 0
+  dontSpawnObject: 0
+  forceSpawnVR: 0
   currentPlayer: {fileID: 0}
   partnerPlayer: {fileID: 0}
 --- !u!1 &7900733923545456129

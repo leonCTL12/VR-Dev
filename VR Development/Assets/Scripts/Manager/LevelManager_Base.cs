@@ -19,9 +19,16 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     [SerializeField]
     private string VRPlayerPrefabName;
     [SerializeField]
+    private GameObject mobileCanvasPrefab;
+    [SerializeField]
+    private bool mobilePlatform;
+
+    #region Temp Param
+    [SerializeField]
     private bool dontSpawnObject;
     [SerializeField]
     private bool forceSpawnVR;
+    #endregion
 
     public GameObject currentPlayer;
     public GameObject partnerPlayer;
@@ -64,17 +71,27 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             return;
         }
         #endregion
-        if (SystemInfo.deviceType.ToString() == "Desktop")
+
+        if(mobilePlatform)
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
             spawnedPlayer = PhotonNetwork.Instantiate(PCPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
             //spawnedPlayer.transform.parent = playersContainer.transform;
             currentPlayer = spawnedPlayer;
+            GameObject mobileCanvas = GameObject.Instantiate(mobileCanvasPrefab);
+            mobileCanvas.transform.parent = spawnedPlayer.transform;
+        }
+        else if (SystemInfo.deviceType.ToString() == "Desktop")
+        {
+            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
+           //add a random offset to prevent two player's collider clash and stick together
+            spawnedPlayer = PhotonNetwork.Instantiate(PCPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
+            //spawnedPlayer.transform.parent = playersContainer.transform;
+            currentPlayer = spawnedPlayer;
             spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
         }
-
-        if (SystemInfo.deviceType.ToString() == "Handheld") //It means VR
+        else if (SystemInfo.deviceType.ToString() == "Handheld") //It means mobile or VR but cant distinguish between them
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
