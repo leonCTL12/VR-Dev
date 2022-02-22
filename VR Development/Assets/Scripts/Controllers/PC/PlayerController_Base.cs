@@ -66,6 +66,7 @@ public class PlayerController_Base: MonoBehaviour
 
     protected virtual void Awake()
     {
+        Input.multiTouchEnabled = true;
         photonView = GetComponent<PhotonView>();
         audioSource = GetComponent<AudioSource>();
         presenter_base = GetComponent<ThirdPersonPresenter_Base>();
@@ -234,11 +235,14 @@ public class PlayerController_Base: MonoBehaviour
 
     public void LookRotationX(InputAction.CallbackContext context)
     {
+        Debug.Log("Receive rotate X call!");
+
         if (!moveable)
         {
             //Debug.Log("return from not movable");
             return;
         }
+
         currentInputDevice = context.control.device;
         if (context.performed)
         {
@@ -252,11 +256,13 @@ public class PlayerController_Base: MonoBehaviour
 
     public void LookRotationY(InputAction.CallbackContext context)
     {
+        Debug.Log("Receive rotate Y call!");
         if (!moveable)
         {
             //Debug.Log("return from not movable");
             return;
         }
+
         currentInputDevice = context.control.device;
         if (context.performed)
         {
