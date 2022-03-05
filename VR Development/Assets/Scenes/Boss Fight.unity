@@ -546,7 +546,7 @@ MonoBehaviour:
   - Player_Shooter
   PCPlayerPrefabName: PC First Person Player (Boss Fight)
   VRPlayerPrefabName: VR Player (Boss Fight)
-  mobileCanvasPrefab: {fileID: 457374126139065600, guid: 2fe7f23d4f382844b9a78ae8c267a761, type: 3}
+  mobileCanvasPrefab: {fileID: 755030826015034479, guid: c44356d9ec9a68e47ac2d701210200e0, type: 3}
   mobilePlatform: 0
   dontSpawnObject: 0
   forceSpawnVR: 0
