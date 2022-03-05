@@ -3663,8 +3663,8 @@ MonoBehaviour:
   - Player_SeperateHandInteract
   PCPlayerPrefabName: PC First Person Player (Puzzle)
   VRPlayerPrefabName: VR Player (Puzzle)
-  mobileCanvasPrefab: {fileID: 457374126139065600, guid: 2fe7f23d4f382844b9a78ae8c267a761, type: 3}
-  mobilePlatform: 0
+  mobileCanvasPrefab: {fileID: 6062039178257337785, guid: c6a05bb0d05803d4a807e1b174b25cd1, type: 3}
+  mobilePlatform: 1
   dontSpawnObject: 0
   forceSpawnVR: 0
   currentPlayer: {fileID: 0}
