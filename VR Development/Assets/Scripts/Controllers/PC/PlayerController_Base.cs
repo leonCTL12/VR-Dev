@@ -235,8 +235,6 @@ public class PlayerController_Base: MonoBehaviour
 
     public void LookRotationX(InputAction.CallbackContext context)
     {
-        Debug.Log("Receive rotate X call!");
-
         if (!moveable)
         {
             //Debug.Log("return from not movable");
@@ -256,7 +254,6 @@ public class PlayerController_Base: MonoBehaviour
 
     public void LookRotationY(InputAction.CallbackContext context)
     {
-        Debug.Log("Receive rotate Y call!");
         if (!moveable)
         {
             //Debug.Log("return from not movable");

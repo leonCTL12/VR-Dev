@@ -459,6 +459,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Interact_Combined",
+                    "type": "Button",
+                    "id": "6cf659f4-6dc1-4422-abdc-927972426113",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Rotation X",
                     "type": "PassThrough",
                     "id": "10dd3fee-7011-414b-ba83-46289fb42e9b",
@@ -673,6 +681,17 @@
                     "processors": "",
                     "groups": "GamePad",
                     "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db64ac7c-2d2f-46f5-8631-fa9663fc084c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Interact_Combined",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

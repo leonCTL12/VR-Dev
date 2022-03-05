@@ -81,6 +81,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             currentPlayer = spawnedPlayer;
             GameObject mobileCanvas = GameObject.Instantiate(mobileCanvasPrefab);
             mobileCanvas.transform.parent = spawnedPlayer.transform;
+            spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
         }
         else if (SystemInfo.deviceType.ToString() == "Desktop")
         {

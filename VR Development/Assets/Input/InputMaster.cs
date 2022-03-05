@@ -472,6 +472,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Interact_Combined"",
+                    ""type"": ""Button"",
+                    ""id"": ""6cf659f4-6dc1-4422-abdc-927972426113"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Rotation X"",
                     ""type"": ""PassThrough"",
                     ""id"": ""10dd3fee-7011-414b-ba83-46289fb42e9b"",
@@ -686,6 +694,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""GamePad"",
                     ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db64ac7c-2d2f-46f5-8631-fa9663fc084c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Interact_Combined"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -942,6 +961,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         // Player_SeperateHandInteract
         m_Player_SeperateHandInteract = asset.FindActionMap("Player_SeperateHandInteract", throwIfNotFound: true);
         m_Player_SeperateHandInteract_Jump = m_Player_SeperateHandInteract.FindAction("Jump", throwIfNotFound: true);
+        m_Player_SeperateHandInteract_Interact_Combined = m_Player_SeperateHandInteract.FindAction("Interact_Combined", throwIfNotFound: true);
         m_Player_SeperateHandInteract_RotationX = m_Player_SeperateHandInteract.FindAction("Rotation X", throwIfNotFound: true);
         m_Player_SeperateHandInteract_RotationY = m_Player_SeperateHandInteract.FindAction("Rotation Y", throwIfNotFound: true);
         m_Player_SeperateHandInteract_Interact_L = m_Player_SeperateHandInteract.FindAction("Interact_L", throwIfNotFound: true);
@@ -1142,6 +1162,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player_SeperateHandInteract;
     private IPlayer_SeperateHandInteractActions m_Player_SeperateHandInteractActionsCallbackInterface;
     private readonly InputAction m_Player_SeperateHandInteract_Jump;
+    private readonly InputAction m_Player_SeperateHandInteract_Interact_Combined;
     private readonly InputAction m_Player_SeperateHandInteract_RotationX;
     private readonly InputAction m_Player_SeperateHandInteract_RotationY;
     private readonly InputAction m_Player_SeperateHandInteract_Interact_L;
@@ -1152,6 +1173,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         private @InputMaster m_Wrapper;
         public Player_SeperateHandInteractActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_SeperateHandInteract_Jump;
+        public InputAction @Interact_Combined => m_Wrapper.m_Player_SeperateHandInteract_Interact_Combined;
         public InputAction @RotationX => m_Wrapper.m_Player_SeperateHandInteract_RotationX;
         public InputAction @RotationY => m_Wrapper.m_Player_SeperateHandInteract_RotationY;
         public InputAction @Interact_L => m_Wrapper.m_Player_SeperateHandInteract_Interact_L;
@@ -1169,6 +1191,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnJump;
+                @Interact_Combined.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_Combined;
+                @Interact_Combined.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_Combined;
+                @Interact_Combined.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnInteract_Combined;
                 @RotationX.started -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationX;
                 @RotationX.performed -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationX;
                 @RotationX.canceled -= m_Wrapper.m_Player_SeperateHandInteractActionsCallbackInterface.OnRotationX;
@@ -1191,6 +1216,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Interact_Combined.started += instance.OnInteract_Combined;
+                @Interact_Combined.performed += instance.OnInteract_Combined;
+                @Interact_Combined.canceled += instance.OnInteract_Combined;
                 @RotationX.started += instance.OnRotationX;
                 @RotationX.performed += instance.OnRotationX;
                 @RotationX.canceled += instance.OnRotationX;
@@ -1313,6 +1341,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     public interface IPlayer_SeperateHandInteractActions
     {
         void OnJump(InputAction.CallbackContext context);
+        void OnInteract_Combined(InputAction.CallbackContext context);
         void OnRotationX(InputAction.CallbackContext context);
         void OnRotationY(InputAction.CallbackContext context);
         void OnInteract_L(InputAction.CallbackContext context);

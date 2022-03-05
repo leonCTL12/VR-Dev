@@ -63,6 +63,45 @@ public class PlayerController_Puzzle : PlayerController_Base
         }
     }
 
+    public void Interact_Combine(InputAction.CallbackContext context) 
+    {
+        Debug.Log("In Interact Combine");
+        if (currentTriggerCollisionGO == null || !player_puzzle.interactable) { return; } //it does not collide with anything
+        RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
+
+        if (context.performed)
+        {
+            if (checker != null)
+            {
+                rightHand.SetActive(false);
+                leftHand.SetActive(false);
+
+                currentInteractableObject = checker.interactable;
+                currentInteractableObject.Interact_R();
+                currentInteractableObject.Interact_L();
+
+                rightHandReleased = false;
+                leftHandReleased = false;
+            }
+        }
+        else if (context.canceled)
+        {
+            if (currentTriggerCollisionGO != null && currentInteractableObject != null && player_puzzle.interactable)
+            {
+                currentInteractableObject.Cancel_R();
+                currentInteractableObject.Cancel_L();
+
+                rightHand.SetActive(true);
+                leftHand.SetActive(true);
+
+                rightHandReleased = true;
+                leftHandReleased = true;
+            }
+        }
+        moveable = rightHandReleased && leftHandReleased;
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         currentTriggerCollisionGO = other.gameObject;
