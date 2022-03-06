@@ -15,7 +15,7 @@ MonoBehaviour:
   characterController: {fileID: 1543782323025901992}
   firstPersonElectricShockParticles: {fileID: 8358331158646652182}
   thirdPersonElectricShockParticles: {fileID: 8603714877669995998}
-  paralysisSec: 2
+  paralysisSec: 6
   interactable: 1
   VRPlayer: 0
 --- !u!114 &4223141302064289107
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854477613097939084, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: photonMicrophoneDeviceId
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3897173698075321612, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: m_RootOrder

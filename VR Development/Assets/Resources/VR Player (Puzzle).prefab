@@ -143,7 +143,7 @@ MonoBehaviour:
   characterController: {fileID: 4185017230397076160}
   firstPersonElectricShockParticles: {fileID: 1032580610943206712}
   thirdPersonElectricShockParticles: {fileID: 6107355466140747238}
-  paralysisSec: 20
+  paralysisSec: 6
   interactable: 1
   VRPlayer: 1
 --- !u!114 &5277060722120432485
