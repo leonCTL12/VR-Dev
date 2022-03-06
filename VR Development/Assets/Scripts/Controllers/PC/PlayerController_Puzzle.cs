@@ -66,7 +66,11 @@ public class PlayerController_Puzzle : PlayerController_Base
     public void Interact_Combine(InputAction.CallbackContext context) 
     {
         Debug.Log("In Interact Combine");
-        if (currentTriggerCollisionGO == null || !player_puzzle.interactable) { return; } //it does not collide with anything
+        if (currentTriggerCollisionGO == null || !player_puzzle.interactable) { 
+            Debug.Log("current trigger col null: " + (currentTriggerCollisionGO == null)) ;  
+            Debug.Log("interactable: " + player_puzzle.interactable) ;  
+            return; 
+        } //it does not collide with anything
         RangeChecker checker = currentTriggerCollisionGO.GetComponent<RangeChecker>();
 
         if (context.performed)
@@ -104,12 +108,19 @@ public class PlayerController_Puzzle : PlayerController_Base
 
     private void OnTriggerEnter(Collider other)
     {
-        currentTriggerCollisionGO = other.gameObject;
+        if(other.GetComponent<RangeChecker>())
+        {
+            currentTriggerCollisionGO = other.gameObject;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        currentTriggerCollisionGO = null;
+        if(other.GetComponent<RangeChecker>())
+        {
+            currentTriggerCollisionGO = null;
+        }
     }
     public void Interact_R(InputAction.CallbackContext context)
     {
