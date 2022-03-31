@@ -20,19 +20,17 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     private string VRPlayerPrefabName;
     [SerializeField]
     private GameObject mobileCanvasPrefab;
-    [SerializeField]
-    private bool mobilePlatform;
 
     #region Temp Param
     [SerializeField]
     private bool dontSpawnObject;
-    [SerializeField]
-    private bool forceSpawnVR;
     #endregion
 
     public GameObject currentPlayer;
     public GameObject partnerPlayer;
     private GameObject spawnedPlayer;
+
+    private PlatformSetter platformSetter;
 
     private static LevelManager_Base _instance;
 
@@ -55,24 +53,16 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
 
     protected virtual void Start()
     {
+        platformSetter = PlatformSetter.Instance;
     }
 
     public virtual void SpawnPhotonObjects()
     {
         #region Temp Code
         if (dontSpawnObject) { return; }
-        if(forceSpawnVR)
-        {
-            Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
-            //add a random offset to prevent two player's collider clash and stick together
-            spawnedPlayer = PhotonNetwork.Instantiate(VRPlayerPrefabName, spawnPoint.transform.position + randomOffset, spawnPoint.transform.rotation);
-            //spawnedPlayer.transform.parent = playersContainer.transform;
-            currentPlayer = spawnedPlayer;
-            return;
-        }
         #endregion
 
-        if(mobilePlatform)
+        if (platformSetter.platform == PlatformSetter.Platforms.mobile)
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
@@ -83,7 +73,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             mobileCanvas.transform.parent = spawnedPlayer.transform;
             spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
         }
-        else if (SystemInfo.deviceType.ToString() == "Desktop")
+        else if (platformSetter.platform == PlatformSetter.Platforms.pc)
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
            //add a random offset to prevent two player's collider clash and stick together
@@ -92,7 +82,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
             currentPlayer = spawnedPlayer;
             spawnedPlayer.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapNameList[level]);
         }
-        else if (SystemInfo.deviceType.ToString() == "Handheld") //It means mobile or VR but cant distinguish between them
+        else if (platformSetter.platform == PlatformSetter.Platforms.vr) //It means mobile or VR but cant distinguish between them
         {
             Vector3 randomOffset = new Vector3(Random.Range(0, 5), 0, Random.Range(0, 5));
             //add a random offset to prevent two player's collider clash and stick together
