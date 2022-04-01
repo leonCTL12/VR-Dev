@@ -34,7 +34,10 @@ public class PressureSensor : MonoBehaviourPunCallbacks
     {
         animator.SetBool("Down", true);
         collider.enabled = false;
-        particle.SetActive(false);
+        if(particle != null)
+        {
+            particle.SetActive(false);
+        }
         onPressed.Invoke();
     }
 
@@ -42,6 +45,9 @@ public class PressureSensor : MonoBehaviourPunCallbacks
     {
         animator.SetBool("Down", false);
         collider.enabled = true;
-        particle.SetActive(true);
+        if(particle != null)
+        {
+            particle.SetActive(true);
+        }
     }
 }

@@ -34,6 +34,8 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
 
     private static LevelManager_Base _instance;
 
+    private int endGameSignalCounter = 0;
+
     public static LevelManager_Base Instance
     {
         get { return _instance; }
@@ -125,5 +127,26 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     public void PlayerDamageHandler()
     {
 
+    }
+
+    //Public because boss fight level will be called directly by other scripts
+    public void EndGameHandler()
+    {
+        Debug.Log("End Game!");
+
+        //TODO: Signal Player to show end game canvas
+    }
+
+    public void EndGameSignalReceiver(bool positive)
+    {
+        int signalDelta = positive ? 1 : -1;
+
+        endGameSignalCounter += signalDelta;
+        print("End Game Signal Counter: " + endGameSignalCounter);
+
+        if(endGameSignalCounter == 2)
+        {
+            EndGameHandler();
+        }
     }
 }
