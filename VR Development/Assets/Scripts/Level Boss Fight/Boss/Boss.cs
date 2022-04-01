@@ -12,6 +12,8 @@ public class Boss : MonoBehaviour
     private GameObject[] weakSpotsArray;
     [SerializeField]
     private float lookSpeed;
+    [SerializeField]
+    private bool instantKill;
     private Animator animator;
     private bool masterBoss;
     private static Boss instance;
@@ -268,6 +270,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         bossSFX.PlayDieSound();
         yield return new WaitForSeconds(4);
+        levelManager.EndGameHandler();
         Destroy(gameObject);
     }
 
@@ -279,8 +282,7 @@ public class Boss : MonoBehaviour
         bossHP = weakSpotsArray.Length - destroyedWeakSpotCounter;
         LevelManager_BossFight manager_BossFight = (LevelManager_BossFight)levelManager;
         manager_BossFight.UpdatePlayerUIWeakSpot(bossHP);
-        //if (destroyedWeakSpotCounter >= weakSpotsArray.Length)
-        if (destroyedWeakSpotCounter >= 1)
+        if (destroyedWeakSpotCounter >= weakSpotsArray.Length || instantKill)
         {
             BossDeathHandler();
         }

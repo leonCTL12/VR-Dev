@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class LevelManager_Base : MonoBehaviourPunCallbacks
 {
@@ -20,6 +21,7 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     private string VRPlayerPrefabName;
     [SerializeField]
     private GameObject mobileCanvasPrefab;
+    private PhotonView photonView;
 
     #region Temp Param
     [SerializeField]
@@ -51,6 +53,8 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
         {
             Instance = this;
         }
+
+        photonView = GetComponent<PhotonView>();
     }
 
     protected virtual void Start()
@@ -129,12 +133,32 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
 
     }
 
-    //Public because boss fight level will be called directly by other scripts
     public void EndGameHandler()
     {
         Debug.Log("End Game!");
 
-        //TODO: Signal Player to show end game canvas
+        //TODO: Signal Player (current player only) to show end game canvas
+        if (platformSetter.platform == PlatformSetter.Platforms.vr)
+        {
+            currentPlayer.GetComponent<VRController_Base>().ShowCelebration();
+        }
+        else
+        {
+            currentPlayer.GetComponent<PlayerController_Base>().ShowCelebration();
+        }
+
+        TriggerBackToMenuCoroutine();
+    }
+
+    private void TriggerBackToMenuCoroutine()
+    {
+        StartCoroutine(BackToMenuCountDown());
+    }
+    private IEnumerator BackToMenuCountDown()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Menu");
+        //TODO: networking leave room as well (?)
     }
 
     public void EndGameSignalReceiver(bool positive)

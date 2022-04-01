@@ -22,6 +22,8 @@ public class VRController_Base : MonoBehaviour
     private Vector3 velocity;
     private bool jumping = false;
     protected bool movable = true;
+    [SerializeField]
+    private GameObject celebrationPanel;
 
     private CharacterController characterController;
 
@@ -149,5 +151,9 @@ public class VRController_Base : MonoBehaviour
             walkInput = Vector2.zero;
         }
     }
-
+    
+    public void ShowCelebration()
+    {
+        celebrationPanel.SetActive(true);
+    }
 }

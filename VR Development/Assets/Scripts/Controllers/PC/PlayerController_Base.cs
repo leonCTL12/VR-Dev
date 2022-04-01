@@ -21,6 +21,8 @@ public class PlayerController_Base: MonoBehaviour
     [SerializeField]
     private GameObject sightUI;
     private ThirdPersonPresenter_Base presenter_base;
+    [SerializeField]
+    private GameObject celebrationPanel;
 
     //TODO: hook up with setting
     [SerializeField]
@@ -63,6 +65,8 @@ public class PlayerController_Base: MonoBehaviour
     private float xRotation = 0f;
     private float rotationInputX = 0f;
     private float rotationInputY = 0f;
+
+
 
     protected virtual void Awake()
     {
@@ -269,5 +273,11 @@ public class PlayerController_Base: MonoBehaviour
         {
             rotationInputY = 0f;
         }
+    }
+
+    public void ShowCelebration()
+    {
+        celebrationPanel.SetActive(true);
+        sightUI.SetActive(false);
     }
 }
