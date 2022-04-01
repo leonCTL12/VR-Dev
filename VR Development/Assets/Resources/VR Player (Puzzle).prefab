@@ -166,6 +166,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   jumpHeight: 5
+  celebrationPanel: {fileID: 7539075804129289161}
   walkActionReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   player3rdPersonGeometry: {fileID: 7829443455871609394}
   player3rdPersonSkeleton: {fileID: 840470141022560206}
@@ -367,6 +368,11 @@ GameObject:
 --- !u!1 &6666440812759149185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8986656986945119749, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+  m_PrefabInstance: {fileID: 2320744087961570436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7539075804129289161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5230049106358431565, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
   m_PrefabInstance: {fileID: 2320744087961570436}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2531396514666384683

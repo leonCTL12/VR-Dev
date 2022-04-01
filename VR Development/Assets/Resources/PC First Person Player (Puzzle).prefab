@@ -36,6 +36,7 @@ MonoBehaviour:
   player1stPersonModel: {fileID: 9119497826102207171}
   fpsCam: {fileID: 836207041693870148}
   sightUI: {fileID: 6559392113735981708}
+  celebrationPanel: {fileID: 6654326500589017177}
   gamePadMode: 0
   isMine: 0
   speed: 25
@@ -69,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854477613097939084, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: photonMicrophoneDeviceId
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3897173698075321612, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: m_RootOrder
@@ -329,5 +330,10 @@ GameObject:
 --- !u!1 &6559392113735981708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5080311329749372774, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
+  m_PrefabInstance: {fileID: 2127740143164052970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6654326500589017177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4746700347847888307, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
   m_PrefabInstance: {fileID: 2127740143164052970}
   m_PrefabAsset: {fileID: 0}
