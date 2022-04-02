@@ -542,7 +542,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -1265,6 +1265,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6912934718063287481, guid: cc4d0e223dea0f04aa9d553785e8dab3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413818712033517335, guid: cc4d0e223dea0f04aa9d553785e8dab3, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
