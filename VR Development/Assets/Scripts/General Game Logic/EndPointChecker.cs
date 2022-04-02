@@ -13,6 +13,7 @@ public class EndPointChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("End Point Trigger Enter");
         if(other.gameObject.tag == "Player")
         {
             manager.EndGameSignalReceiver(true);

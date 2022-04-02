@@ -12,15 +12,19 @@ public class LevelManager_BossFight : LevelManager_Base
     public override void SpawnPhotonObjects()
     {
         base.SpawnPhotonObjects();
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Instantiate(bossPrefabName, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
-        }
     }
 
     public void UpdatePlayerUIWeakSpot(int index)
     {
         //handle current player only, coz partner player's level manager will handle theirs
         currentPlayer.GetComponent<Player_BossFight>().playerUI.DisableWeakSpot(index);
+    }
+
+    public override void Sender_SyncLevel()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate(bossPrefabName, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
+        }
     }
 }
