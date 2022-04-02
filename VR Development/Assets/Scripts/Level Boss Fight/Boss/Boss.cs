@@ -24,7 +24,6 @@ public class Boss : MonoBehaviour
             return instance;
         }
     }
-    public float revealWeakSpotsThreshold;
     private int currentWeakSpot;
     private int destroyedWeakSpotCounter;
     private int bossHP;
@@ -71,10 +70,7 @@ public class Boss : MonoBehaviour
     #endregion
 
     #region lazer_attack
-    [SerializeField]
-    private string lazerLauncherName;
-    private GameObject lazerLauncher;
-    private Animator lazerAnimator;
+    private LazerLauncher lazerLauncher;
     #endregion
 
     private LevelManager_Base levelManager;
@@ -100,9 +96,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         #region initalise lazer launcher
-        lazerLauncher = GameObject.Find(lazerLauncherName);
-        lazerAnimator = lazerLauncher.GetComponent<Animator>();
-        lazerLauncher.SetActive(false);
+        lazerLauncher = LazerLauncher.Instance;
         #endregion
 
         levelManager = LevelManager_Base.Instance;
@@ -236,11 +230,7 @@ public class Boss : MonoBehaviour
         bossSFX.TailAttackSFX();
         yield return new WaitForSeconds(1);
         bossSFX.LazerLaunchSFX();
-        lazerLauncher.SetActive(true);
-        lazerAnimator.SetTrigger("Launch");
-        yield return new WaitForSeconds(1f);
-        lazerLauncher.SetActive(false);
-        lazerAnimator.SetTrigger("Back");
+        lazerLauncher.Attack();
     }
 
     public void RevealWeakSpots()

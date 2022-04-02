@@ -17,12 +17,12 @@ public class Wand : Gun_Base
 
     private Boss boss;
 
-    private float bossThreshold;
+    [SerializeField]
+    private float bossThreshold = 5f;
 
     private void Start()
     {
         boss = Boss.BossInstance;
-        bossThreshold = boss.revealWeakSpotsThreshold;
     }
 
     private void Update()
@@ -30,12 +30,11 @@ public class Wand : Gun_Base
         if (countTime)
         {
             float timePassed = Time.time - startTime;
-            //Debug.Log("Time Passed: " + timePassed);
-            if (boss == null)
+            if (boss == null) //Have to do that coz there may be lag in spawning boss, to ensure it got the boss instance 
             {
                 boss = Boss.BossInstance;
             } 
-            else if (timePassed > boss.revealWeakSpotsThreshold)
+            else if (timePassed > bossThreshold)
             {
                 Debug.Log("Reveal Weak Spots!");
                 boss.RevealWeakSpots();
