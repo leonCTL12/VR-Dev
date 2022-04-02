@@ -2226,6 +2226,7 @@ MonoBehaviour:
   attackPoint: {fileID: 4403637802677943786}
   analyticalLazer: {fileID: 7329886049999688453}
   presenter: {fileID: 7309101205551457450}
+  bossThreshold: 5
 --- !u!82 &8145769620161445140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3538,6 +3539,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220659023442343300, guid: d59af3ac28fcf4659a909211f7356283, type: 3}
       propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220659023442343300, guid: d59af3ac28fcf4659a909211f7356283, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220659023442343300, guid: d59af3ac28fcf4659a909211f7356283, type: 3}

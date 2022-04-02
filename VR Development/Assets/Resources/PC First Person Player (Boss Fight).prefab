@@ -2626,7 +2626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854477613097939084, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: photonMicrophoneDeviceId
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3073337857979887672, guid: f2ed01f46e3a9d2499b493e87460ea25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4705,6 +4705,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220659023442343300, guid: d59af3ac28fcf4659a909211f7356283, type: 3}
       propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220659023442343300, guid: d59af3ac28fcf4659a909211f7356283, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220659023442343300, guid: d59af3ac28fcf4659a909211f7356283, type: 3}
