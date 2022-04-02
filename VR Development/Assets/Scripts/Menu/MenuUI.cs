@@ -12,8 +12,8 @@ public class MenuUI : MonoBehaviour
     private GameObject banVoiceChatIcon;
 
     private Setting setting;
-
-    private void Awake()
+    
+    private void Start()
     {
         setting = Setting.Instance;
     }
