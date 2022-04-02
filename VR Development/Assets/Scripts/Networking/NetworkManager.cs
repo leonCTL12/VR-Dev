@@ -55,6 +55,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
+        Debug.Log("Left Room");
         levelManager.DisconnectionHandling();
     }
     public override void OnPlayerEnteredRoom(Player newPlayer)

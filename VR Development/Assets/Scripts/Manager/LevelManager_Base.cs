@@ -126,6 +126,15 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     public void DisconnectionHandling()
     {
         PhotonNetwork.Destroy(spawnedPlayer);
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Menu");
+        //StartCoroutine(BackToMenuCoroutine());
+    }
+
+    private IEnumerator BackToMenuCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Menu");
     }
 
     public void PlayerDamageHandler()
@@ -156,7 +165,9 @@ public class LevelManager_Base : MonoBehaviourPunCallbacks
     }
     private IEnumerator BackToMenuCountDown()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5); //To give some buffer for photon to send signal to its peer
+        PhotonNetwork.LeaveRoom();
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Menu");
         //TODO: networking leave room as well (?)
     }
