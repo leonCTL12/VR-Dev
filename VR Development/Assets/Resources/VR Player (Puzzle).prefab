@@ -279,6 +279,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3715411597946375010, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
+      propertyPath: photonMicrophoneDeviceId
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4881852122703355313, guid: 55d94bc5d37d7f548a9002f8bbe98e41, type: 3}
       propertyPath: playerVR
       value: 

@@ -566,7 +566,7 @@ MonoBehaviour:
     AcousticEchoCancellation: 0
     AutomaticGainControl: 0
     NoiseSuppression: 0
-  recordOnlyWhenEnabled: 0
+  recordOnlyWhenEnabled: 1
   skipDeviceChangeChecks: 0
   stopRecordingWhenPaused: 0
   useOnAudioFilterRead: 0

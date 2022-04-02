@@ -665,6 +665,7 @@ MonoBehaviour:
   attackPoint: {fileID: 0}
   analyticalLazer: {fileID: 1300387144021449352}
   presenter: {fileID: 718516980724457877}
+  bossThreshold: 5
 --- !u!82 &4298212792584208489
 AudioSource:
   m_ObjectHideFlags: 0
