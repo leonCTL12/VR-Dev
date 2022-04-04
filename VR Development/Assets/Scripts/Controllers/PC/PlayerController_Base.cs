@@ -23,6 +23,8 @@ public class PlayerController_Base: MonoBehaviour
     private ThirdPersonPresenter_Base presenter_base;
     [SerializeField]
     private GameObject celebrationPanel;
+    [SerializeField]
+    private GameObject canvas;
 
     //TODO: hook up with setting
     [SerializeField]
@@ -81,6 +83,7 @@ public class PlayerController_Base: MonoBehaviour
         isMine = photonView.IsMine;
         player3rdPersonGeometry.SetActive(!isMine);
         player3rdPersonSkeleton.SetActive(!isMine);
+        canvas.SetActive(isMine);
         
         fpsCam.gameObject.SetActive(isMine);
         player1stPersonModel.SetActive(isMine);

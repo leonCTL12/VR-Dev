@@ -375,6 +375,7 @@ MonoBehaviour:
   fpsCam: {fileID: 1593585684729707950}
   sightUI: {fileID: 5080311329749372774}
   celebrationPanel: {fileID: 4746700347847888307}
+  canvas: {fileID: 7526377717766867781}
   gamePadMode: 0
   isMine: 0
   speed: 25

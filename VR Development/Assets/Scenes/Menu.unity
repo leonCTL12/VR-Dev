@@ -11747,7 +11747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1675972169, guid: 1b5da6138d5f12c48b429f1c2f164e52, type: 3}
       propertyPath: mobilePlatformBuild
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4574006152743145734, guid: 1b5da6138d5f12c48b429f1c2f164e52, type: 3}
       propertyPath: m_RootOrder

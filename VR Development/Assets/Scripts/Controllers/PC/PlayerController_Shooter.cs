@@ -13,8 +13,6 @@ public class PlayerController_Shooter : PlayerController_Base
     private WeaponType weaponType;
     [SerializeField]
     private ThirdPersonPresenter_Shooter presenter;
-    [SerializeField]
-    private GameObject canvas;
 
     private enum WeaponType
     {
@@ -24,8 +22,6 @@ public class PlayerController_Shooter : PlayerController_Base
     protected override void Start()
     {
         base.Start();
-
-        canvas.SetActive(isMine);
 
         if (PhotonNetwork.IsMasterClient)
         {
