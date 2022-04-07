@@ -25,6 +25,7 @@ public class PlayerController_Base: MonoBehaviour
     private GameObject celebrationPanel;
     [SerializeField]
     private GameObject canvas;
+    private PlatformSetter platformSetter;
 
     //TODO: hook up with setting
     [SerializeField]
@@ -77,6 +78,7 @@ public class PlayerController_Base: MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         presenter_base = GetComponent<ThirdPersonPresenter_Base>();
     }
+
     private void SetGameObjectActiveState()
     {
         Debug.Log("Photon Null: " + photonView == null);
@@ -95,6 +97,12 @@ public class PlayerController_Base: MonoBehaviour
 
     protected virtual void Start()
     {
+        platformSetter = PlatformSetter.Instance;
+        if(platformSetter.platform == PlatformSetter.Platforms.mobile)
+        {
+            gamePadMode = true;
+        }
+     
         SetGameObjectActiveState();
         InputSystem.onDeviceChange += (device, change) =>
         {
@@ -168,6 +176,7 @@ public class PlayerController_Base: MonoBehaviour
             //Debug.Log("return from not movable");
             return;
         }
+
         Vector3 move = transform.right * walkInput.x + transform.forward * walkInput.y; //create direction to move base on where player is facing
         if (move != Vector3.zero)
         {

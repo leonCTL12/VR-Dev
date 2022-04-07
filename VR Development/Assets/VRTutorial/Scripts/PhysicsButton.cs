@@ -39,7 +39,7 @@ public class PhysicsButton : MonoBehaviour
 
     private float GetValue()
     {
-        var value = Vector3.Distance(_startPos, transform.localPosition) / _joint.linearLimit.limit; //turn the press value into a percentage to standardise
+        var value = Vector3.Distance(_startPos, transform.localPosition) / _joint.linearLimit.limit; //turn the press value into a percentage to normalise
 
         if(Math.Abs(value) < deadZone)
         {
