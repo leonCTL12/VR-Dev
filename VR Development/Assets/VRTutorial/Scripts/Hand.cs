@@ -139,11 +139,12 @@ public class Hand : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hand" || other.tag == "Player") return;
-        objectGrip = true;
 
         if(other.tag == "VRInteractable")
         {
-            if(leftHand)
+            objectGrip = true;
+
+            if (leftHand)
             {
                 playerVR.leftHandContactObject = other.gameObject;
             } 
