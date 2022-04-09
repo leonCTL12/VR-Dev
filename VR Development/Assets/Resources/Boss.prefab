@@ -379,7 +379,7 @@ MonoBehaviour:
   - {fileID: 5039857110520487306}
   - {fileID: 5039857109885422661}
   lookSpeed: 2
-  instantKill: 1
+  instantKill: 0
   attackInterval: 10
   initalActionWait: 1
   stoneNumber: 15
